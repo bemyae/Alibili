@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class HomeViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
     let cookieManager = CookieManager()
     @IBOutlet weak var logoutButton: UIButton!
@@ -18,6 +18,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         logoutButton.setTitle("Log out", for: .normal)
+        
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
+                print("Result: \(response.result)")
+            }
+            
+        }
         
     }
     
@@ -31,16 +42,16 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            let headers: HTTPHeaders = [
-                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
-                "Accept": "application/json"
-            ]
-        AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
-               
-            }
-
-        }
+//        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+//            let headers: HTTPHeaders = [
+//                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+//                "Accept": "application/json"
+//            ]
+//            AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
+////                    print("Result: \(response.result)")   
+//                }
+//
+//        }
 //        else{
 //            let destinationController = storyboard!.instantiateViewController(withIdentifier: "login")
 //            present(destinationController, animated: true, completion: nil)

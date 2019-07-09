@@ -14,7 +14,7 @@ class RootViewNavigator {
     func updateRootViewController(){
         var rootVC : UIViewController?
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! HomeViewController
+            rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! UITabBarController
         }else{
             rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "login") as! LoginViewController
         }

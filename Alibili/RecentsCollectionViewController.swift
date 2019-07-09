@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  RecentsCollectionViewController.swift
 //  Alibili
 //
 //  Created by Xiaonan Zhang on 2019/07/08.
@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-private let reuseIdentifier = "cell"
+private let reuseIdentifier = RecentsCollectionViewCell.reuseIdentifier
 
-class CollectionViewController: UICollectionViewController {
+class RecentsCollectionViewController: UICollectionViewController {
+
+    let cookieManager:CookieManager = CookieManager()
     
-    let contents = Array(1...100)
-
+    var dataItemGourp:[JSON] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +28,23 @@ class CollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request("https://api.bilibili.com/x/web-feed/feed?ps=10&pn=1", headers: headers).responseJSON { response in
+                switch(response.result) {
+                    case .success(let data):
+                         let json = JSON(data)
+                         self.dataItemGourp = json["data"].array ?? []
+                    case .failure(let error):
+                        break
+                }
+                
+            }
+            
+        }
     }
 
     /*
@@ -40,21 +61,24 @@ class CollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return dataItemGourp.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 100
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
-        cell.backgroundColor = self.randomColor()
-    
+        
+        // Configure the cell.
+        let sectionDataItems = dataItemGourp[indexPath.section]
+//        print(sectionDataItems)
+        cell.backgroundColor = randomColor()
         return cell
     }
     
@@ -65,7 +89,6 @@ class CollectionViewController: UICollectionViewController {
         let blue = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-
 
     // MARK: UICollectionViewDelegate
 
@@ -99,3 +122,51 @@ class CollectionViewController: UICollectionViewController {
     */
 
 }
+
+//struct Owner : Codable{
+//    var mid:String
+//    var name:String
+//    var face:String
+//}
+//
+//struct Archive : Codable{
+//    var aid :String
+//    var videos:Int
+//    var tid :String
+//    var tname:String
+//    var copyright :Int
+//    var pic: String
+//    var title :String
+//    var pubdate:String
+//    var ctime:String
+//    var desc:String
+//    var state:Int
+//    var attribute:String
+//    var duration:String
+//    var owner:Owner
+//    var dynamic:String
+//    var cid:String
+//}
+//
+//struct OfficialVerify: Codable {
+//    var role :Int
+//    var title :String
+//    var desc :String
+//}
+//
+//struct Video : Codable{
+//    var type:Int
+//    var archive: Archive
+//    var bangumi: String
+//    var id: String
+//    var pubdate :String
+//    var fold:String
+//    var official_verify : OfficialVerify
+//}
+//
+//struct Recents : Codable{
+//    var code:Int
+//    var message: Int
+//    var ttl:Int
+//    var data:[Video]
+//}

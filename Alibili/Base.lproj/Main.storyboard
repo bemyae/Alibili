@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JV8-5P-XJg">
     <device id="appleTV" orientation="landscape">
         <adaptation id="light"/>
     </device>
@@ -10,10 +10,82 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Top Rated-->
+        <scene sceneID="3cB-6h-iz2">
+            <objects>
+                <viewController title="Top Rated" id="min-hR-eXS" userLabel="Top Rated" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r9W-Gc-hS5"/>
+                        <viewControllerLayoutGuide type="bottom" id="99o-6F-arH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="73t-s7-NOt">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UQs-Zs-9Ij"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="fkg-hh-X8a"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnI-BF-Pje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-532" y="-3012"/>
+        </scene>
+        <!--Recents-->
+        <scene sceneID="9Hq-F9-AUP">
+            <objects>
+                <collectionViewController id="zgS-yC-X67" userLabel="Recents" customClass="RecentsCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zZw-L5-XcG">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9dI-Gb-8KL">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecentsCollectionViewCell" id="jV8-Ep-fvi">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="zgS-yC-X67" id="xEQ-0r-0TF"/>
+                            <outlet property="delegate" destination="zgS-yC-X67" id="xBm-Cb-bZ5"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="ETV-cG-Xsb"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efe-Zi-zk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-532" y="-1540"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hav-La-ugl">
+            <objects>
+                <tabBarController storyboardIdentifier="home" id="JV8-5P-XJg" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xv-sY-MqZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="min-hR-eXS" kind="relationship" relationship="viewControllers" id="Xzr-mN-sgQ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yl7-yD-gbw"/>
+                        <segue destination="zgS-yC-X67" kind="relationship" relationship="viewControllers" id="pnG-Xu-2aG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRW-Sl-5I0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4244" y="-2561"/>
+        </scene>
+        <!--Profile-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Profile" customClass="ProfileViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -36,53 +108,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="r2Q-C1-YJy" kind="show" id="cqu-Dp-f2a"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="fFt-Sk-Hax"/>
                     <connections>
                         <outlet property="logoutButton" destination="cjh-eK-L4Q" id="fKN-2F-ONp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="-158"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="lPd-Rr-d3b">
-            <objects>
-                <collectionViewController id="r2Q-C1-YJy" customClass="CollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rb9-H6-nYQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wlB-44-aaJ">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="5Po-r2-ZOG">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="r2Q-C1-YJy" id="Aae-5z-hAs"/>
-                            <outlet property="delegate" destination="r2Q-C1-YJy" id="NzV-ZT-HaF"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yho-t4-Zfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2175" y="-158"/>
+            <point key="canvasLocation" x="-532" y="-4459"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Zp8-cg-k9t">
@@ -110,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHh-0t-zbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="1169"/>
+            <point key="canvasLocation" x="-4244" y="-1085"/>
         </scene>
     </scenes>
 </document>
