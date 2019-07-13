@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
                 "Accept": "application/json"
             ]
             AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
-                print("Result: \(response.result)")
+//                print("Result: \(response.result)")
             }
             
         }

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Alibili/RecentsCollectionViewCell.swift"
-            timestampString = "584276953.506804"
+            timestampString = "584671276.356122"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "configure(with:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "didUpdateFocus(in:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

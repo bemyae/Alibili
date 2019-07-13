@@ -10,46 +10,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Top Rated-->
-        <scene sceneID="3cB-6h-iz2">
-            <objects>
-                <viewController title="Top Rated" id="min-hR-eXS" userLabel="Top Rated" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r9W-Gc-hS5"/>
-                        <viewControllerLayoutGuide type="bottom" id="99o-6F-arH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="73t-s7-NOt">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="UQs-Zs-9Ij"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="fkg-hh-X8a"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qnI-BF-Pje" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-532" y="-3012"/>
-        </scene>
-        <!--Recents-->
+        <!--Subscriptions-->
         <scene sceneID="9Hq-F9-AUP">
             <objects>
-                <collectionViewController id="zgS-yC-X67" userLabel="Recents" customClass="RecentsCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zZw-L5-XcG">
+                <collectionViewController id="zgS-yC-X67" userLabel="Subscriptions" customClass="SubscriptionsCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="YES" id="zZw-L5-XcG">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9dI-Gb-8KL">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="QJu-gh-hij">
+                            <size key="itemSize" width="0.0" height="0.0"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecentsCollectionViewCell" id="jV8-Ep-fvi">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SubscriptionsCollectionViewCell" id="jV8-Ep-fvi" customClass="SubscriptionsCollectionViewCell" customModule="Alibili" customModuleProvider="target">
+                                <rect key="frame" x="90" y="0.0" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wK4-9R-Kfz">
+                                            <rect key="frame" x="1" y="0.0" width="0.0" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bd-q1-46a">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <connections>
+                                    <outlet property="imageView" destination="wK4-9R-Kfz" id="71W-Zj-IBP"/>
+                                    <outlet property="label" destination="4bd-q1-46a" id="9Xe-aj-l6U"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -61,7 +58,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efe-Zi-zk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="-1540"/>
+            <point key="canvasLocation" x="-532" y="-2561"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hav-La-ugl">
@@ -73,9 +70,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="min-hR-eXS" kind="relationship" relationship="viewControllers" id="Xzr-mN-sgQ"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yl7-yD-gbw"/>
                         <segue destination="zgS-yC-X67" kind="relationship" relationship="viewControllers" id="pnG-Xu-2aG"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yl7-yD-gbw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRW-Sl-5I0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="-4459"/>
+            <point key="canvasLocation" x="-532" y="-3892"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Zp8-cg-k9t">

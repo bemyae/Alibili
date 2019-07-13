@@ -10,24 +10,43 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-private let reuseIdentifier = RecentsCollectionViewCell.reuseIdentifier
+private let reuseIdentifier = SubscriptionsCollectionViewCell.reuseIdentifier
 
-class RecentsCollectionViewController: UICollectionViewController {
+class SubscriptionsCollectionViewController: UICollectionViewController {
 
-    let cookieManager:CookieManager = CookieManager()
+    private let cookieManager:CookieManager = CookieManager()
+    
+    private let cellComposer = DataItemCellComposer()
+    
+    private var targetSize = CGSize.zero
     
     var dataItemGourp:[JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let kCellReuseIdentifier = "Cell"
+        let kColumnCnt: Int = 3
+        let kCellSpacing: CGFloat = 40
+//        var fetchResult: PHFetchResult<PHAsset>!
+//        var imageManager = PHCachingImageManager()
+        
 
+        let imgWidth = (collectionView.frame.width - (kCellSpacing * (CGFloat(kColumnCnt) - 1))) / CGFloat(kColumnCnt)
+        targetSize = CGSize(width: imgWidth, height: imgWidth * 9 / 16)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = targetSize
+        layout.minimumInteritemSpacing = kCellSpacing
+        layout.minimumLineSpacing = kCellSpacing
+        collectionView.collectionViewLayout = layout
+//        self.edgesForExtendedLayout = UIRectEdge.bottom
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+//        self.collectionView!.register(SubscriptionsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             let headers: HTTPHeaders = [
                 "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
@@ -35,16 +54,23 @@ class RecentsCollectionViewController: UICollectionViewController {
             ]
             AF.request("https://api.bilibili.com/x/web-feed/feed?ps=10&pn=1", headers: headers).responseJSON { response in
                 switch(response.result) {
-                    case .success(let data):
-                         let json = JSON(data)
-                         self.dataItemGourp = json["data"].array ?? []
-                    case .failure(let error):
-                        break
+                case .success(let data):
+                    let json = JSON(data)
+//                    print(json)
+                    self.dataItemGourp = json["data"].array ?? []
+                    DispatchQueue.main.async{
+                        self.collectionView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error)
+                    break
                 }
                 
             }
             
         }
+        // Do any additional setup after loading the view.
+        
     }
 
     /*
@@ -61,36 +87,47 @@ class RecentsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return dataItemGourp.count
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return self.dataItemGourp.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-        
-        // Configure the cell.
-        let sectionDataItems = dataItemGourp[indexPath.section]
-//        print(sectionDataItems)
-        cell.backgroundColor = randomColor()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubscriptionsCollectionViewCell.reuseIdentifier, for: indexPath)
         return cell
+        
+
     }
     
-    // custom function to generate a random UIColor
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? SubscriptionsCollectionViewCell else { fatalError("Expected to display a `SubscriptionsCollectionViewCell`.") }
+//        cell.backgroundColor = randomColor()
+        let item = dataItemGourp[indexPath.item]
+        //         Configure the cell.
+        cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: DataItem(jsonData: item))
+    }
+    
     func randomColor() -> UIColor{
         let red = CGFloat(drand48())
         let green = CGFloat(drand48())
         let blue = CGFloat(drand48())
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
-
+    
     // MARK: UICollectionViewDelegate
+    
+//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard cell is RecentsCollectionViewCell else { fatalError("Expected to display a RecentsCollectionCell") }
+//        print((indexPath as NSIndexPath).row)
+//        let item = dataItemGourp[indexPath]
+//        print(item)
+        // Configure the cell.
+//        DataItemCellComposer.compose(cell, withDataItem: item)
+//    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -122,51 +159,3 @@ class RecentsCollectionViewController: UICollectionViewController {
     */
 
 }
-
-//struct Owner : Codable{
-//    var mid:String
-//    var name:String
-//    var face:String
-//}
-//
-//struct Archive : Codable{
-//    var aid :String
-//    var videos:Int
-//    var tid :String
-//    var tname:String
-//    var copyright :Int
-//    var pic: String
-//    var title :String
-//    var pubdate:String
-//    var ctime:String
-//    var desc:String
-//    var state:Int
-//    var attribute:String
-//    var duration:String
-//    var owner:Owner
-//    var dynamic:String
-//    var cid:String
-//}
-//
-//struct OfficialVerify: Codable {
-//    var role :Int
-//    var title :String
-//    var desc :String
-//}
-//
-//struct Video : Codable{
-//    var type:Int
-//    var archive: Archive
-//    var bangumi: String
-//    var id: String
-//    var pubdate :String
-//    var fold:String
-//    var official_verify : OfficialVerify
-//}
-//
-//struct Recents : Codable{
-//    var code:Int
-//    var message: Int
-//    var ttl:Int
-//    var data:[Video]
-//}

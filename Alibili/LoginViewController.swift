@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                             }
                         }
                     }
-                case .failure(let error):
+                case .failure( _):
                     print("------loopValidation---------")
                     break
             }
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController {
                                     }
                                 }
                             }
-                        case .failure(let error):
+                        case .failure( _):
                             print("------loopValidation---------")
                             break
                         }
