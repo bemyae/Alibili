@@ -16,7 +16,7 @@ class VideoPlayerViewController: UIViewController {
     @IBOutlet var playerView: UIView!
     
     private let cookieManager:CookieManager = CookieManager()
-    var videoJson:DataItem!
+    var videoJson:SubscriptionsCellDateItem!
     let player:VLCMediaPlayer = VLCMediaPlayer()
     
     override func viewDidLoad() {

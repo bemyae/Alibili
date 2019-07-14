@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataItemCellComposer {
+class SubscriptionsCellDateComposer {
     // MARK: Properties
     
     /// Cache used to store processed images, keyed on `DataItem` identifiers.
@@ -23,7 +23,7 @@ class DataItemCellComposer {
     
     // MARK: Implementation
     
-    func compose(_ cell: SubscriptionsCollectionViewCell, cellStyle:CGSize ,withDataItem dataItem: DataItem) {
+    func compose(_ cell: SubscriptionsCollectionViewCell, cellStyle:CGSize ,withDataItem dataItem: SubscriptionsCellDateItem) {
         // Cancel any queued operations to process images for the cell.
         let queue = operationQueue(forCell: cell)
         queue.cancelAllOperations()
@@ -44,7 +44,7 @@ class DataItemCellComposer {
         cell.imageView.heightAnchor.constraint(equalToConstant: cellStyle.height * 0.8).isActive = true
         cell.imageView.centerXAnchor.constraint(lessThanOrEqualTo: cell.centerXAnchor).isActive = true
         
-        cell.imageView.image = DataItemCellComposer.processedImageCache.object(forKey: dataItem.id as NSString)
+        cell.imageView.image = SubscriptionsCellDateComposer.processedImageCache.object(forKey: dataItem.id as NSString)
         
         // No further work is necessary if the cell's image view has an image.
         guard cell.imageView.image == nil else { return }
@@ -67,7 +67,7 @@ class DataItemCellComposer {
             guard let image = self.processImage(named: dataItem.archive.pic) else { return }
             
             // Store the processed image in the cache.
-            DataItemCellComposer.processedImageCache.setObject(image, forKey: dataItem.id as NSString)
+            SubscriptionsCellDateComposer.processedImageCache.setObject(image, forKey: dataItem.id as NSString)
             
             OperationQueue.main.addOperation {
                 // Check that the cell is still showing the same `DataItem`.

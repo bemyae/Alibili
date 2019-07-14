@@ -17,7 +17,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
 
     private let cookieManager:CookieManager = CookieManager()
     
-    private let cellComposer = DataItemCellComposer()
+    private let cellComposer = SubscriptionsCellDateComposer()
     
     private var targetSize = CGSize.zero
     
@@ -106,7 +106,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
 //        cell.backgroundColor = randomColor()
         let item = dataItemGourp[indexPath.item]
         //         Configure the cell.
-        cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: DataItem(jsonData: item))
+        cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: SubscriptionsCellDateItem(jsonData: item))
         
         if dataItemGourp.count - 1 == indexPath.item {
             loadMoreData(currentPage: recentCurrentPage)
@@ -118,7 +118,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
             VideoPlayerViewController, let index =
             collectionView.indexPathsForSelectedItems?.first {
             let item = dataItemGourp[index.item]
-            destination.videoJson = DataItem(jsonData: item)
+            destination.videoJson = SubscriptionsCellDateItem(jsonData: item)
         }
     }
     

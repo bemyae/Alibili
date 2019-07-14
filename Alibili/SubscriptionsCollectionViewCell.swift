@@ -17,7 +17,7 @@ class SubscriptionsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var label: UILabel!
     
-    var representedDataItem: DataItem?
+    var representedDataItem: SubscriptionsCellDateItem?
     
     // MARK: Initialization
     

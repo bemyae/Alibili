@@ -17,8 +17,8 @@
 		CA00ACC122D2455E005ECFFE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA00ACBB22D24475005ECFFE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACC522D25D0B005ECFFE /* CookieManager.swift */; };
 		CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */; };
-		CA05132422D933BA008B4B48 /* DataItemCellComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132222D933BA008B4B48 /* DataItemCellComposer.swift */; };
-		CA05132622D933E8008B4B48 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* DataItem.swift */; };
+		CA05132422D933BA008B4B48 /* SubscriptionsCellDateComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */; };
+		CA05132622D933E8008B4B48 /* SubscriptionsCellDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */; };
 		CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3C22DAD84500615664 /* AudioToolbox.framework */; };
 		CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3E22DAD84F00615664 /* AVFoundation.framework */; };
 		CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4022DAD85E00615664 /* CoreGraphics.framework */; };
@@ -178,8 +178,8 @@
 		CA00ACA722D24475005ECFFE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		CA00ACC522D25D0B005ECFFE /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
 		CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewNavigator.swift; sourceTree = "<group>"; };
-		CA05132222D933BA008B4B48 /* DataItemCellComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItemCellComposer.swift; sourceTree = "<group>"; };
-		CA05132522D933E8008B4B48 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
+		CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDateComposer.swift; sourceTree = "<group>"; };
+		CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDateItem.swift; sourceTree = "<group>"; };
 		CA705E3C22DAD84500615664 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CA705E3E22DAD84F00615664 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA705E4022DAD85E00615664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -264,8 +264,8 @@
 		CA00AC5722D1DE82005ECFFE /* Alibili */ = {
 			isa = PBXGroup;
 			children = (
-				CA05132522D933E8008B4B48 /* DataItem.swift */,
-				CA05132222D933BA008B4B48 /* DataItemCellComposer.swift */,
+				CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */,
+				CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */,
 				CA00AC6822D1DEAE005ECFFE /* LoginViewController.swift */,
 				CA00AC5822D1DE82005ECFFE /* AppDelegate.swift */,
 				CA00AC5A22D1DE82005ECFFE /* ProfileViewController.swift */,
@@ -545,7 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA05132622D933E8008B4B48 /* DataItem.swift in Sources */,
+				CA05132622D933E8008B4B48 /* SubscriptionsCellDateItem.swift in Sources */,
 				CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */,
 				CA00AC6B22D1DEAF005ECFFE /* LoginViewController.swift in Sources */,
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
@@ -553,7 +553,7 @@
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
 				CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */,
 				CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */,
-				CA05132422D933BA008B4B48 /* DataItemCellComposer.swift in Sources */,
+				CA05132422D933BA008B4B48 /* SubscriptionsCellDateComposer.swift in Sources */,
 				CA73155D22D33E100046A75B /* SubscriptionsCollectionViewCell.swift in Sources */,
 				CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */,
 			);
