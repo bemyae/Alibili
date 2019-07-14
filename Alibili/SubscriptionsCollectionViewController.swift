@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AVKit
 
 private let reuseIdentifier = SubscriptionsCollectionViewCell.reuseIdentifier
 
@@ -20,17 +21,18 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     
     private var targetSize = CGSize.zero
     
+    private let recentTotal = 100
+    private let recentPerPage = 10
+    private var recentCurrentPage = 1
+    
     var dataItemGourp:[JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let kCellReuseIdentifier = "Cell"
+        // Do any additional setup after loading the view.
+
         let kColumnCnt: Int = 3
         let kCellSpacing: CGFloat = 40
-//        var fetchResult: PHFetchResult<PHAsset>!
-//        var imageManager = PHCachingImageManager()
-        
 
         let imgWidth = (collectionView.frame.width - (kCellSpacing * (CGFloat(kColumnCnt) - 1))) / CGFloat(kColumnCnt)
         targetSize = CGSize(width: imgWidth, height: imgWidth * 9 / 16)
@@ -40,39 +42,37 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = kCellSpacing
         layout.minimumLineSpacing = kCellSpacing
         collectionView.collectionViewLayout = layout
-//        self.edgesForExtendedLayout = UIRectEdge.bottom
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-//        self.collectionView!.register(SubscriptionsCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            let headers: HTTPHeaders = [
-                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
-                "Accept": "application/json"
-            ]
-            AF.request("https://api.bilibili.com/x/web-feed/feed?ps=10&pn=1", headers: headers).responseJSON { response in
-                switch(response.result) {
-                case .success(let data):
-                    let json = JSON(data)
-//                    print(json)
-                    self.dataItemGourp = json["data"].array ?? []
-                    DispatchQueue.main.async{
-                        self.collectionView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
-                    break
-                }
-                
-            }
-            
+            loadMoreData(currentPage:1)
         }
-        // Do any additional setup after loading the view.
+        
         
     }
 
+    func loadMoreData(currentPage:Int) -> Void {
+        if (currentPage < recentCurrentPage || recentCurrentPage * recentPerPage > recentTotal) {return}
+        let headers: HTTPHeaders = [
+            "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+            "Accept": "application/json"
+        ]
+        AF.request("https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)", headers: headers).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                let json = JSON(data)
+                self.dataItemGourp.append(contentsOf: json["data"].array ?? [])
+                self.recentCurrentPage+=1
+                DispatchQueue.main.async{
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -99,8 +99,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubscriptionsCollectionViewCell.reuseIdentifier, for: indexPath)
         return cell
-        
-
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -109,26 +107,30 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
         let item = dataItemGourp[indexPath.item]
         //         Configure the cell.
         cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: DataItem(jsonData: item))
+        
+        if dataItemGourp.count - 1 == indexPath.item {
+            loadMoreData(currentPage: recentCurrentPage)
+        }
     }
     
-    func randomColor() -> UIColor{
-        let red = CGFloat(drand48())
-        let green = CGFloat(drand48())
-        let blue = CGFloat(drand48())
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as?
+            VideoPlayerViewController, let index =
+            collectionView.indexPathsForSelectedItems?.first {
+            let item = dataItemGourp[index.item]
+            destination.videoJson = DataItem(jsonData: item)
+        }
     }
     
-    // MARK: UICollectionViewDelegate
-    
-//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard cell is RecentsCollectionViewCell else { fatalError("Expected to display a RecentsCollectionCell") }
-//        print((indexPath as NSIndexPath).row)
-//        let item = dataItemGourp[indexPath]
-//        print(item)
-        // Configure the cell.
-//        DataItemCellComposer.compose(cell, withDataItem: item)
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//
+//        let item = dataItemGourp[indexPath.item]
+//        let data = DataItem(jsonData: item)
+//        loadItemData(avId: data.id, pageNum: 1)
+//
 //    }
-
+    
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -159,3 +161,67 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     */
 
 }
+
+//        print("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)")
+//        AF.request("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)", headers: headers).responseString { response in
+//
+//            if let playInfoRange = response.description.range(of: #"__playinfo__=(.*?)<\/script>"#,
+//                                            options: .regularExpression) {
+//               let playInfoString = response.description[playInfoRange].replacingOccurrences(
+//                    of: "__playinfo__=(.*?)</script>$",
+//                    with: "$1",
+//                    options: .regularExpression,
+//                    range: playInfoRange
+//                ).replacingOccurrences(of: "\\\"", with: "\"")
+//                if let dataFromString = playInfoString.data(using: .utf8, allowLossyConversion: false) {
+//                    do {
+//                        let json = try JSON(data: dataFromString)
+//                        print(json)
+//                    } catch {
+//                        print(error)
+//                    }
+//                }
+//
+//
+//            } else {
+//                print("1 -----")
+//            }
+//            print("----------------------------")
+//            if let initialStateRange = response.description.range(of: #"__INITIAL_STATE__=(.*?)\};"#,
+//                                                      options: .regularExpression) {
+//                var initialStateString = response.description[initialStateRange].replacingOccurrences(
+//                    of: #"__INITIAL_STATE__=(.*?)\};$"#,
+//                    with: #"$1"#,
+//                    options: .regularExpression,
+//                    range: initialStateRange
+//                    ).replacingOccurrences(of: "\\u002F", with: "/")
+//                    .replacingOccurrences(of: #"\/"#, with: "/")
+//                    .replacingOccurrences(of: "\\\"", with: "\"")
+//                    .replacingOccurrences(of: #",\"embedPlayer\":\"EmbedPlayer(.*?)\)\""#, with: "", options: [.regularExpression])
+//
+//                initialStateString.append("}")
+//
+//
+//                if let dataFromString = initialStateString.data(using: .utf8, allowLossyConversion: false) {
+//                    do {
+//                        let json = try JSON(data: dataFromString)
+//                        print(json)
+//                    } catch {
+//                        print(error)
+//                    }
+//                }
+//
+//            } else {
+//                print("2 -----")
+//            }
+//            print(response)
+//            switch(response.result) {
+//            case .success(let data):
+////                let json = JSON(data)
+//                print(data)
+//            case .failure(let error):
+//                print(error)
+//                break
+//            }
+//
+//        }

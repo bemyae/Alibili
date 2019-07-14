@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38D06D0608D0DE3EF8D2855F /* Pods_Alibili.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52670C11F83FA1D67613C556 /* Pods_Alibili.framework */; };
 		CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AC5822D1DE82005ECFFE /* AppDelegate.swift */; };
 		CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AC5A22D1DE82005ECFFE /* ProfileViewController.swift */; };
 		CA00AC5E22D1DE82005ECFFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA00AC5C22D1DE82005ECFFE /* Main.storyboard */; };
@@ -18,9 +19,26 @@
 		CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */; };
 		CA05132422D933BA008B4B48 /* DataItemCellComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132222D933BA008B4B48 /* DataItemCellComposer.swift */; };
 		CA05132622D933E8008B4B48 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* DataItem.swift */; };
+		CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3C22DAD84500615664 /* AudioToolbox.framework */; };
+		CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3E22DAD84F00615664 /* AVFoundation.framework */; };
+		CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4022DAD85E00615664 /* CoreGraphics.framework */; };
+		CA705E4322DAD86700615664 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4222DAD86700615664 /* CoreMedia.framework */; };
+		CA705E4522DAD86F00615664 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4422DAD86F00615664 /* CoreVideo.framework */; };
+		CA705E4722DAD87B00615664 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4622DAD87B00615664 /* libbz2.tbd */; };
+		CA705E4922DAD89900615664 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4822DAD89900615664 /* libz.tbd */; };
+		CA705E4B22DAD8A300615664 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4A22DAD8A300615664 /* MediaPlayer.framework */; };
+		CA705E4D22DAD8B400615664 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4C22DAD8B400615664 /* MobileCoreServices.framework */; };
+		CA705E4F22DAD8BD00615664 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4E22DAD8BD00615664 /* OpenGLES.framework */; };
+		CA705E5122DAD8C400615664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E5022DAD8C400615664 /* UIKit.framework */; };
+		CA705E5322DAD8CB00615664 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E5222DAD8CB00615664 /* QuartzCore.framework */; };
+		CA705E5522DAD8D200615664 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E5422DAD8D200615664 /* VideoToolbox.framework */; };
+		CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA705E5622DADA1200615664 /* VideoPlayViewController.swift */; };
 		CA73155D22D33E100046A75B /* SubscriptionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73155C22D33E100046A75B /* SubscriptionsCollectionViewCell.swift */; };
 		CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73156022D3420D0046A75B /* SubscriptionsCollectionViewController.swift */; };
 		CA73157D22D352640046A75B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA73157822D352000046A75B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12A722DB89AC00D344C9 /* VLCAli.m */; };
+		CA8A12AB22DB9AAD00D344C9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12A922DB9AAD00D344C9 /* Podfile */; };
+		CA8A12AC22DB9AAD00D344C9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12AA22DB9AAD00D344C9 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +165,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		474C04E9756AA8FCF51807E3 /* Pods-Alibili.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alibili.debug.xcconfig"; path = "Target Support Files/Pods-Alibili/Pods-Alibili.debug.xcconfig"; sourceTree = "<group>"; };
+		52670C11F83FA1D67613C556 /* Pods_Alibili.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alibili.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B728F5A8F14ACA0403CA8951 /* Pods-Alibili.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alibili.release.xcconfig"; path = "Target Support Files/Pods-Alibili/Pods-Alibili.release.xcconfig"; sourceTree = "<group>"; };
 		CA00AC5522D1DE82005ECFFE /* Alibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA00AC5822D1DE82005ECFFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA00AC5A22D1DE82005ECFFE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -159,10 +180,28 @@
 		CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewNavigator.swift; sourceTree = "<group>"; };
 		CA05132222D933BA008B4B48 /* DataItemCellComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItemCellComposer.swift; sourceTree = "<group>"; };
 		CA05132522D933E8008B4B48 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
+		CA705E3C22DAD84500615664 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CA705E3E22DAD84F00615664 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CA705E4022DAD85E00615664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CA705E4222DAD86700615664 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CA705E4422DAD86F00615664 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CA705E4622DAD87B00615664 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		CA705E4822DAD89900615664 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CA705E4A22DAD8A300615664 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		CA705E4C22DAD8B400615664 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CA705E4E22DAD8BD00615664 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CA705E5022DAD8C400615664 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CA705E5222DAD8CB00615664 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CA705E5422DAD8D200615664 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		CA705E5622DADA1200615664 /* VideoPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayViewController.swift; sourceTree = "<group>"; };
 		CA73155C22D33E100046A75B /* SubscriptionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA73156022D3420D0046A75B /* SubscriptionsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsCollectionViewController.swift; sourceTree = "<group>"; };
 		CA73156222D352000046A75B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		CA73157B22D352270046A75B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alibili-Bridging-Header.h"; sourceTree = "<group>"; };
+		CA8A12A722DB89AC00D344C9 /* VLCAli.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VLCAli.m; sourceTree = "<group>"; };
+		CA8A12A922DB9AAD00D344C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		CA8A12AA22DB9AAD00D344C9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,20 +209,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA705E5522DAD8D200615664 /* VideoToolbox.framework in Frameworks */,
+				CA705E5322DAD8CB00615664 /* QuartzCore.framework in Frameworks */,
+				CA705E5122DAD8C400615664 /* UIKit.framework in Frameworks */,
+				CA705E4F22DAD8BD00615664 /* OpenGLES.framework in Frameworks */,
+				CA705E4D22DAD8B400615664 /* MobileCoreServices.framework in Frameworks */,
+				CA705E4B22DAD8A300615664 /* MediaPlayer.framework in Frameworks */,
+				CA705E4922DAD89900615664 /* libz.tbd in Frameworks */,
+				CA705E4722DAD87B00615664 /* libbz2.tbd in Frameworks */,
+				CA705E4522DAD86F00615664 /* CoreVideo.framework in Frameworks */,
+				CA705E4322DAD86700615664 /* CoreMedia.framework in Frameworks */,
+				CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */,
+				CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */,
+				CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */,
 				CA00ACC022D2455E005ECFFE /* Alamofire.framework in Frameworks */,
+				38D06D0608D0DE3EF8D2855F /* Pods_Alibili.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		157CC37D2AC1737FE57F62AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				474C04E9756AA8FCF51807E3 /* Pods-Alibili.debug.xcconfig */,
+				B728F5A8F14ACA0403CA8951 /* Pods-Alibili.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CA00AC4C22D1DE82005ECFFE = {
 			isa = PBXGroup;
 			children = (
+				CA8A12A922DB9AAD00D344C9 /* Podfile */,
+				CA8A12AA22DB9AAD00D344C9 /* README.md */,
 				CA73156222D352000046A75B /* SwiftyJSON.xcodeproj */,
 				CA00ACA722D24475005ECFFE /* Alamofire.xcodeproj */,
 				CA00AC5722D1DE82005ECFFE /* Alibili */,
 				CA00AC5622D1DE82005ECFFE /* Products */,
+				CA705E3B22DAD84500615664 /* Frameworks */,
+				157CC37D2AC1737FE57F62AA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,6 +276,9 @@
 				CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */,
 				CA73155C22D33E100046A75B /* SubscriptionsCollectionViewCell.swift */,
 				CA73156022D3420D0046A75B /* SubscriptionsCollectionViewController.swift */,
+				CA705E5622DADA1200615664 /* VideoPlayViewController.swift */,
+				CA8A12A722DB89AC00D344C9 /* VLCAli.m */,
+				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -226,6 +295,27 @@
 				CA00ACBF22D24475005ECFFE /* Alamofire.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CA705E3B22DAD84500615664 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA705E5422DAD8D200615664 /* VideoToolbox.framework */,
+				CA705E5222DAD8CB00615664 /* QuartzCore.framework */,
+				CA705E5022DAD8C400615664 /* UIKit.framework */,
+				CA705E4E22DAD8BD00615664 /* OpenGLES.framework */,
+				CA705E4C22DAD8B400615664 /* MobileCoreServices.framework */,
+				CA705E4A22DAD8A300615664 /* MediaPlayer.framework */,
+				CA705E4822DAD89900615664 /* libz.tbd */,
+				CA705E4622DAD87B00615664 /* libbz2.tbd */,
+				CA705E4422DAD86F00615664 /* CoreVideo.framework */,
+				CA705E4222DAD86700615664 /* CoreMedia.framework */,
+				CA705E4022DAD85E00615664 /* CoreGraphics.framework */,
+				CA705E3E22DAD84F00615664 /* AVFoundation.framework */,
+				CA705E3C22DAD84500615664 /* AudioToolbox.framework */,
+				52670C11F83FA1D67613C556 /* Pods_Alibili.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CA73156322D352000046A75B /* Products */ = {
@@ -249,6 +339,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA00AC6422D1DE84005ECFFE /* Build configuration list for PBXNativeTarget "Alibili" */;
 			buildPhases = (
+				33E924B8FC28509F382516E3 /* [CP] Check Pods Manifest.lock */,
 				CA00AC5122D1DE82005ECFFE /* Sources */,
 				CA00AC5222D1DE82005ECFFE /* Frameworks */,
 				CA00AC5322D1DE82005ECFFE /* Resources */,
@@ -276,6 +367,7 @@
 				TargetAttributes = {
 					CA00AC5422D1DE82005ECFFE = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -414,12 +506,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8A12AB22DB9AAD00D344C9 /* Podfile in Resources */,
 				CA00AC6022D1DE83005ECFFE /* Assets.xcassets in Resources */,
+				CA8A12AC22DB9AAD00D344C9 /* README.md in Resources */,
 				CA00AC5E22D1DE82005ECFFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33E924B8FC28509F382516E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alibili-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA00AC5122D1DE82005ECFFE /* Sources */ = {
@@ -432,6 +551,8 @@
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
 				CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */,
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
+				CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */,
+				CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */,
 				CA05132422D933BA008B4B48 /* DataItemCellComposer.swift in Sources */,
 				CA73155D22D33E100046A75B /* SubscriptionsCollectionViewCell.swift in Sources */,
 				CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */,
@@ -579,11 +700,17 @@
 		};
 		CA00AC6522D1DE84005ECFFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474C04E9756AA8FCF51807E3 /* Pods-Alibili.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7C4XFND6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Alibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,6 +718,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sauvignon1989.Alibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Alibili/Alibili-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -598,11 +727,17 @@
 		};
 		CA00AC6622D1DE84005ECFFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B728F5A8F14ACA0403CA8951 /* Pods-Alibili.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7C4XFND6T;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Alibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +745,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sauvignon1989.Alibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Alibili/Alibili-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
