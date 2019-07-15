@@ -8,16 +8,16 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class ProfileViewController: UIViewController {
 
+    let segueIdentifier:String = "profileMenuTableSegueIdentifier"
+    
     let cookieManager = CookieManager()
-    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        logoutButton.setTitle("Log out", for: .normal)
         
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             let headers: HTTPHeaders = [
@@ -25,18 +25,20 @@ class ProfileViewController: UIViewController {
                 "Accept": "application/json"
             ]
             AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
-//                print("Result: \(response.result)")
+                switch(response.result) {
+                case .success(let data):
+                    let json = JSON(data)
+                    DispatchQueue.main.async{
+                        print(json)
+                    }
+                case .failure(let error):
+                    print(error)
+                    break
+                }
             }
             
         }
         
-    }
-    
-    @IBAction func onLogout(_ sender: Any, forEvent event: UIEvent) {
-                print(sender)
-        cookieManager.removeUserCookie(forKey: "User-Cookie")
-        RootViewNavigator().updateRootViewController()
-        //        print(event)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +59,15 @@ class ProfileViewController: UIViewController {
 //            present(destinationController, animated: true, completion: nil)
 //        }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+//        if (segue.identifier == segueIdentifier) {
+//            let menuViewController = segue.destination as! MenuTableViewController
+//            // Now you have a pointer to the child view controller.
+//            // You can save the reference to it, or pass data to it.
+//        }
     }
     
 }

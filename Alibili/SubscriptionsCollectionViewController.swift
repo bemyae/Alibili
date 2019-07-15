@@ -46,8 +46,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             loadMoreData(currentPage:1)
         }
-        
-        
     }
 
     func loadMoreData(currentPage:Int) -> Void {
