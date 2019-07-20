@@ -18,7 +18,7 @@
 		CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACC522D25D0B005ECFFE /* CookieManager.swift */; };
 		CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */; };
 		CA05132422D933BA008B4B48 /* SubscriptionsCellDateComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */; };
-		CA05132622D933E8008B4B48 /* SubscriptionsCellDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */; };
+		CA05132622D933E8008B4B48 /* SubscriptionsCellDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* SubscriptionsCellDataItem.swift */; };
 		CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3C22DAD84500615664 /* AudioToolbox.framework */; };
 		CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3E22DAD84F00615664 /* AVFoundation.framework */; };
 		CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4022DAD85E00615664 /* CoreGraphics.framework */; };
@@ -42,6 +42,7 @@
 		CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */; };
 		CAF4F2E522E330CA00CCE549 /* BarrageRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; };
 		CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2ED22E349D000CCE549 /* DanmuData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,7 +198,7 @@
 		CA00ACC522D25D0B005ECFFE /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
 		CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewNavigator.swift; sourceTree = "<group>"; };
 		CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDateComposer.swift; sourceTree = "<group>"; };
-		CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDateItem.swift; sourceTree = "<group>"; };
+		CA05132522D933E8008B4B48 /* SubscriptionsCellDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDataItem.swift; sourceTree = "<group>"; };
 		CA705E3C22DAD84500615664 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CA705E3E22DAD84F00615664 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA705E4022DAD85E00615664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -222,6 +223,7 @@
 		CA8A12AA22DB9AAD00D344C9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BarrageRenderer.xcodeproj; path = BarrageRenderer/BarrageRenderer.xcodeproj; sourceTree = "<group>"; };
+		CAF4F2ED22E349D000CCE549 /* DanmuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmuData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,7 +288,7 @@
 		CA00AC5722D1DE82005ECFFE /* Alibili */ = {
 			isa = PBXGroup;
 			children = (
-				CA05132522D933E8008B4B48 /* SubscriptionsCellDateItem.swift */,
+				CA05132522D933E8008B4B48 /* SubscriptionsCellDataItem.swift */,
 				CA05132222D933BA008B4B48 /* SubscriptionsCellDateComposer.swift */,
 				CA00AC6822D1DEAE005ECFFE /* LoginViewController.swift */,
 				CA00AC5822D1DE82005ECFFE /* AppDelegate.swift */,
@@ -302,6 +304,7 @@
 				CA8A12A722DB89AC00D344C9 /* VLCAli.m */,
 				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
 				CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */,
+				CAF4F2ED22E349D000CCE549 /* DanmuData.swift */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -588,9 +591,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA05132622D933E8008B4B48 /* SubscriptionsCellDateItem.swift in Sources */,
+				CA05132622D933E8008B4B48 /* SubscriptionsCellDataItem.swift in Sources */,
 				CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */,
 				CA00AC6B22D1DEAF005ECFFE /* LoginViewController.swift in Sources */,
+				CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */,
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
 				CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */,
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
