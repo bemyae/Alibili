@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
     
     let cookieManager = CookieManager()
     
+    var profileJson:JSON!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +31,8 @@ class ProfileViewController: UIViewController {
                 case .success(let data):
                     let json = JSON(data)
                     DispatchQueue.main.async{
-                        print(json)
+                       self.profileJson = json
+
                     }
                 case .failure(let error):
                     print(error)
@@ -65,6 +68,7 @@ class ProfileViewController: UIViewController {
     {
 //        if (segue.identifier == segueIdentifier) {
 //            let menuViewController = segue.destination as! MenuTableViewController
+//            
 //            // Now you have a pointer to the child view controller.
 //            // You can save the reference to it, or pass data to it.
 //        }

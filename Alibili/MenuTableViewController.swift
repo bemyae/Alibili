@@ -8,18 +8,24 @@
 
 import UIKit
 
+
+
 class MenuTableViewController: UITableViewController {
 
     let cookieManager = CookieManager()
     
-    
+    let countCellText: Int = 1
     enum CellButton: Int {
-        case resolution = 0
-        case logout = 1
+        case uname = 0
+        case resolution = 1
+        case logout = 2
     }
+    @IBOutlet weak var unameCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        unameCell.detailTextLabel?.text="hahhah"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,6 +44,8 @@ class MenuTableViewController: UITableViewController {
                 print("logout")
                 cookieManager.removeUserCookie(forKey: "User-Cookie")
                 RootViewNavigator().updateRootViewController()
+                break
+            case .uname:
                 break
             }
             
