@@ -31,10 +31,10 @@ class VideoPlayerViewController: UIViewController {
     }
     
     func loadItemData(avId:String,pageNum:Int) -> Void {
-        let headers: HTTPHeaders = [
-            "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3260.2 Safari/537.36"
-        ]
+//        let headers: HTTPHeaders = [
+//            "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+//            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3260.2 Safari/537.36"
+//        ]
         AF.request("https://api.bilibili.com/x/web-interface/view?aid=\(avId)").responseJSON { response in
             switch(response.result) {
             case .success(let data):
@@ -88,13 +88,13 @@ class VideoPlayerViewController: UIViewController {
                             //                                print(response.debugDescription)
                             //                            }
                             
-                            let player = AVPlayer(url: URL(string: video)!)
-                            let playerViewController = AVPlayerViewController()
-                            playerViewController.player = player
-                            
-                            self.present(playerViewController, animated: true) {
-                                player.play()
-                            }
+//                            let player = AVPlayer(url: URL(string: video)!)
+//                            let playerViewController = AVPlayerViewController()
+//                            playerViewController.player = player
+//
+//                            self.present(playerViewController, animated: true) {
+//                                player.play()
+//                            }
                             
                             
                             

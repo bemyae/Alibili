@@ -39,6 +39,7 @@
 		CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12A722DB89AC00D344C9 /* VLCAli.m */; };
 		CA8A12AB22DB9AAD00D344C9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12A922DB9AAD00D344C9 /* Podfile */; };
 		CA8A12AC22DB9AAD00D344C9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12AA22DB9AAD00D344C9 /* README.md */; };
+		CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,7 @@
 		CA8A12A722DB89AC00D344C9 /* VLCAli.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VLCAli.m; sourceTree = "<group>"; };
 		CA8A12A922DB9AAD00D344C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		CA8A12AA22DB9AAD00D344C9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 				CA705E5622DADA1200615664 /* VideoPlayViewController.swift */,
 				CA8A12A722DB89AC00D344C9 /* VLCAli.m */,
 				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
+				CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
 				CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */,
 				CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */,
+				CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */,
 				CA05132422D933BA008B4B48 /* SubscriptionsCellDateComposer.swift in Sources */,
 				CA73155D22D33E100046A75B /* SubscriptionsCollectionViewCell.swift in Sources */,
 				CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */,
