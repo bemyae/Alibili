@@ -43,6 +43,8 @@
 		CAF4F2E522E330CA00CCE549 /* BarrageRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; };
 		CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2ED22E349D000CCE549 /* DanmuData.swift */; };
+		CAF4F34322E3572B00CCE549 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F33E22E356FB00CCE549 /* SWXMLHash.framework */; };
+		CAF4F34422E3572B00CCE549 /* SWXMLHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F33E22E356FB00CCE549 /* SWXMLHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +167,62 @@
 			remoteGlobalIDString = CAF4F26822E32DB000CCE549;
 			remoteInfo = BarrageRenderer;
 		};
+		CAF4F33522E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD6083EF196CA106000B4F8D;
+			remoteInfo = "SWXMLHash iOS";
+		};
+		CAF4F33722E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD6083FA196CA106000B4F8D;
+			remoteInfo = "SWXMLHash iOS Tests";
+		};
+		CAF4F33922E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD9D052C1A757D8B003CCB21;
+			remoteInfo = "SWXMLHash OSX";
+		};
+		CAF4F33B22E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD9D05361A757D8B003CCB21;
+			remoteInfo = "SWXMLHash OSX Tests";
+		};
+		CAF4F33D22E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDDEC74C1BF6311A00AB138B;
+			remoteInfo = "SWXMLHash tvOS";
+		};
+		CAF4F33F22E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDDEC7551BF6311B00AB138B;
+			remoteInfo = "SWXMLHash tvOS Tests";
+		};
+		CAF4F34122E356FB00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDDEC7681BF6316C00AB138B;
+			remoteInfo = "SWXMLHash watchOS";
+		};
+		CAF4F34522E3572B00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CDDEC74B1BF6311A00AB138B;
+			remoteInfo = "SWXMLHash tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -176,6 +234,7 @@
 			files = (
 				CA73157D22D352640046A75B /* SwiftyJSON.framework in Embed Frameworks */,
 				CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */,
+				CAF4F34422E3572B00CCE549 /* SWXMLHash.framework in Embed Frameworks */,
 				CA00ACC122D2455E005ECFFE /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -224,6 +283,7 @@
 		CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BarrageRenderer.xcodeproj; path = BarrageRenderer/BarrageRenderer.xcodeproj; sourceTree = "<group>"; };
 		CAF4F2ED22E349D000CCE549 /* DanmuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmuData.swift; sourceTree = "<group>"; };
+		CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SWXMLHash.xcodeproj; path = SWXMLHash/SWXMLHash.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +299,7 @@
 				CA705E4D22DAD8B400615664 /* MobileCoreServices.framework in Frameworks */,
 				CA705E4B22DAD8A300615664 /* MediaPlayer.framework in Frameworks */,
 				CA705E4922DAD89900615664 /* libz.tbd in Frameworks */,
+				CAF4F34322E3572B00CCE549 /* SWXMLHash.framework in Frameworks */,
 				CA705E4722DAD87B00615664 /* libbz2.tbd in Frameworks */,
 				CA705E4522DAD86F00615664 /* CoreVideo.framework in Frameworks */,
 				CA705E4322DAD86700615664 /* CoreMedia.framework in Frameworks */,
@@ -265,6 +326,7 @@
 		CA00AC4C22D1DE82005ECFFE = {
 			isa = PBXGroup;
 			children = (
+				CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */,
 				CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */,
 				CA8A12A922DB9AAD00D344C9 /* Podfile */,
 				CA8A12AA22DB9AAD00D344C9 /* README.md */,
@@ -366,6 +428,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CAF4F31D22E356FB00CCE549 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAF4F33622E356FB00CCE549 /* SWXMLHash.framework */,
+				CAF4F33822E356FB00CCE549 /* SWXMLHash iOS Tests.xctest */,
+				CAF4F33A22E356FB00CCE549 /* SWXMLHash.framework */,
+				CAF4F33C22E356FB00CCE549 /* SWXMLHash OSX Tests.xctest */,
+				CAF4F33E22E356FB00CCE549 /* SWXMLHash.framework */,
+				CAF4F34022E356FB00CCE549 /* SWXMLHash tvOS Tests.xctest */,
+				CAF4F34222E356FB00CCE549 /* SWXMLHash.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -384,6 +460,7 @@
 			dependencies = (
 				CA00ACC322D2455E005ECFFE /* PBXTargetDependency */,
 				CAF4F2E822E330CA00CCE549 /* PBXTargetDependency */,
+				CAF4F34622E3572B00CCE549 /* PBXTargetDependency */,
 			);
 			name = Alibili;
 			productName = Alibili;
@@ -430,6 +507,10 @@
 				{
 					ProductGroup = CA73156322D352000046A75B /* Products */;
 					ProjectRef = CA73156222D352000046A75B /* SwiftyJSON.xcodeproj */;
+				},
+				{
+					ProductGroup = CAF4F31D22E356FB00CCE549 /* Products */;
+					ProjectRef = CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -545,6 +626,55 @@
 			remoteRef = CAF4F2DB22E330BC00CCE549 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		CAF4F33622E356FB00CCE549 /* SWXMLHash.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SWXMLHash.framework;
+			remoteRef = CAF4F33522E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F33822E356FB00CCE549 /* SWXMLHash iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SWXMLHash iOS Tests.xctest";
+			remoteRef = CAF4F33722E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F33A22E356FB00CCE549 /* SWXMLHash.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SWXMLHash.framework;
+			remoteRef = CAF4F33922E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F33C22E356FB00CCE549 /* SWXMLHash OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SWXMLHash OSX Tests.xctest";
+			remoteRef = CAF4F33B22E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F33E22E356FB00CCE549 /* SWXMLHash.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SWXMLHash.framework;
+			remoteRef = CAF4F33D22E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F34022E356FB00CCE549 /* SWXMLHash tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SWXMLHash tvOS Tests.xctest";
+			remoteRef = CAF4F33F22E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CAF4F34222E356FB00CCE549 /* SWXMLHash.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SWXMLHash.framework;
+			remoteRef = CAF4F34122E356FB00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -620,6 +750,11 @@
 			name = BarrageRenderer;
 			targetProxy = CAF4F2E722E330CA00CCE549 /* PBXContainerItemProxy */;
 		};
+		CAF4F34622E3572B00CCE549 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SWXMLHash tvOS";
+			targetProxy = CAF4F34522E3572B00CCE549 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -638,6 +773,7 @@
 		CA00AC6222D1DE84005ECFFE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -699,6 +835,7 @@
 		CA00AC6322D1DE84005ECFFE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -755,7 +892,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 474C04E9756AA8FCF51807E3 /* Pods-Alibili.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -784,7 +921,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B728F5A8F14ACA0403CA8951 /* Pods-Alibili.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
