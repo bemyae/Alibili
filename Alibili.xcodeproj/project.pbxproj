@@ -40,6 +40,8 @@
 		CA8A12AB22DB9AAD00D344C9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12A922DB9AAD00D344C9 /* Podfile */; };
 		CA8A12AC22DB9AAD00D344C9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12AA22DB9AAD00D344C9 /* README.md */; };
 		CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */; };
+		CAF4F2E522E330CA00CCE549 /* BarrageRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; };
+		CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +150,20 @@
 			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
 			remoteInfo = "SwiftyJSON tvOS Tests";
 		};
+		CAF4F2DB22E330BC00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CAF4F26922E32DB000CCE549;
+			remoteInfo = BarrageRenderer;
+		};
+		CAF4F2E722E330CA00CCE549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CAF4F26822E32DB000CCE549;
+			remoteInfo = BarrageRenderer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -158,6 +174,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CA73157D22D352640046A75B /* SwiftyJSON.framework in Embed Frameworks */,
+				CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */,
 				CA00ACC122D2455E005ECFFE /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -204,6 +221,7 @@
 		CA8A12A922DB9AAD00D344C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		CA8A12AA22DB9AAD00D344C9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BarrageRenderer.xcodeproj; path = BarrageRenderer/BarrageRenderer.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF4F2E522E330CA00CCE549 /* BarrageRenderer.framework in Frameworks */,
 				CA705E5522DAD8D200615664 /* VideoToolbox.framework in Frameworks */,
 				CA705E5322DAD8CB00615664 /* QuartzCore.framework in Frameworks */,
 				CA705E5122DAD8C400615664 /* UIKit.framework in Frameworks */,
@@ -244,6 +263,7 @@
 		CA00AC4C22D1DE82005ECFFE = {
 			isa = PBXGroup;
 			children = (
+				CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */,
 				CA8A12A922DB9AAD00D344C9 /* Podfile */,
 				CA8A12AA22DB9AAD00D344C9 /* README.md */,
 				CA73156222D352000046A75B /* SwiftyJSON.xcodeproj */,
@@ -335,6 +355,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CAF4F2D122E330BC00CCE549 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +380,7 @@
 			);
 			dependencies = (
 				CA00ACC322D2455E005ECFFE /* PBXTargetDependency */,
+				CAF4F2E822E330CA00CCE549 /* PBXTargetDependency */,
 			);
 			name = Alibili;
 			productName = Alibili;
@@ -390,6 +419,10 @@
 				{
 					ProductGroup = CA00ACA822D24475005ECFFE /* Products */;
 					ProjectRef = CA00ACA722D24475005ECFFE /* Alamofire.xcodeproj */;
+				},
+				{
+					ProductGroup = CAF4F2D122E330BC00CCE549 /* Products */;
+					ProjectRef = CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */;
 				},
 				{
 					ProductGroup = CA73156322D352000046A75B /* Products */;
@@ -502,6 +535,13 @@
 			remoteRef = CA73157922D352000046A75B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BarrageRenderer.framework;
+			remoteRef = CAF4F2DB22E330BC00CCE549 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -570,6 +610,11 @@
 			isa = PBXTargetDependency;
 			name = "Alamofire tvOS";
 			targetProxy = CA00ACC222D2455E005ECFFE /* PBXContainerItemProxy */;
+		};
+		CAF4F2E822E330CA00CCE549 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BarrageRenderer;
+			targetProxy = CAF4F2E722E330CA00CCE549 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -710,11 +755,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z7C4XFND6T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/BarrageRenderer";
 				INFOPLIST_FILE = Alibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -737,11 +784,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z7C4XFND6T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/BarrageRenderer";
 				INFOPLIST_FILE = Alibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

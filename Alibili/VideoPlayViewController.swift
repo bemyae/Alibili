@@ -11,24 +11,79 @@ import AVKit
 import Alamofire
 import SwiftyJSON
 
-class VideoPlayerViewController: UIViewController {
+
+
+class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     
     @IBOutlet var playerView: UIView!
     
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:SubscriptionsCellDateItem!
     let player:VLCMediaPlayer = VLCMediaPlayer()
+    var _index:Int = 0
+    
+    var timer:Timer!
+    var barrageRenderer:BarrageRenderer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         configDanMu()
+       
+//        loadItemData(avId: videoJson.id, pageNum: 1)
+    }
+    func walkTextSpriteDescriptorWithDirection(direction:UInt) -> BarrageDescriptor{
+        let descriptor:BarrageDescriptor = BarrageDescriptor()
+        descriptor.spriteName = NSStringFromClass(BarrageWalkTextSprite.self)
+        descriptor.params["text"] = "dadadadada"
+        descriptor.params["textColor"] = UIColor.white
+        descriptor.params["speed"] = 100
+        descriptor.params["direction"] = direction
+        return descriptor
+    }
+    
+    @objc func autoSenderBarrage() {
+        let spriteNumber :NSInteger = barrageRenderer.spritesNumber(withName: nil)
+        print("adadad")
+        if spriteNumber <= 50 {
+            barrageRenderer.receive(walkTextSpriteDescriptorWithDirection(direction: BarrageWalkDirection.R2L.rawValue))
+        }
+    }
+    
+    func configDanMu() {
+        barrageRenderer = BarrageRenderer.init()
+        barrageRenderer.canvasMargin = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        playerView.addSubview(barrageRenderer.view)
+        barrageRenderer.start()
         
-        loadItemData(avId: videoJson.id, pageNum: 1)
+        autoSenderBarrage()
+        autoSenderBarrage()
+        autoSenderBarrage()
+        // 这两句相信你看的懂
+//        let safeObj = NSSafeObject.init(object: self, with: #selector(self.autoSenderBarrage))
+//        timer = Timer.scheduledTimer(timeInterval: 0.5, target: safeObj as Any, selector: #selector(NSSafeObject.excute), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool){
         
         
+        
     }
+    
+    func startMockingBarrageMessage(){
+       
+    }
+    
+//    @objc func autoSendBarrage() {
+//        print("test")
+//        barrageRenderer.start()
+//        let danmuku:BarrageDescriptor = BarrageDescriptor.init()
+//        danmuku.spriteName = NSStringFromClass(BarrageWalkTextSprite.self)
+//        danmuku.params["text"] = "HHHHHHH";
+//        danmuku.params["textColor"] = UIColor.red
+//        danmuku.params["direction"] = BarrageWalkDirection.R2L
+//        danmuku.params["side"] = BarrageWalkSide.default
+//        barrageRenderer.receive(danmuku)
+//    }
     
     func loadItemData(avId:String,pageNum:Int) -> Void {
 //        let headers: HTTPHeaders = [
