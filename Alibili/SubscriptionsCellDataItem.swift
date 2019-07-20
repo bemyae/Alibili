@@ -99,7 +99,7 @@ struct Owner : Codable{
     }
 }
 
-struct SubscriptionsCellDateItem: Codable, Equatable {
+struct SubscriptionsCellDataItem: Codable, Equatable {
     
     let id: String
     let fold: String
@@ -138,7 +138,7 @@ struct SubscriptionsCellDateItem: Codable, Equatable {
 
 // MARK: Equatable
 
-func ==(lhs: SubscriptionsCellDateItem, rhs: SubscriptionsCellDateItem)-> Bool {
+func ==(lhs: SubscriptionsCellDataItem, rhs: SubscriptionsCellDataItem)-> Bool {
     // Two `DataItem`s are considered equal if their identifiers and titles match.
     return lhs.id == rhs.id
 }
