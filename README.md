@@ -22,9 +22,10 @@ TBD
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Alamofire](https://github.com/Alamofire/Alamofire) - Alamofire is an HTTP networking library written in Swift.
+* [BarrageRenderer](https://github.com/unash/BarrageRenderer) - 一个 iOS 上的弹幕渲染库.
+* [SWXMLHash](https://github.com/drmohundro/SWXMLHash) - Simple XML parsing in Swift.
+* [VLCKit](https://code.videolan.org/videolan/VLCKit) - libvlc bindings for OS X, iOS and tvOS in Objective-C.
 
 ## Contributing
 
