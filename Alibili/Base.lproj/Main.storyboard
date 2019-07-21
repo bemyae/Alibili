@@ -72,9 +72,21 @@
                     <view key="view" contentMode="scaleToFill" id="RAw-VR-Tow">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UMj-fC-rfm" userLabel="Media View">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-1y-WCP" userLabel="Danmu View">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ru8-7Y-r2f"/>
                     </view>
                     <connections>
+                        <outlet property="danmuView" destination="5j2-1y-WCP" id="gpc-cY-twz"/>
+                        <outlet property="mediaView" destination="UMj-fC-rfm" id="jgd-S5-eix"/>
                         <outlet property="playerView" destination="RAw-VR-Tow" id="RCq-Fg-xVv"/>
                     </connections>
                 </viewController>

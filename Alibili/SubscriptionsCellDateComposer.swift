@@ -110,6 +110,9 @@ class SubscriptionsCellDataComposer {
     private func processImage(named imageName: String) -> UIImage? {
         let url = URL(string: imageName)
         let data = try? Data(contentsOf: url!)
+        if (data == nil) {
+            return nil
+        }
         // Load the image.
         guard let image = UIImage(data: data!) else { return nil }
         

@@ -15,15 +15,17 @@ import SWXMLHash
 class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     
     @IBOutlet var playerView: UIView!
+    @IBOutlet weak var mediaView: UIView!
+    @IBOutlet weak var danmuView: UIView!
     
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:SubscriptionsCellDataItem!
     let player:VLCMediaPlayer = VLCMediaPlayer()
-    var _index:Int = 0
+    var videoLength:CUnsignedLongLong = 0
     
+    var currentTime:CUnsignedLongLong = 0
     var timer:Timer!
     var barrageRenderer:BarrageRenderer!
-    var danmuReady:Bool = false
     var danmuList:[CUnsignedLongLong : [DanmuData]] = [:]
     
     override func viewDidLoad() {
@@ -31,37 +33,42 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
         loadData(avId: videoJson.id, pageNum: 1)
     }
     
-    func walkTextSpriteDescriptorWithDirection(direction:UInt) -> BarrageDescriptor{
+    func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
         let descriptor:BarrageDescriptor = BarrageDescriptor()
         descriptor.spriteName = NSStringFromClass(BarrageWalkTextSprite.self)
-        descriptor.params["text"] = "dadadadada"
+        descriptor.params["text"] = text
         descriptor.params["textColor"] = UIColor.white
-        descriptor.params["speed"] = 100
+        descriptor.params["fontSize"] = 32;
+        descriptor.params["speed"] = Int(arc4random()%100) + 100
         descriptor.params["direction"] = direction
         return descriptor
     }
     
     @objc func autoSenderBarrage() {
         let spriteNumber :NSInteger = barrageRenderer.spritesNumber(withName: nil)
-        print("adadad")
-        if spriteNumber <= 50 {
-            barrageRenderer.receive(walkTextSpriteDescriptorWithDirection(direction: BarrageWalkDirection.R2L.rawValue))
+        if let danmudict = self.danmuList[currentTime] {
+//            print(danmudict.count)
+            for (index, danmu) in danmudict.enumerated() {
+                if index > 5 { break }
+                barrageRenderer.receive(walkTextSpriteDescriptorWithDirection(direction: BarrageWalkDirection.R2L.rawValue, text: danmu.text))
+            }
+        }
+        currentTime = currentTime + 1
+//        print(currentTime)
+        if currentTime >= videoLength {
+            self.timer?.invalidate()
         }
     }
     
     func configDanMu() {
         barrageRenderer = BarrageRenderer.init()
         barrageRenderer.canvasMargin = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        playerView.addSubview(barrageRenderer.view)
+        playerView.insertSubview(barrageRenderer.view, aboveSubview: mediaView)
         barrageRenderer.start()
         
-        autoSenderBarrage()
-        autoSenderBarrage()
-        autoSenderBarrage()
-        autoSenderBarrage()
         // 这两句相信你看的懂
-//        let safeObj = NSSafeObject.init(object: self, with: #selector(self.autoSenderBarrage))
-//        timer = Timer.scheduledTimer(timeInterval: 0.5, target: safeObj as Any, selector: #selector(NSSafeObject.excute), userInfo: nil, repeats: true)
+        let safeObj = NSSafeObject.init(object: self, with: #selector(self.autoSenderBarrage))
+        timer = Timer.scheduledTimer(timeInterval: 1, target: safeObj as Any, selector: #selector(NSSafeObject.excute), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -87,19 +94,20 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                             let danmu = DanmuData(elem: elem)
                             if var dictValue = self.danmuList[danmu.timing] {
                                 dictValue.append(danmu)
+                                self.danmuList[danmu.timing] = dictValue
                             } else {
                                 self.danmuList[danmu.timing] = [danmu]
                             }
-                           
+                            
                         }
-                        print(self.danmuList)
+//                        print(self.danmuList)
+                        self.configDanMu()
                     }
                 case .failure(let error):
                     statusCode = error._code // statusCode private
                     print("status code is: \(String(describing: statusCode))")
                     print(error)
             }
-            self.danmuReady = true
         }
     }
     
@@ -118,16 +126,13 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                     var videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
                     let video = videoArray[0]["base_url"].stringValue
                     let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
+                    self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
                     let videoMedia = VLCMedia(url: URL(string: video)!)
                     self.player.media = videoMedia
                     self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
-                    self.player.drawable = self.playerView
+                    self.player.drawable = self.mediaView
                     
                     self.loadDanmuData(cid:cid)
-                    //                    while(self.danmuReady != true){
-                    //                        self.loadDanmuData(cid:cid)
-                    //                    }
-                    self.configDanMu()
                     
                     self.player.play()
                     return
