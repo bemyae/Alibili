@@ -1,7 +1,7 @@
 # Alibili (Developing)
 A Bilibili client by tvOS
 
-[[https://github.com/sauvignon1989/Alibili/tree/develop/demo.gif]]
+[https://github.com/sauvignon1989/Alibili/tree/develop/demo.gif]
 
 ## Getting Started
 
