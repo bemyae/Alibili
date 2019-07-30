@@ -1,5 +1,6 @@
 # Alibili (Developing)
 A Bilibili client by tvOS
+It's just a prototype client app which needs code cleanup, refactoring and maybe redesign of UI 
 
 ![Demo](https://raw.githubusercontent.com/sauvignon1989/Alibili/develop/demo.gif "Demo Screenshot")
 
