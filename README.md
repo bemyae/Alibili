@@ -1,5 +1,5 @@
 # Alibili (Developing)
-A Bilibili client by tvOS
+A Bilibili client for Apple TV(tvOS)
 
 It's just a prototype client app which needs code cleanup, refactoring and maybe redesign of UI.
 Currently, the gallery can only shows the video contents(time line) of your subscriptions
