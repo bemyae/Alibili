@@ -6,5 +6,5 @@ target 'Alibili' do
   use_frameworks!
 
   # Pods for Alibili
-  pod 'TVVLCKit', '3.3.0'
+  pod 'TVVLCKit', '~>3.3.0'
 end

@@ -45,7 +45,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     @objc func autoSenderBarrage() {
-        let spriteNumber :NSInteger = barrageRenderer.spritesNumber(withName: nil)
+        let _ :NSInteger = barrageRenderer.spritesNumber(withName: nil)
         if let danmudict = self.danmuList[currentTime] {
 //            print(danmudict.count)
             for (index, danmu) in danmudict.enumerated() {
@@ -123,11 +123,15 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                             max = data["id"].intValue
                         }
                     }
-                    var videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
+                    let videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
                     let video = videoArray[0]["base_url"].stringValue
                     let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
                     self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
                     let videoMedia = VLCMedia(url: URL(string: video)!)
+                    videoMedia.addOptions([
+                        "http-user-agent": "Bilibili Freedoooooom/MarkII",
+                        "http-referrer": "https://www.bilibili.com/video/av\(avId)"
+                    ])
                     self.player.media = videoMedia
                     self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
                     self.player.drawable = self.mediaView
