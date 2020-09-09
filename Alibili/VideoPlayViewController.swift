@@ -73,8 +73,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     
     override func viewWillAppear(_ animated: Bool){
         
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

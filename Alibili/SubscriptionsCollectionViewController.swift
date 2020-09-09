@@ -67,7 +67,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
                 print(error)
                 break
             }
-            
         }
     }
     

@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class MenuTableViewController: UITableViewController {
 
     let cookieManager = CookieManager()

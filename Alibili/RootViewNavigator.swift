@@ -21,5 +21,4 @@ class RootViewNavigator {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = rootVC
     }
-    
 }

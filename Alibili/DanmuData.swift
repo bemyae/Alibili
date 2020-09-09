@@ -18,9 +18,6 @@ struct DanmuData : Codable{
     var pool:Int
     var text:String
     
-//    ["141.41100", "1", "25", "16777215", "1563579915", "0", "7399117b", "19103870048796672"]
-//    好厉害
-    
     init(elem: XMLIndexer) {
         self.text = elem.element!.text
         var attr:[String] = []
