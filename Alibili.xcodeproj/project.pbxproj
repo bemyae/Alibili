@@ -20,6 +20,7 @@
 		CA05132622D933E8008B4B48 /* SubscriptionsCellDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* SubscriptionsCellDataItem.swift */; };
 		CA4C66E02507A62C0049B522 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C66CA2507A62C0049B522 /* Metal.framework */; };
 		CA4C66E22507A64D0049B522 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C66E12507A64D0049B522 /* CoreServices.framework */; };
+		CA4C66EC250859290049B522 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C66EB250859290049B522 /* Utilities.swift */; };
 		CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3C22DAD84500615664 /* AudioToolbox.framework */; };
 		CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3E22DAD84F00615664 /* AVFoundation.framework */; };
 		CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4022DAD85E00615664 /* CoreGraphics.framework */; };
@@ -258,6 +259,7 @@
 		CA05132522D933E8008B4B48 /* SubscriptionsCellDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionsCellDataItem.swift; sourceTree = "<group>"; };
 		CA4C66CA2507A62C0049B522 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		CA4C66E12507A64D0049B522 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		CA4C66EB250859290049B522 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CA705E3C22DAD84500615664 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CA705E3E22DAD84F00615664 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA705E4022DAD85E00615664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -364,6 +366,7 @@
 				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
 				CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */,
 				CAF4F2ED22E349D000CCE549 /* DanmuData.swift */,
+				CA4C66EB250859290049B522 /* Utilities.swift */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				CA05132622D933E8008B4B48 /* SubscriptionsCellDataItem.swift in Sources */,
 				CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */,
 				CA00AC6B22D1DEAF005ECFFE /* LoginViewController.swift in Sources */,
+				CA4C66EC250859290049B522 /* Utilities.swift in Sources */,
 				CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */,
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
 				CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */,

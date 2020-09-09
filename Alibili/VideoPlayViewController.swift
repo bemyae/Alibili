@@ -82,8 +82,8 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     func loadDanmuData(cid:String) -> Void {
-        print("https://api.bilibili.com/x/v1/dm/list.so?oid=\(cid)")
-        AF.request("https://api.bilibili.com/x/v1/dm/list.so?oid=\(cid)").responseString(encoding: String.Encoding.utf8) { response in
+        print(Urls.getDanmu(cid: cid))
+        AF.request(Urls.getDanmu(cid: cid)).responseString(encoding: String.Encoding.utf8) { response in
             var statusCode = response.response?.statusCode
             switch response.result {
                 case .success:
@@ -112,7 +112,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     func loadMediaData(avId:String,cid:String) -> Void {
-        AF.request("https://api.bilibili.com/x/player/playurl?avid=\(avId)&cid=\(cid)&qn=80&type=&fnver=0&fnval=16&otype=json")
+        AF.request(Urls.getVideoData(avId: avId, cid: cid))
             .responseJSON  { response in
                 switch(response.result) {
                 case .success(let data):
@@ -130,7 +130,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                     let videoMedia = VLCMedia(url: URL(string: video)!)
                     videoMedia.addOptions([
                         "http-user-agent": "Bilibili Freedoooooom/MarkII",
-                        "http-referrer": "https://www.bilibili.com/video/av\(avId)"
+                        "http-referrer": Urls.getHttpReferrer(avId: avId)
                     ])
                     self.player.media = videoMedia
                     self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
@@ -148,7 +148,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     func loadData(avId:String,pageNum:Int) -> Void {
-        AF.request("https://api.bilibili.com/x/web-interface/view?aid=\(avId)").responseJSON { response in
+        AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
             switch(response.result) {
                 case .success(let data):
                     let json = JSON(data)

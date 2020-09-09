@@ -26,7 +26,7 @@ class ProfileViewController: UIViewController {
                 "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
                 "Accept": "application/json"
             ]
-            AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
+            AF.request(Urls.getUserInfo, headers: headers).responseJSON { response in
                 switch(response.result) {
                 case .success(let data):
                     let json = JSON(data)
@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController {
 //                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
 //                "Accept": "application/json"
 //            ]
-//            AF.request("https://api.live.bilibili.com/User/getUserInfo", headers: headers).responseJSON { response in
+//            AF.request(Urls.getUserInfo, headers: headers).responseJSON { response in
 ////                    print("Result: \(response.result)")   
 //                }
 //

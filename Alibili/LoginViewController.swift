@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         return nil
     }
     func startValidation() -> Void {
-        AF.request("https://passport.bilibili.com/qrcode/getLoginUrl").responseJSON { response in
+        AF.request(Urls.getLoginUrl).responseJSON { response in
             switch(response.result) {
                 case .success(let data):
                     if let dictionary = data as? [String: Any] {
@@ -77,9 +77,9 @@ class LoginViewController: UIViewController {
                 ]
                 let params:Parameters = [
                     "oauthKey": oauthKey,
-                    "gourl":"https://www.bilibili.com/"
+                    "gourl": Urls.goUrl
                 ]
-                AF.request("https://passport.bilibili.com/qrcode/getLoginInfo", method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+                AF.request(Urls.getLoginInfo, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { response in
                         switch(response.result) {
                         case .success(let data):
                             if let dictionary = data as? [String: Any] {
@@ -128,10 +128,10 @@ class LoginViewController: UIViewController {
 //                ]
 //                let params:Parameters = [
 //                    "oauthKey": oauthKey,
-//                    "gourl":"https://www.bilibili.com/"
+//                    "gourl": Urls.goUrl
 //                ]
 //
-//            AF.request("https://passport.bilibili.com/qrcode/getLoginInfo", method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+//            AF.request(Urls.getLoginInfo, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
 //                .responseJSON(
 //                    queue: queue,
 //                    options: .allowFragments,

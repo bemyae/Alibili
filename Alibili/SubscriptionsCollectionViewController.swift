@@ -54,7 +54,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
             "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
             "Accept": "application/json"
         ]
-        AF.request("https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)", headers: headers).responseJSON { response in
+        AF.request(Urls.getSubscription(recentPerPage: recentPerPage, currentPage: currentPage), headers: headers).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 let json = JSON(data)
@@ -160,8 +160,8 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
 
 }
 
-//        print("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)")
-//        AF.request("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)", headers: headers).responseString { response in
+//        print(Urls.getVideo(avId: String, pageNum: String))
+//        AF.request(Urls.getVideo(avId: String, pageNum: String), headers: headers).responseString { response in
 //
 //            if let playInfoRange = response.description.range(of: #"__playinfo__=(.*?)<\/script>"#,
 //                                            options: .regularExpression) {
