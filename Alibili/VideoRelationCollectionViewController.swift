@@ -22,6 +22,8 @@ class VideoRelationCollectionViewController: UICollectionViewController {
     
     private var targetSize = CGSize.zero
     
+    private var firstAppear: Bool = false
+    
 //    private let recentTotal = 100
 //    private let recentPerPage = 10
 //    private var recentCurrentPage = 1
@@ -55,6 +57,15 @@ class VideoRelationCollectionViewController: UICollectionViewController {
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !firstAppear {
+            firstAppear = true
+        } else {
+            loadRelatedData()
+        }
     }
     
     func loadRelatedData() -> Void {
