@@ -9,15 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-class SubscriptionsCollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
-    static let reuseIdentifier = "SubscriptionsCollectionViewCell"
+    static let reuseIdentifier = "CollectionViewCell"
     
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var label: UILabel!
     
-    var representedDataItem: SubscriptionsCellDataItem?
+    var representedDataItem: CellDataItem?
     
     // MARK: Initialization
     
@@ -27,17 +27,15 @@ class SubscriptionsCollectionViewCell: UICollectionViewCell {
         // These properties are also exposed in Interface Builder.
         imageView.adjustsImageWhenAncestorFocused = true
         imageView.clipsToBounds = false
-        
-//        label.alpha = 0.0
+        // label.alpha = 0.0
     }
     
     // MARK: UICollectionReusableView
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         // Reset the label's alpha value so it's initially hidden.
-//        label.alpha = 0.0
+        // label.alpha = 0.0
     }
     
     // MARK: UIFocusEnvironment
@@ -57,6 +55,4 @@ class SubscriptionsCollectionViewCell: UICollectionViewCell {
 //            }
 //        }, completion: nil)
     }
-   
-    
 }

@@ -12,14 +12,23 @@ import Alamofire
 import SwiftyJSON
 import SWXMLHash
 
-class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
+class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCMediaPlayerDelegate {
     
     @IBOutlet var playerView: UIView!
     @IBOutlet weak var mediaView: UIView!
-    @IBOutlet weak var danmuView: UIView!
+    
+    let activityIndicatiorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView()
+        aiv.color = .white
+        aiv.translatesAutoresizingMaskIntoConstraints = false
+        aiv.startAnimating()
+        return aiv
+    }()
+    var observation: NSKeyValueObservation?
     
     private let cookieManager:CookieManager = CookieManager()
-    var videoJson:SubscriptionsCellDataItem!
+    var videoJson:CellDataItem!
+    var pageNum:Int = 0
     let player:VLCMediaPlayer = VLCMediaPlayer()
     var videoLength:CUnsignedLongLong = 0
     
@@ -30,7 +39,10 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData(avId: videoJson.id, pageNum: 1)
+        playerView.addSubview(activityIndicatiorView)
+        activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        loadData(avId: videoJson.aid, pageNum: pageNum)
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -38,8 +50,8 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
         descriptor.spriteName = NSStringFromClass(BarrageWalkTextSprite.self)
         descriptor.params["text"] = text
         descriptor.params["textColor"] = UIColor.white
-        descriptor.params["fontSize"] = 32;
-        descriptor.params["speed"] = Int(arc4random()%100) + 100
+        descriptor.params["fontSize"] = 36;
+        descriptor.params["speed"] = Int(arc4random()%50) + 150
         descriptor.params["direction"] = direction
         return descriptor
     }
@@ -47,14 +59,12 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     @objc func autoSenderBarrage() {
         let _ :NSInteger = barrageRenderer.spritesNumber(withName: nil)
         if let danmudict = self.danmuList[currentTime] {
-//            print(danmudict.count)
             for (index, danmu) in danmudict.enumerated() {
                 if index > 5 { break }
                 barrageRenderer.receive(walkTextSpriteDescriptorWithDirection(direction: BarrageWalkDirection.R2L.rawValue, text: danmu.text))
             }
         }
         currentTime = currentTime + 1
-//        print(currentTime)
         if currentTime >= videoLength {
             self.timer?.invalidate()
         }
@@ -73,8 +83,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     
     override func viewWillAppear(_ animated: Bool){
         
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,8 +90,8 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     func loadDanmuData(cid:String) -> Void {
-        print("https://api.bilibili.com/x/v1/dm/list.so?oid=\(cid)")
-        AF.request("https://api.bilibili.com/x/v1/dm/list.so?oid=\(cid)").responseString(encoding: String.Encoding.utf8) { response in
+        print(Urls.getDanmu(cid: cid))
+        AF.request(Urls.getDanmu(cid: cid)).responseString(encoding: String.Encoding.utf8) { response in
             var statusCode = response.response?.statusCode
             switch response.result {
                 case .success:
@@ -100,7 +108,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                             }
                             
                         }
-//                        print(self.danmuList)
                         self.configDanMu()
                     }
                 case .failure(let error):
@@ -112,7 +119,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
     }
     
     func loadMediaData(avId:String,cid:String) -> Void {
-        AF.request("https://api.bilibili.com/x/player/playurl?avid=\(avId)&cid=\(cid)&qn=80&type=&fnver=0&fnval=16&otype=json")
+        AF.request(Urls.getVideoData(avId: avId, cid: cid))
             .responseJSON  { response in
                 switch(response.result) {
                 case .success(let data):
@@ -130,15 +137,19 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                     let videoMedia = VLCMedia(url: URL(string: video)!)
                     videoMedia.addOptions([
                         "http-user-agent": "Bilibili Freedoooooom/MarkII",
-                        "http-referrer": "https://www.bilibili.com/video/av\(avId)"
+                        "http-referrer": Urls.getHttpReferrer(avId: avId)
                     ])
                     self.player.media = videoMedia
+                    self.player.delegate = self
                     self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
                     self.player.drawable = self.mediaView
                     
                     self.loadDanmuData(cid:cid)
-                    
+//                    self.observation = self.player.observe(\.self.isPlaying, options: [.old, .new]){ object, change in
+//                        print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
+//                    }
                     self.player.play()
+                    
                     return
                 case .failure(let error):
                     print(error)
@@ -146,21 +157,53 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate {
                 }
             }
     }
+        
+    func mediaPlayerStateChanged(_ aNotification: Notification) {
+        let state : VLCMediaPlayerState = player.state
+//        print("mediaPlayerStateChanged \(aNotification) \(state.rawValue)")
+        switch state {
+        case VLCMediaPlayerState.stopped:
+            print("Player has stopped")
+        case VLCMediaPlayerState.opening:
+            print("Stream is opening")
+        case VLCMediaPlayerState.buffering:
+            activityIndicatiorView.stopAnimating()
+            playerView.backgroundColor = .clear
+            print("Stream is buffering")
+        case VLCMediaPlayerState.ended:
+            print("Stream has ended")
+        case VLCMediaPlayerState.error:
+            print("Player has generated an error")
+        case VLCMediaPlayerState.playing:
+            print("Stream is playing")
+        case VLCMediaPlayerState.paused:
+            print("Stream is paused")
+        case VLCMediaPlayerState.esAdded:
+            print("Elementary Stream added")
+        default:
+            print("default")
+        }
+    }
+    
     
     func loadData(avId:String,pageNum:Int) -> Void {
-        AF.request("https://api.bilibili.com/x/web-interface/view?aid=\(avId)").responseJSON { response in
+        AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
             switch(response.result) {
                 case .success(let data):
                     let json = JSON(data)
-                    let cid = json["data"]["cid"].stringValue
+                    var cid = json["data"]["cid"].stringValue
+                    print(pageNum)
+                    print(json["data"]["pages"][pageNum])
+                    print(cid)
+                    if pageNum != 0 {
+                        cid = json["data"]["pages"][pageNum]["cid"].stringValue
+                    }
                     self.loadMediaData(avId: avId, cid: cid)
                 
                 case .failure(let error):
                     print(error)
                     break
                 }
-            
         }
-        
     }
 }

@@ -11,13 +11,13 @@ import Alamofire
 import SwiftyJSON
 import AVKit
 
-private let reuseIdentifier = SubscriptionsCollectionViewCell.reuseIdentifier
+private let reuseIdentifier = CollectionViewCell.reuseIdentifier
 
 class SubscriptionsCollectionViewController: UICollectionViewController {
 
     private let cookieManager:CookieManager = CookieManager()
     
-    private let cellComposer = SubscriptionsCellDataComposer()
+    private let cellComposer = CellDataComposer()
     
     private var targetSize = CGSize.zero
     
@@ -54,7 +54,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
             "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
             "Accept": "application/json"
         ]
-        AF.request("https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)", headers: headers).responseJSON { response in
+        AF.request(Urls.getSubscription(recentPerPage: recentPerPage, currentPage: currentPage), headers: headers).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 let json = JSON(data)
@@ -67,7 +67,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
                 print(error)
                 break
             }
-            
         }
     }
     
@@ -95,16 +94,16 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubscriptionsCollectionViewCell.reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseIdentifier, for: indexPath)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? SubscriptionsCollectionViewCell else { fatalError("Expected to display a `SubscriptionsCollectionViewCell`.") }
+        guard let cell = cell as? CollectionViewCell else { fatalError("Expected to display a `CollectionViewCell`.") }
 //        cell.backgroundColor = randomColor()
-        let item = dataItemGourp[indexPath.item]
+        let item = dataItemGourp[indexPath.item]["archive"]
         //         Configure the cell.
-        cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: SubscriptionsCellDataItem(jsonData: item))
+        cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
         
         if dataItemGourp.count - 1 == indexPath.item {
             loadMoreData(currentPage: recentCurrentPage)
@@ -113,10 +112,10 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as?
-            VideoPlayerViewController, let index =
+            VideoDetailViewController, let index =
             collectionView.indexPathsForSelectedItems?.first {
-            let item = dataItemGourp[index.item]
-            destination.videoJson = SubscriptionsCellDataItem(jsonData: item)
+            let item = dataItemGourp[index.item]["archive"]
+            destination.videoJson = CellDataItem(jsonData: item)
         }
     }
     
@@ -160,8 +159,8 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
 
 }
 
-//        print("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)")
-//        AF.request("https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)", headers: headers).responseString { response in
+//        print(Urls.getVideo(avId: String, pageNum: String))
+//        AF.request(Urls.getVideo(avId: String, pageNum: String), headers: headers).responseString { response in
 //
 //            if let playInfoRange = response.description.range(of: #"__playinfo__=(.*?)<\/script>"#,
 //                                            options: .regularExpression) {

@@ -22,7 +22,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startValidation()
@@ -30,7 +29,6 @@ class LoginViewController: UIViewController {
     
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
-        
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
             let transform = CGAffineTransform(scaleX: 3, y: 3)
@@ -41,8 +39,9 @@ class LoginViewController: UIViewController {
         }
         return nil
     }
+    
     func startValidation() -> Void {
-        AF.request("https://passport.bilibili.com/qrcode/getLoginUrl").responseJSON { response in
+        AF.request(Urls.getLoginUrl).responseJSON { response in
             switch(response.result) {
                 case .success(let data):
                     if let dictionary = data as? [String: Any] {
@@ -65,7 +64,6 @@ class LoginViewController: UIViewController {
     }
     
     func loopValidation(oauthKey: String) -> Void{
-       
         DispatchQueue.global(qos: .background).async {
             // You are now running on the concurrent `queue` you created earlier.
             print("Parsing JSON on thread: \(Thread.current) is main thread: \(Thread.isMainThread)")
@@ -77,9 +75,9 @@ class LoginViewController: UIViewController {
                 ]
                 let params:Parameters = [
                     "oauthKey": oauthKey,
-                    "gourl":"https://www.bilibili.com/"
+                    "gourl": Urls.goUrl
                 ]
-                AF.request("https://passport.bilibili.com/qrcode/getLoginInfo", method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+                AF.request(Urls.getLoginInfo, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { response in
                         switch(response.result) {
                         case .success(let data):
                             if let dictionary = data as? [String: Any] {
@@ -89,8 +87,6 @@ class LoginViewController: UIViewController {
                                         self.currentLevel = self.finalLevel
                                         DispatchQueue.main.async {
                                             print("Am I back on the main thread: \(Thread.isMainThread)")
-//                                            let destinationController = self.storyboard!.instantiateViewController(withIdentifier: "home")
-//                                            self.present(destinationController, animated: true, completion: nil)
                                             RootViewNavigator().updateRootViewController()
                                         }
                                     }else{
@@ -117,66 +113,6 @@ class LoginViewController: UIViewController {
     }
 }
     
-//    func loopValidation(oauthKey: String) -> Void{
-//        var currentLevel:Int = 0, finalLevel:Int = 1000
-//        let queue = DispatchQueue(label: "com.cnoon.response-queue", qos: .utility, attributes: [.concurrent])
-//        while (currentLevel < finalLevel) {
-//                sleep(5)
-//                let headers: HTTPHeaders = [
-//                    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-//                    "Accept": "application/json"
-//                ]
-//                let params:Parameters = [
-//                    "oauthKey": oauthKey,
-//                    "gourl":"https://www.bilibili.com/"
-//                ]
-//
-//            AF.request("https://passport.bilibili.com/qrcode/getLoginInfo", method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
-//                .responseJSON(
-//                    queue: queue,
-//                    options: .allowFragments,
-//                    completionHandler: { response in
-//                    // You are now running on the concurrent `queue` you created earlier.
-//                    print("Parsing JSON on thread: \(Thread.current) is main thread: \(Thread.isMainThread)")
-//                    // Validate your JSON response and convert into model objects if necessary
-////                    print(response.result)
-//                    // To update anything on the main thread, just jump back on like so.
-//                    switch(response.result) {
-//                        case .success(let data):
-//                            if let dictionary = data as? [String: Any] {
-//                                if let status = dictionary["status"] as? Bool {
-//                                    if(status){
-//                                        self.cookieManager.saveUserCookie(forKey: "User-Cookie", response: response.response!)
-//                                        currentLevel = finalLevel
-//                                        DispatchQueue.main.async {
-//                                            print("Am I back on the main thread: \(Thread.isMainThread)")
-//                                            let destinationController = self.storyboard!.instantiateViewController(withIdentifier: "home")
-//                                            self.present(destinationController, animated: true, completion: nil)
-//                                        }
-//                                    }else{
-//                                        if let data = dictionary["data"] as? Int {
-//                                            print(data)
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        case .failure(let error):
-//                            print("------loopValidation---------")
-//                            break
-//                        }
-//                    }
-//                )
-//
-    
-        
-//                currentLevel += 1
-//                print(["success ",currentLevel," ", finalLevel, currentLevel < finalLevel])
-//            }
-//
-//
-//    }
-
-
     /*
     // MARK: - Navigation
 
