@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct Archive : Codable{
+struct CellDataItem: Codable, Equatable {
     //    "dimension" : {
     //            "height" : 818,
     //            "width" : 1920,
@@ -29,30 +29,7 @@ struct Archive : Codable{
     var attribute:String
     var tname:String
     var copyright:Int
-    //        "rights" : {
-    //            "no_reprint" : 1,
-    //            "elec" : 0,
-    //            "pay" : 0,
-    //            "movie" : 0,
-    //            "autoplay" : 0,
-    //            "hd5" : 0,
-    //            "download" : 0,
-    //            "bp" : 0
-    //        },
     var aid :String
-    //        "stat" : {
-    //            "aid" : 58903561,
-    //            "view" : 3825,
-    //            "his_rank" : 0,
-    //            "now_rank" : 0,
-    //            "like" : 223,
-    //            "danmaku" : 40,
-    //            "favorite" : 47,
-    //            "dislike" : 0,
-    //            "reply" : 43,
-    //            "share" : 12,
-    //            "coin" : 58
-    //        },
     var dynamic:String
     
     init(jsonData:JSON) {
@@ -99,46 +76,30 @@ struct Owner : Codable{
     }
 }
 
-struct CellDataItem: Codable, Equatable {
-    
-    let id: String
-    let fold: String
-    let bangumi: String
-    var archive: Archive
-    var official_verify : OfficialVerify
-    let type:Int
-    let pubdate :String
-    
-    
-    init(jsonData:JSON) {
-        self.id = jsonData["id"].stringValue
-        self.fold = jsonData["fold"].stringValue
-        self.bangumi = jsonData["bangumi"].stringValue
-        self.archive = Archive(jsonData: jsonData["archive"])
-        self.official_verify = OfficialVerify(jsonData: jsonData["official_verify"])
-        self.type = jsonData["type"].int!
-        self.pubdate = jsonData["pubdate"].stringValue
-    }
-//    var displayURL: URL {
-//        var components = URLComponents()
-//        components.scheme = "uikitcatalog"
-//        components.path = "dataItem"
-//        components.queryItems = [URLQueryItem(name: "identifier", value: identifier)]
+//struct CellDataItem: Codable, Equatable {
 //
-//        return components.url!
+//    let id: String
+//    let fold: String
+//    let bangumi: String
+//    var archive: Archive
+//    var official_verify : OfficialVerify
+//    let type:Int
+//    let pubdate :String
+//
+//    init(jsonData:JSON) {
+//        self.id = jsonData["id"].stringValue
+//        self.fold = jsonData["fold"].stringValue
+//        self.bangumi = jsonData["bangumi"].stringValue
+//        self.archive = Archive(jsonData: jsonData["archive"])
+//        self.official_verify = OfficialVerify(jsonData: jsonData["official_verify"])
+//        self.type = jsonData["type"].int!
+//        self.pubdate = jsonData["pubdate"].stringValue
 //    }
-//
-//    var imageURL: URL {
-//        let mainBundle = Bundle.main
-//        guard let imageURL = mainBundle.url(forResource: imageName, withExtension: nil) else { fatalError("Error determining local image URL.") }
-//
-//        return imageURL
-//    }
-}
+//}
 
 // MARK: Equatable
 
 func ==(lhs: CellDataItem, rhs: CellDataItem)-> Bool {
     // Two `DataItem`s are considered equal if their identifiers and titles match.
-    return lhs.id == rhs.id
+    return lhs.aid == rhs.aid
 }

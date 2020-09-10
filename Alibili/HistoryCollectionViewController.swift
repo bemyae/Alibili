@@ -55,7 +55,7 @@ class HistoryCollectionViewController: UICollectionViewController {
             "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
             "Accept": "application/json"
         ]
-        AF.request(Urls.getSubscription(recentPerPage: recentPerPage, currentPage: currentPage), headers: headers).responseJSON { response in
+        AF.request(Urls.getHistory(recentPerPage: recentPerPage, currentPage: currentPage), headers: headers).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 let json = JSON(data)

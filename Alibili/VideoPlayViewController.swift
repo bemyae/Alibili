@@ -41,7 +41,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         playerView.addSubview(activityIndicatiorView)
         activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        loadData(avId: videoJson.id, pageNum: 1)
+        loadData(avId: videoJson.aid, pageNum: 1)
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{

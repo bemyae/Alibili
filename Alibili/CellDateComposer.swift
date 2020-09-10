@@ -31,7 +31,7 @@ class CellDataComposer {
         // Set the cell's properties.
         cell.representedDataItem = dataItem
         
-        cell.label.text = dataItem.archive.title
+        cell.label.text = dataItem.title
         cell.label.translatesAutoresizingMaskIntoConstraints = false
         cell.label.widthAnchor.constraint(equalToConstant: cellStyle.width * 0.8).isActive = true
         cell.label.heightAnchor.constraint(equalToConstant: cellStyle.height * 0.1).isActive = true
@@ -44,7 +44,7 @@ class CellDataComposer {
         cell.imageView.heightAnchor.constraint(equalToConstant: cellStyle.height * 0.8).isActive = true
         cell.imageView.centerXAnchor.constraint(lessThanOrEqualTo: cell.centerXAnchor).isActive = true
         
-        cell.imageView.image = CellDataComposer.processedImageCache.object(forKey: dataItem.id as NSString)
+        cell.imageView.image = CellDataComposer.processedImageCache.object(forKey: dataItem.aid as NSString)
         
         // No further work is necessary if the cell's image view has an image.
         guard cell.imageView.image == nil else { return }
@@ -64,10 +64,10 @@ class CellDataComposer {
             guard !processImageOperation.isCancelled else { return }
             
             // Load and process the image.
-            guard let image = self.processImage(named: dataItem.archive.pic) else { return }
+            guard let image = self.processImage(named: dataItem.pic) else { return }
             
             // Store the processed image in the cache.
-            CellDataComposer.processedImageCache.setObject(image, forKey: dataItem.id as NSString)
+            CellDataComposer.processedImageCache.setObject(image, forKey: dataItem.aid as NSString)
             
             OperationQueue.main.addOperation {
                 // Check that the cell is still showing the same `DataItem`.

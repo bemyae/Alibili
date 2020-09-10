@@ -101,7 +101,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? CollectionViewCell else { fatalError("Expected to display a `CollectionViewCell`.") }
 //        cell.backgroundColor = randomColor()
-        let item = dataItemGourp[indexPath.item]
+        let item = dataItemGourp[indexPath.item]["archive"]
         //         Configure the cell.
         cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
         
@@ -114,7 +114,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
         if let destination = segue.destination as?
             VideoPlayerViewController, let index =
             collectionView.indexPathsForSelectedItems?.first {
-            let item = dataItemGourp[index.item]
+            let item = dataItemGourp[index.item]["archive"]
             destination.videoJson = CellDataItem(jsonData: item)
         }
     }

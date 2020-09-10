@@ -16,6 +16,9 @@ struct Urls {
     static func getSubscription(recentPerPage: Int, currentPage: Int) -> String{
         return "https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)"
     }
+    static func getHistory(recentPerPage: Int, currentPage: Int) -> String{
+        return "https://api.bilibili.com/x/v2/history?pn=\(currentPage)&\(recentPerPage)&jsonp=jsonp"
+    }
     static func getVideo(avId: String, pageNum: String) -> String{
         return "https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)"
     }
