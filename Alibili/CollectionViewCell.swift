@@ -9,15 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-class SubscriptionsCollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
-    static let reuseIdentifier = "SubscriptionsCollectionViewCell"
+    static let reuseIdentifier = "CollectionViewCell"
     
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var label: UILabel!
     
-    var representedDataItem: SubscriptionsCellDataItem?
+    var representedDataItem: CellDataItem?
     
     // MARK: Initialization
     

@@ -1,11 +1,12 @@
 //
-//  RecentsCollectionViewController.swift
+//  HistoryCollectionViewController.swift
 //  Alibili
 //
-//  Created by Xiaonan Zhang on 2019/07/08.
-//  Copyright © 2019 Xiaonan Zhang. All rights reserved.
+//  Created by xnzhang on 2020/09/10.
+//  Copyright © 2020 Xiaonan Zhang. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -13,7 +14,7 @@ import AVKit
 
 private let reuseIdentifier = CollectionViewCell.reuseIdentifier
 
-class SubscriptionsCollectionViewController: UICollectionViewController {
+class HistoryCollectionViewController: UICollectionViewController {
 
     private let cookieManager:CookieManager = CookieManager()
     

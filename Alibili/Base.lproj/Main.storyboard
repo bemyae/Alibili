@@ -22,7 +22,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SubscriptionsCollectionViewCell" id="jV8-Ep-fvi" customClass="SubscriptionsCollectionViewCell" customModule="Alibili" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CollectionViewCell" id="jV8-Ep-fvi" customClass="CollectionViewCell" customModule="Alibili" customModuleProvider="target">
                                 <rect key="frame" x="90" y="0.0" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLN-VX-sAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="-5340"/>
+            <point key="canvasLocation" x="1739" y="-2422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hav-La-ugl">
@@ -195,8 +195,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="zgS-yC-X67" kind="relationship" relationship="viewControllers" id="pnG-Xu-2aG"/>
+                        <segue destination="bP0-XO-R0K" kind="relationship" relationship="viewControllers" id="o3b-VS-5ky"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="yl7-yD-gbw"/>
-                        <segue destination="yWy-Bm-sRe" kind="relationship" relationship="viewControllers" id="GxU-cE-zJA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRW-Sl-5I0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -351,23 +351,58 @@
             <point key="canvasLocation" x="-4244" y="-1085"/>
         </scene>
         <!--History-->
-        <scene sceneID="sFZ-jE-N6W">
+        <scene sceneID="o7Q-aN-2z5">
             <objects>
-                <viewController id="yWy-Bm-sRe" userLabel="History" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QyV-pT-6A0"/>
-                        <viewControllerLayoutGuide type="bottom" id="9fe-rh-RtO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="e93-Y4-zh0">
+                <collectionViewController id="bP0-XO-R0K" userLabel="History" customClass="HistoryCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="BLp-PS-XDH">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zPw-7c-R86"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="CpW-Br-7FH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Iv-cC-ZpG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NPd-we-Jqp">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CollectionViewCell" id="efw-PE-igi" customClass="CollectionViewCell" customModule="Alibili" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cp-Vf-Ddf">
+                                            <rect key="frame" x="1" y="0.0" width="0.0" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPv-5y-5iW">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <connections>
+                                    <outlet property="imageView" destination="0cp-Vf-Ddf" id="iyc-mm-LOT"/>
+                                    <outlet property="label" destination="kPv-5y-5iW" id="rdt-NB-EiQ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="bP0-XO-R0K" id="dfW-EW-Q5v"/>
+                            <outlet property="delegate" destination="bP0-XO-R0K" id="6e6-bk-blU"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="History" id="NZu-lu-u6J" userLabel="History"/>
+                    <connections>
+                        <outlet property="tabBarObservedScrollView" destination="BLp-PS-XDH" id="P5N-Pu-zgB"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YT1-1c-Qh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-598" y="-5340"/>
+            <point key="canvasLocation" x="-598" y="-5488"/>
         </scene>
     </scenes>
 </document>

@@ -27,7 +27,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var observation: NSKeyValueObservation?
     
     private let cookieManager:CookieManager = CookieManager()
-    var videoJson:SubscriptionsCellDataItem!
+    var videoJson:CellDataItem!
     let player:VLCMediaPlayer = VLCMediaPlayer()
     var videoLength:CUnsignedLongLong = 0
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubscriptionsCellDataComposer {
+class CellDataComposer {
     // MARK: Properties
     
     /// Cache used to store processed images, keyed on `DataItem` identifiers.
@@ -19,11 +19,11 @@ class SubscriptionsCellDataComposer {
      queues contain operations that process images for `DataItem`s before updating
      the cell's `UIImageView`.
      */
-    private var operationQueues = [SubscriptionsCollectionViewCell: OperationQueue]()
+    private var operationQueues = [CollectionViewCell: OperationQueue]()
     
     // MARK: Implementation
     
-    func compose(_ cell: SubscriptionsCollectionViewCell, cellStyle:CGSize ,withDataItem dataItem: SubscriptionsCellDataItem) {
+    func compose(_ cell: CollectionViewCell, cellStyle:CGSize ,withDataItem dataItem: CellDataItem) {
         // Cancel any queued operations to process images for the cell.
         let queue = operationQueue(forCell: cell)
         queue.cancelAllOperations()
@@ -44,7 +44,7 @@ class SubscriptionsCellDataComposer {
         cell.imageView.heightAnchor.constraint(equalToConstant: cellStyle.height * 0.8).isActive = true
         cell.imageView.centerXAnchor.constraint(lessThanOrEqualTo: cell.centerXAnchor).isActive = true
         
-        cell.imageView.image = SubscriptionsCellDataComposer.processedImageCache.object(forKey: dataItem.id as NSString)
+        cell.imageView.image = CellDataComposer.processedImageCache.object(forKey: dataItem.id as NSString)
         
         // No further work is necessary if the cell's image view has an image.
         guard cell.imageView.image == nil else { return }
@@ -67,7 +67,7 @@ class SubscriptionsCellDataComposer {
             guard let image = self.processImage(named: dataItem.archive.pic) else { return }
             
             // Store the processed image in the cache.
-            SubscriptionsCellDataComposer.processedImageCache.setObject(image, forKey: dataItem.id as NSString)
+            CellDataComposer.processedImageCache.setObject(image, forKey: dataItem.id as NSString)
             
             OperationQueue.main.addOperation {
                 // Check that the cell is still showing the same `DataItem`.
@@ -92,7 +92,7 @@ class SubscriptionsCellDataComposer {
      Returns the `NSOperationQueue` for a given cell. Creates and stores a new
      queue if one doesn't already exist.
      */
-    private func operationQueue(forCell cell: SubscriptionsCollectionViewCell) -> OperationQueue {
+    private func operationQueue(forCell cell: CollectionViewCell) -> OperationQueue {
         if let queue = operationQueues[cell] {
             return queue
         }
