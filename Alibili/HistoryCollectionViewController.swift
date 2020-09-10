@@ -24,8 +24,7 @@ class HistoryCollectionViewController: UICollectionViewController {
     
     private let recentTotal = 100
     private let recentPerPage = 10
-    private var recentCurrentPage = 1
-    
+    var recentCurrentPage = 1
     var dataItemGourp:[JSON] = []
     
     override func viewDidLoad() {

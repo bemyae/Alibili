@@ -165,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="3372" y="-4259"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="hav-La-ugl">
             <objects>
-                <tabBarController storyboardIdentifier="home" id="JV8-5P-XJg" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="home" id="JV8-5P-XJg" customClass="TabBarViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xv-sY-MqZ">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -443,6 +443,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HMa-08-Jve"/>
+        <segue reference="7GG-Lv-bsX"/>
     </inferredMetricsTieBreakers>
 </document>
