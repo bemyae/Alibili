@@ -46,7 +46,6 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         backgroundImage.alpha = 0.5
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
-        
     }
     
     private func processImage(named imageName: String) -> UIImage? {
@@ -104,6 +103,12 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
             destination.pageNum = index.row
             destination.videoJson = self.videoJson
         }
+        
+        if let destination = segue.destination as?
+            VideoRelationCollectionViewController {
+            destination.aid = videoJson.aid
+            
+        }
     }
     
     /*
@@ -121,6 +126,10 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "PartTableCell", for: indexPath)
         cell.textLabel!.text = String(parts[indexPath.row])
         return cell
+    }
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [PartTableView]
     }
     
 }

@@ -192,8 +192,8 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
                 case .success(let data):
                     let json = JSON(data)
                     var cid = json["data"]["cid"].stringValue
+                    print(avId)
                     print(pageNum)
-                    print(json["data"]["pages"][pageNum])
                     print(cid)
                     if pageNum != 0 {
                         cid = json["data"]["pages"][pageNum]["cid"].stringValue
