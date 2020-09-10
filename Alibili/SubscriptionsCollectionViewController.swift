@@ -24,7 +24,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     private let recentTotal = 100
     private let recentPerPage = 10
     private var recentCurrentPage = 1
-    private var firstAppear: Bool = false
     
     var dataItemGourp:[JSON] = []
     
@@ -45,17 +44,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
 
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            loadMoreData(currentPage:1)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if !firstAppear {
-            firstAppear = true
-        } else {
-            recentCurrentPage = 1
-            dataItemGourp = []
             loadMoreData(currentPage:1)
         }
     }
