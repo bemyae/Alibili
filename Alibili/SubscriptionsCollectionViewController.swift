@@ -112,7 +112,7 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as?
-            VideoPlayerViewController, let index =
+            VideoDetailViewController, let index =
             collectionView.indexPathsForSelectedItems?.first {
             let item = dataItemGourp[index.item]["archive"]
             destination.videoJson = CellDataItem(jsonData: item)

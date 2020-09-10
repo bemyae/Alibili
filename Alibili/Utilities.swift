@@ -12,6 +12,7 @@ struct Urls {
     static let getLoginUrl: String = "https://passport.bilibili.com/qrcode/getLoginUrl"
     static let getLoginInfo: String = "https://passport.bilibili.com/qrcode/getLoginInfo"
     static let goUrl: String = "https://www.bilibili.com/"
+    static let getTopPageRecomendation = "https://www.bilibili.com/index/ding.json"
     static let getUserInfo: String = "https://api.live.bilibili.com/User/getUserInfo"
     static func getSubscription(recentPerPage: Int, currentPage: Int) -> String{
         return "https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)"

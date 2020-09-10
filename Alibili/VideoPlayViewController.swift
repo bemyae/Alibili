@@ -28,6 +28,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:CellDataItem!
+    var pageNum:Int = 0
     let player:VLCMediaPlayer = VLCMediaPlayer()
     var videoLength:CUnsignedLongLong = 0
     
@@ -41,7 +42,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         playerView.addSubview(activityIndicatiorView)
         activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        loadData(avId: videoJson.aid, pageNum: 1)
+        loadData(avId: videoJson.aid, pageNum: pageNum)
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -190,7 +191,13 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
             switch(response.result) {
                 case .success(let data):
                     let json = JSON(data)
-                    let cid = json["data"]["cid"].stringValue
+                    var cid = json["data"]["cid"].stringValue
+                    print(pageNum)
+                    print(json["data"]["pages"][pageNum])
+                    print(cid)
+                    if pageNum != 0 {
+                        cid = json["data"]["pages"][pageNum]["cid"].stringValue
+                    }
                     self.loadMediaData(avId: avId, cid: cid)
                 
                 case .failure(let error):
