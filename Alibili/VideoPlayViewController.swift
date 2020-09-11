@@ -223,4 +223,60 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
             }
         }
     }
+    
+    func startWarching(json: JSON) -> Void {
+        let date = Date()
+        let parameters = [
+            "aid":json["data"]["aid"],
+            "cid": json["data"]["cid"],
+            "bvid": json["data"]["bvid"],
+            "part": "1",
+            "mid": json["data"]["owner"]["mid"],
+            "lv": "5",
+            "ftime": "1586299767",
+            "stime": String((date.timeIntervalSince1970).rounded()),
+            "jsonp": "jsonp",
+            "type": "3",
+            "sub_type": "0"
+            ] as [String : Any]
+        
+        AF.request(Urls.postClickH5(), method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let string = response.value {
+                    print(string)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func heartbeat(json: JSON) -> Void {
+        let date = Date()
+        let parameters = [
+            "aid":json["data"]["aid"],
+            "cid": json["data"]["cid"],
+            "bvid": json["data"]["bvid"],
+            "part": "1",
+            "mid": json["data"]["owner"]["mid"],
+            "lv": "5",
+            "ftime": "1586299767",
+            "stime": String((date.timeIntervalSince1970).rounded()),
+            "jsonp": "jsonp",
+            "type": "3",
+            "sub_type": "0"
+            ] as [String : Any]
+        
+        AF.request(Urls.postClickH5(), method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let string = response.value {
+                    print(string)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

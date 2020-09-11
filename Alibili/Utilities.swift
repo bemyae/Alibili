@@ -47,4 +47,8 @@ struct Urls {
     static func getRanking(day: String) -> String{
         return "https://api.bilibili.com/x/web-interface/ranking?rid=0&day=\(day)&type=2&arc_type=1&jsonp=jsonp"
     }
+    
+    static func postClickH5() -> String{
+        return "https://api.bilibili.com/x/click-interface/click/web/h5"
+    }
 }
