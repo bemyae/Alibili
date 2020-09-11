@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CAF4F27922E32DF800CCE549 /* BarrageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F27522E32DF700CCE549 /* BarrageHeader.h */; };
+		CAF4F2A622E32F4100CCE549 /* UIView+BarrageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F27C22E32F3F00CCE549 /* UIView+BarrageView.m */; };
+		CAF4F2A722E32F4100CCE549 /* BarrageFloatImageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F27D22E32F3F00CCE549 /* BarrageFloatImageSprite.m */; };
+		CAF4F2A822E32F4100CCE549 /* BarrageFloatTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F27E22E32F3F00CCE549 /* BarrageFloatTextSprite.m */; };
+		CAF4F2A922E32F4100CCE549 /* BarrageSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F27F22E32F3F00CCE549 /* BarrageSprite.h */; };
+		CAF4F2AA22E32F4100CCE549 /* BarrageCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28022E32F3F00CCE549 /* BarrageCanvas.m */; };
+		CAF4F2AB22E32F4100CCE549 /* BarrageFloatSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28122E32F4000CCE549 /* BarrageFloatSprite.m */; };
+		CAF4F2AC22E32F4100CCE549 /* BarrageSpriteUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28222E32F4000CCE549 /* BarrageSpriteUtility.m */; };
+		CAF4F2AD22E32F4100CCE549 /* BarrageWalkImageSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28322E32F4000CCE549 /* BarrageWalkImageSprite.h */; };
+		CAF4F2AE22E32F4100CCE549 /* BarrageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28422E32F4000CCE549 /* BarrageSprite.m */; };
+		CAF4F2AF22E32F4100CCE549 /* BarrageWalkImageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28522E32F4000CCE549 /* BarrageWalkImageSprite.m */; };
+		CAF4F2B022E32F4100CCE549 /* BarrageWalkTextSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28622E32F4000CCE549 /* BarrageWalkTextSprite.h */; };
+		CAF4F2B122E32F4100CCE549 /* BarrageCanvas.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28722E32F4000CCE549 /* BarrageCanvas.h */; };
+		CAF4F2B222E32F4100CCE549 /* BarrageDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28822E32F4000CCE549 /* BarrageDescriptor.m */; };
+		CAF4F2B322E32F4100CCE549 /* BarrageSpriteQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28922E32F4000CCE549 /* BarrageSpriteQueue.m */; };
+		CAF4F2B422E32F4100CCE549 /* UIImageView+BarrageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28A22E32F4000CCE549 /* UIImageView+BarrageView.m */; };
+		CAF4F2B522E32F4100CCE549 /* BarrageFloatSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28B22E32F4000CCE549 /* BarrageFloatSprite.h */; };
+		CAF4F2B622E32F4100CCE549 /* BarrageSpriteProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28C22E32F4000CCE549 /* BarrageSpriteProtocol.h */; };
+		CAF4F2B722E32F4100CCE549 /* BarrageClock.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28D22E32F4000CCE549 /* BarrageClock.m */; };
+		CAF4F2B822E32F4100CCE549 /* BarrageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F28E22E32F4000CCE549 /* BarrageLoader.m */; };
+		CAF4F2B922E32F4100CCE549 /* BarrageSpriteQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F28F22E32F4000CCE549 /* BarrageSpriteQueue.h */; };
+		CAF4F2BA22E32F4100CCE549 /* BarrageDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29022E32F4000CCE549 /* BarrageDescriptor.h */; };
+		CAF4F2BB22E32F4100CCE549 /* BarrageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29122E32F4000CCE549 /* BarrageLoader.h */; };
+		CAF4F2BC22E32F4100CCE549 /* BarrageWalkTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F29222E32F4000CCE549 /* BarrageWalkTextSprite.m */; };
+		CAF4F2BD22E32F4100CCE549 /* UIView+BarrageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29322E32F4000CCE549 /* UIView+BarrageView.h */; };
+		CAF4F2BE22E32F4100CCE549 /* BarrageDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F29422E32F4000CCE549 /* BarrageDispatcher.m */; };
+		CAF4F2BF22E32F4100CCE549 /* BarrageRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29522E32F4000CCE549 /* BarrageRenderer.h */; };
+		CAF4F2C022E32F4100CCE549 /* BarrageViewPool.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F29622E32F4000CCE549 /* BarrageViewPool.m */; };
+		CAF4F2C222E32F4100CCE549 /* BarrageSpriteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F29822E32F4000CCE549 /* BarrageSpriteFactory.m */; };
+		CAF4F2C322E32F4100CCE549 /* BarrageWalkSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29922E32F4100CCE549 /* BarrageWalkSprite.h */; };
+		CAF4F2C422E32F4100CCE549 /* BarrageDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29A22E32F4100CCE549 /* BarrageDispatcher.h */; };
+		CAF4F2C522E32F4100CCE549 /* BarrageViewPool.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29B22E32F4100CCE549 /* BarrageViewPool.h */; };
+		CAF4F2C622E32F4100CCE549 /* BarrageFloatImageSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29C22E32F4100CCE549 /* BarrageFloatImageSprite.h */; };
+		CAF4F2C722E32F4100CCE549 /* BarrageClock.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29D22E32F4100CCE549 /* BarrageClock.h */; };
+		CAF4F2C822E32F4100CCE549 /* UIImageView+BarrageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29E22E32F4100CCE549 /* UIImageView+BarrageView.h */; };
+		CAF4F2C922E32F4100CCE549 /* UILabel+BarrageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F29F22E32F4100CCE549 /* UILabel+BarrageView.h */; };
+		CAF4F2CA22E32F4100CCE549 /* BarrageSpriteUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F2A022E32F4100CCE549 /* BarrageSpriteUtility.h */; };
+		CAF4F2CB22E32F4100CCE549 /* BarrageWalkSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2A122E32F4100CCE549 /* BarrageWalkSprite.m */; };
+		CAF4F2CC22E32F4100CCE549 /* BarrageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2A222E32F4100CCE549 /* BarrageRenderer.m */; };
+		CAF4F2CD22E32F4100CCE549 /* BarrageFloatTextSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F2A322E32F4100CCE549 /* BarrageFloatTextSprite.h */; };
+		CAF4F2CE22E32F4100CCE549 /* BarrageSpriteFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F2A422E32F4100CCE549 /* BarrageSpriteFactory.h */; };
+		CAF4F2CF22E32F4100CCE549 /* UILabel+BarrageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2A522E32F4100CCE549 /* UILabel+BarrageView.m */; };
+		CAF4F2EB22E33FA000CCE549 /* NSSafeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF4F2E922E33F9F00CCE549 /* NSSafeObject.h */; };
+		CAF4F2EC22E33FA000CCE549 /* NSSafeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2EA22E33F9F00CCE549 /* NSSafeObject.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CAF4F26922E32DB000CCE549 /* BarrageRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BarrageRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF4F26D22E32DB000CCE549 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAF4F27522E32DF700CCE549 /* BarrageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageHeader.h; sourceTree = "<group>"; };
+		CAF4F27C22E32F3F00CCE549 /* UIView+BarrageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BarrageView.m"; sourceTree = "<group>"; };
+		CAF4F27D22E32F3F00CCE549 /* BarrageFloatImageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatImageSprite.m; sourceTree = "<group>"; };
+		CAF4F27E22E32F3F00CCE549 /* BarrageFloatTextSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatTextSprite.m; sourceTree = "<group>"; };
+		CAF4F27F22E32F3F00CCE549 /* BarrageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSprite.h; sourceTree = "<group>"; };
+		CAF4F28022E32F3F00CCE549 /* BarrageCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageCanvas.m; sourceTree = "<group>"; };
+		CAF4F28122E32F4000CCE549 /* BarrageFloatSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatSprite.m; sourceTree = "<group>"; };
+		CAF4F28222E32F4000CCE549 /* BarrageSpriteUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSpriteUtility.m; sourceTree = "<group>"; };
+		CAF4F28322E32F4000CCE549 /* BarrageWalkImageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkImageSprite.h; sourceTree = "<group>"; };
+		CAF4F28422E32F4000CCE549 /* BarrageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSprite.m; sourceTree = "<group>"; };
+		CAF4F28522E32F4000CCE549 /* BarrageWalkImageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkImageSprite.m; sourceTree = "<group>"; };
+		CAF4F28622E32F4000CCE549 /* BarrageWalkTextSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkTextSprite.h; sourceTree = "<group>"; };
+		CAF4F28722E32F4000CCE549 /* BarrageCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageCanvas.h; sourceTree = "<group>"; };
+		CAF4F28822E32F4000CCE549 /* BarrageDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageDescriptor.m; sourceTree = "<group>"; };
+		CAF4F28922E32F4000CCE549 /* BarrageSpriteQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSpriteQueue.m; sourceTree = "<group>"; };
+		CAF4F28A22E32F4000CCE549 /* UIImageView+BarrageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+BarrageView.m"; sourceTree = "<group>"; };
+		CAF4F28B22E32F4000CCE549 /* BarrageFloatSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatSprite.h; sourceTree = "<group>"; };
+		CAF4F28C22E32F4000CCE549 /* BarrageSpriteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteProtocol.h; sourceTree = "<group>"; };
+		CAF4F28D22E32F4000CCE549 /* BarrageClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageClock.m; sourceTree = "<group>"; };
+		CAF4F28E22E32F4000CCE549 /* BarrageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageLoader.m; sourceTree = "<group>"; };
+		CAF4F28F22E32F4000CCE549 /* BarrageSpriteQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteQueue.h; sourceTree = "<group>"; };
+		CAF4F29022E32F4000CCE549 /* BarrageDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageDescriptor.h; sourceTree = "<group>"; };
+		CAF4F29122E32F4000CCE549 /* BarrageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageLoader.h; sourceTree = "<group>"; };
+		CAF4F29222E32F4000CCE549 /* BarrageWalkTextSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkTextSprite.m; sourceTree = "<group>"; };
+		CAF4F29322E32F4000CCE549 /* UIView+BarrageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BarrageView.h"; sourceTree = "<group>"; };
+		CAF4F29422E32F4000CCE549 /* BarrageDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageDispatcher.m; sourceTree = "<group>"; };
+		CAF4F29522E32F4000CCE549 /* BarrageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageRenderer.h; sourceTree = "<group>"; };
+		CAF4F29622E32F4000CCE549 /* BarrageViewPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageViewPool.m; sourceTree = "<group>"; };
+		CAF4F29822E32F4000CCE549 /* BarrageSpriteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSpriteFactory.m; sourceTree = "<group>"; };
+		CAF4F29922E32F4100CCE549 /* BarrageWalkSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkSprite.h; sourceTree = "<group>"; };
+		CAF4F29A22E32F4100CCE549 /* BarrageDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageDispatcher.h; sourceTree = "<group>"; };
+		CAF4F29B22E32F4100CCE549 /* BarrageViewPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageViewPool.h; sourceTree = "<group>"; };
+		CAF4F29C22E32F4100CCE549 /* BarrageFloatImageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatImageSprite.h; sourceTree = "<group>"; };
+		CAF4F29D22E32F4100CCE549 /* BarrageClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageClock.h; sourceTree = "<group>"; };
+		CAF4F29E22E32F4100CCE549 /* UIImageView+BarrageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+BarrageView.h"; sourceTree = "<group>"; };
+		CAF4F29F22E32F4100CCE549 /* UILabel+BarrageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BarrageView.h"; sourceTree = "<group>"; };
+		CAF4F2A022E32F4100CCE549 /* BarrageSpriteUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteUtility.h; sourceTree = "<group>"; };
+		CAF4F2A122E32F4100CCE549 /* BarrageWalkSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkSprite.m; sourceTree = "<group>"; };
+		CAF4F2A222E32F4100CCE549 /* BarrageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageRenderer.m; sourceTree = "<group>"; };
+		CAF4F2A322E32F4100CCE549 /* BarrageFloatTextSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatTextSprite.h; sourceTree = "<group>"; };
+		CAF4F2A422E32F4100CCE549 /* BarrageSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteFactory.h; sourceTree = "<group>"; };
+		CAF4F2A522E32F4100CCE549 /* UILabel+BarrageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BarrageView.m"; sourceTree = "<group>"; };
+		CAF4F2E922E33F9F00CCE549 /* NSSafeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSafeObject.h; sourceTree = "<group>"; };
+		CAF4F2EA22E33F9F00CCE549 /* NSSafeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSafeObject.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAF4F26622E32DB000CCE549 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAF4F25F22E32DB000CCE549 = {
+			isa = PBXGroup;
+			children = (
+				CAF4F26B22E32DB000CCE549 /* BarrageRenderer */,
+				CAF4F26A22E32DB000CCE549 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAF4F26A22E32DB000CCE549 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAF4F26922E32DB000CCE549 /* BarrageRenderer.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAF4F26B22E32DB000CCE549 /* BarrageRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				CAF4F2E922E33F9F00CCE549 /* NSSafeObject.h */,
+				CAF4F2EA22E33F9F00CCE549 /* NSSafeObject.m */,
+				CAF4F28722E32F4000CCE549 /* BarrageCanvas.h */,
+				CAF4F28022E32F3F00CCE549 /* BarrageCanvas.m */,
+				CAF4F29D22E32F4100CCE549 /* BarrageClock.h */,
+				CAF4F28D22E32F4000CCE549 /* BarrageClock.m */,
+				CAF4F29022E32F4000CCE549 /* BarrageDescriptor.h */,
+				CAF4F28822E32F4000CCE549 /* BarrageDescriptor.m */,
+				CAF4F29A22E32F4100CCE549 /* BarrageDispatcher.h */,
+				CAF4F29422E32F4000CCE549 /* BarrageDispatcher.m */,
+				CAF4F29C22E32F4100CCE549 /* BarrageFloatImageSprite.h */,
+				CAF4F27D22E32F3F00CCE549 /* BarrageFloatImageSprite.m */,
+				CAF4F28B22E32F4000CCE549 /* BarrageFloatSprite.h */,
+				CAF4F28122E32F4000CCE549 /* BarrageFloatSprite.m */,
+				CAF4F2A322E32F4100CCE549 /* BarrageFloatTextSprite.h */,
+				CAF4F27E22E32F3F00CCE549 /* BarrageFloatTextSprite.m */,
+				CAF4F29122E32F4000CCE549 /* BarrageLoader.h */,
+				CAF4F28E22E32F4000CCE549 /* BarrageLoader.m */,
+				CAF4F29522E32F4000CCE549 /* BarrageRenderer.h */,
+				CAF4F2A222E32F4100CCE549 /* BarrageRenderer.m */,
+				CAF4F27F22E32F3F00CCE549 /* BarrageSprite.h */,
+				CAF4F28422E32F4000CCE549 /* BarrageSprite.m */,
+				CAF4F2A422E32F4100CCE549 /* BarrageSpriteFactory.h */,
+				CAF4F29822E32F4000CCE549 /* BarrageSpriteFactory.m */,
+				CAF4F28C22E32F4000CCE549 /* BarrageSpriteProtocol.h */,
+				CAF4F28F22E32F4000CCE549 /* BarrageSpriteQueue.h */,
+				CAF4F28922E32F4000CCE549 /* BarrageSpriteQueue.m */,
+				CAF4F2A022E32F4100CCE549 /* BarrageSpriteUtility.h */,
+				CAF4F28222E32F4000CCE549 /* BarrageSpriteUtility.m */,
+				CAF4F29B22E32F4100CCE549 /* BarrageViewPool.h */,
+				CAF4F29622E32F4000CCE549 /* BarrageViewPool.m */,
+				CAF4F28322E32F4000CCE549 /* BarrageWalkImageSprite.h */,
+				CAF4F28522E32F4000CCE549 /* BarrageWalkImageSprite.m */,
+				CAF4F29922E32F4100CCE549 /* BarrageWalkSprite.h */,
+				CAF4F2A122E32F4100CCE549 /* BarrageWalkSprite.m */,
+				CAF4F28622E32F4000CCE549 /* BarrageWalkTextSprite.h */,
+				CAF4F29222E32F4000CCE549 /* BarrageWalkTextSprite.m */,
+				CAF4F29E22E32F4100CCE549 /* UIImageView+BarrageView.h */,
+				CAF4F28A22E32F4000CCE549 /* UIImageView+BarrageView.m */,
+				CAF4F29F22E32F4100CCE549 /* UILabel+BarrageView.h */,
+				CAF4F2A522E32F4100CCE549 /* UILabel+BarrageView.m */,
+				CAF4F29322E32F4000CCE549 /* UIView+BarrageView.h */,
+				CAF4F27C22E32F3F00CCE549 /* UIView+BarrageView.m */,
+				CAF4F27522E32DF700CCE549 /* BarrageHeader.h */,
+				CAF4F26D22E32DB000CCE549 /* Info.plist */,
+			);
+			path = BarrageRenderer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CAF4F26422E32DB000CCE549 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF4F2EB22E33FA000CCE549 /* NSSafeObject.h in Headers */,
+				CAF4F2C522E32F4100CCE549 /* BarrageViewPool.h in Headers */,
+				CAF4F2B022E32F4100CCE549 /* BarrageWalkTextSprite.h in Headers */,
+				CAF4F2CA22E32F4100CCE549 /* BarrageSpriteUtility.h in Headers */,
+				CAF4F2B622E32F4100CCE549 /* BarrageSpriteProtocol.h in Headers */,
+				CAF4F2CD22E32F4100CCE549 /* BarrageFloatTextSprite.h in Headers */,
+				CAF4F2BB22E32F4100CCE549 /* BarrageLoader.h in Headers */,
+				CAF4F2C322E32F4100CCE549 /* BarrageWalkSprite.h in Headers */,
+				CAF4F2BA22E32F4100CCE549 /* BarrageDescriptor.h in Headers */,
+				CAF4F2C622E32F4100CCE549 /* BarrageFloatImageSprite.h in Headers */,
+				CAF4F2B922E32F4100CCE549 /* BarrageSpriteQueue.h in Headers */,
+				CAF4F2CE22E32F4100CCE549 /* BarrageSpriteFactory.h in Headers */,
+				CAF4F2B522E32F4100CCE549 /* BarrageFloatSprite.h in Headers */,
+				CAF4F2A922E32F4100CCE549 /* BarrageSprite.h in Headers */,
+				CAF4F2BD22E32F4100CCE549 /* UIView+BarrageView.h in Headers */,
+				CAF4F2C822E32F4100CCE549 /* UIImageView+BarrageView.h in Headers */,
+				CAF4F2C422E32F4100CCE549 /* BarrageDispatcher.h in Headers */,
+				CAF4F2AD22E32F4100CCE549 /* BarrageWalkImageSprite.h in Headers */,
+				CAF4F2C922E32F4100CCE549 /* UILabel+BarrageView.h in Headers */,
+				CAF4F2B122E32F4100CCE549 /* BarrageCanvas.h in Headers */,
+				CAF4F2BF22E32F4100CCE549 /* BarrageRenderer.h in Headers */,
+				CAF4F2C722E32F4100CCE549 /* BarrageClock.h in Headers */,
+				CAF4F27922E32DF800CCE549 /* BarrageHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CAF4F26822E32DB000CCE549 /* BarrageRenderer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAF4F27122E32DB000CCE549 /* Build configuration list for PBXNativeTarget "BarrageRenderer" */;
+			buildPhases = (
+				CAF4F26422E32DB000CCE549 /* Headers */,
+				CAF4F26522E32DB000CCE549 /* Sources */,
+				CAF4F26622E32DB000CCE549 /* Frameworks */,
+				CAF4F26722E32DB000CCE549 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BarrageRenderer;
+			productName = BarrageRenderer;
+			productReference = CAF4F26922E32DB000CCE549 /* BarrageRenderer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAF4F26022E32DB000CCE549 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Xiaonan Zhang";
+				TargetAttributes = {
+					CAF4F26822E32DB000CCE549 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = CAF4F26322E32DB000CCE549 /* Build configuration list for PBXProject "BarrageRenderer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAF4F25F22E32DB000CCE549;
+			productRefGroup = CAF4F26A22E32DB000CCE549 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAF4F26822E32DB000CCE549 /* BarrageRenderer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAF4F26722E32DB000CCE549 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAF4F26522E32DB000CCE549 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAF4F2CF22E32F4100CCE549 /* UILabel+BarrageView.m in Sources */,
+				CAF4F2AF22E32F4100CCE549 /* BarrageWalkImageSprite.m in Sources */,
+				CAF4F2BC22E32F4100CCE549 /* BarrageWalkTextSprite.m in Sources */,
+				CAF4F2AC22E32F4100CCE549 /* BarrageSpriteUtility.m in Sources */,
+				CAF4F2A822E32F4100CCE549 /* BarrageFloatTextSprite.m in Sources */,
+				CAF4F2A722E32F4100CCE549 /* BarrageFloatImageSprite.m in Sources */,
+				CAF4F2C022E32F4100CCE549 /* BarrageViewPool.m in Sources */,
+				CAF4F2AB22E32F4100CCE549 /* BarrageFloatSprite.m in Sources */,
+				CAF4F2B722E32F4100CCE549 /* BarrageClock.m in Sources */,
+				CAF4F2B422E32F4100CCE549 /* UIImageView+BarrageView.m in Sources */,
+				CAF4F2AE22E32F4100CCE549 /* BarrageSprite.m in Sources */,
+				CAF4F2AA22E32F4100CCE549 /* BarrageCanvas.m in Sources */,
+				CAF4F2BE22E32F4100CCE549 /* BarrageDispatcher.m in Sources */,
+				CAF4F2A622E32F4100CCE549 /* UIView+BarrageView.m in Sources */,
+				CAF4F2CC22E32F4100CCE549 /* BarrageRenderer.m in Sources */,
+				CAF4F2B222E32F4100CCE549 /* BarrageDescriptor.m in Sources */,
+				CAF4F2B322E32F4100CCE549 /* BarrageSpriteQueue.m in Sources */,
+				CAF4F2C222E32F4100CCE549 /* BarrageSpriteFactory.m in Sources */,
+				CAF4F2CB22E32F4100CCE549 /* BarrageWalkSprite.m in Sources */,
+				CAF4F2EC22E33FA000CCE549 /* NSSafeObject.m in Sources */,
+				CAF4F2B822E32F4100CCE549 /* BarrageLoader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CAF4F26F22E32DB000CCE549 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 12.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CAF4F27022E32DB000CCE549 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 12.2;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CAF4F27222E32DB000CCE549 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z7C4XFND6T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BarrageRenderer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sauvignon1989.BarrageRenderer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		CAF4F27322E32DB000CCE549 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z7C4XFND6T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BarrageRenderer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sauvignon1989.BarrageRenderer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAF4F26322E32DB000CCE549 /* Build configuration list for PBXProject "BarrageRenderer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF4F26F22E32DB000CCE549 /* Debug */,
+				CAF4F27022E32DB000CCE549 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAF4F27122E32DB000CCE549 /* Build configuration list for PBXNativeTarget "BarrageRenderer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAF4F27222E32DB000CCE549 /* Debug */,
+				CAF4F27322E32DB000CCE549 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAF4F26022E32DB000CCE549 /* Project object */;
+}

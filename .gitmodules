@@ -4,3 +4,6 @@
 [submodule "SwiftyJSON"]
 	path = SwiftyJSON
 	url = https://github.com/SwiftyJSON/SwiftyJSON.git
+[submodule "SWXMLHash"]
+	path = SWXMLHash
+	url = https://github.com/drmohundro/SWXMLHash.git

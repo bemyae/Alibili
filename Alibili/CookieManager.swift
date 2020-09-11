@@ -10,7 +10,6 @@ import Foundation
 
 class CookieManager {
     
-    
     func isUserCookieSet(forKey: String) -> Bool {
         if (UserDefaults.standard.string(forKey: forKey) != nil) {
             return true
@@ -61,7 +60,6 @@ class CookieManager {
         let cookieStr = key + "=" + value + ";Secure"
         let cookieHeaderField = ["Set-Cookie": cookieStr]
         let cookies = HTTPCookie.cookies(withResponseHeaderFields: cookieHeaderField, for: url)
-        
         HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: url)
     }
     
@@ -75,7 +73,6 @@ class CookieManager {
                 }
             }
         }
-        
         return nil
     }
     
@@ -88,7 +85,6 @@ class CookieManager {
                 }
             }
         }
-        
         return false
     }
     
