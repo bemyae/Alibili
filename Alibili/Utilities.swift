@@ -39,4 +39,12 @@ struct Urls {
     static func getVideoInfo(avId: String) -> String{
         return "https://api.bilibili.com/x/web-interface/view?aid=\(avId)"
     }
+    
+    static func getRelatedVideoInfo(avId: String) -> String{
+        return "https://api.bilibili.com/x/web-interface/archive/related?aid=\(avId)"
+    }
+    
+    static func getRanking(day: String) -> String{
+        return "https://api.bilibili.com/x/web-interface/ranking?rid=0&day==\(day)&type=2&arc_type=1&jsonp=jsonp"
+    }
 }

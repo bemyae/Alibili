@@ -23,7 +23,7 @@
 		CA4C66EC250859290049B522 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C66EB250859290049B522 /* Utilities.swift */; };
 		CA4C67032509ADCC0049B522 /* HistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C67022509ADCC0049B522 /* HistoryCollectionViewController.swift */; };
 		CA4C6707250A14040049B522 /* VideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C6706250A14040049B522 /* VideoDetailViewController.swift */; };
-		CA4C670B250A2F560049B522 /* VideoRelationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C670A250A2F560049B522 /* VideoRelationCollectionViewController.swift */; };
+		CA4C670D250A4E550049B522 /* VideoRelationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C670C250A4E550049B522 /* VideoRelationCollectionViewController.swift */; };
 		CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3C22DAD84500615664 /* AudioToolbox.framework */; };
 		CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E3E22DAD84F00615664 /* AVFoundation.framework */; };
 		CA705E4122DAD85E00615664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA705E4022DAD85E00615664 /* CoreGraphics.framework */; };
@@ -43,6 +43,7 @@
 		CA8A12AB22DB9AAD00D344C9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12A922DB9AAD00D344C9 /* Podfile */; };
 		CA8A12AC22DB9AAD00D344C9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA8A12AA22DB9AAD00D344C9 /* README.md */; };
 		CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */; };
+		CABF08DA250A7BBF00F6F153 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF08D9250A7BBF00F6F153 /* TabBarViewController.swift */; };
 		CAF4F2E522E330CA00CCE549 /* BarrageRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; };
 		CAF4F2E622E330CA00CCE549 /* BarrageRenderer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF4F2DC22E330BC00CCE549 /* BarrageRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F2ED22E349D000CCE549 /* DanmuData.swift */; };
@@ -265,7 +266,7 @@
 		CA4C66EB250859290049B522 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CA4C67022509ADCC0049B522 /* HistoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		CA4C6706250A14040049B522 /* VideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewController.swift; sourceTree = "<group>"; };
-		CA4C670A250A2F560049B522 /* VideoRelationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRelationCollectionViewController.swift; sourceTree = "<group>"; };
+		CA4C670C250A4E550049B522 /* VideoRelationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRelationCollectionViewController.swift; sourceTree = "<group>"; };
 		CA705E3C22DAD84500615664 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CA705E3E22DAD84F00615664 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CA705E4022DAD85E00615664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -287,6 +288,7 @@
 		CA8A12A922DB9AAD00D344C9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CA8A12AA22DB9AAD00D344C9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		CABF08D9250A7BBF00F6F153 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BarrageRenderer.xcodeproj; path = BarrageRenderer/BarrageRenderer.xcodeproj; sourceTree = "<group>"; };
 		CAF4F2ED22E349D000CCE549 /* DanmuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmuData.swift; sourceTree = "<group>"; };
 		CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SWXMLHash.xcodeproj; path = SWXMLHash/SWXMLHash.xcodeproj; sourceTree = "<group>"; };
@@ -368,14 +370,15 @@
 				CA73155C22D33E100046A75B /* CollectionViewCell.swift */,
 				CA73156022D3420D0046A75B /* SubscriptionsCollectionViewController.swift */,
 				CA4C67022509ADCC0049B522 /* HistoryCollectionViewController.swift */,
+				CA4C670C250A4E550049B522 /* VideoRelationCollectionViewController.swift */,
 				CA705E5622DADA1200615664 /* VideoPlayViewController.swift */,
 				CA4C6706250A14040049B522 /* VideoDetailViewController.swift */,
-				CA4C670A250A2F560049B522 /* VideoRelationCollectionViewController.swift */,
 				CA8A12A722DB89AC00D344C9 /* VLCAli.m */,
 				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
 				CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */,
 				CAF4F2ED22E349D000CCE549 /* DanmuData.swift */,
 				CA4C66EB250859290049B522 /* Utilities.swift */,
+				CABF08D9250A7BBF00F6F153 /* TabBarViewController.swift */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -733,15 +736,16 @@
 				CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */,
 				CA00AC6B22D1DEAF005ECFFE /* LoginViewController.swift in Sources */,
 				CA4C66EC250859290049B522 /* Utilities.swift in Sources */,
+				CABF08DA250A7BBF00F6F153 /* TabBarViewController.swift in Sources */,
 				CA4C6707250A14040049B522 /* VideoDetailViewController.swift in Sources */,
 				CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */,
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
-				CA4C670B250A2F560049B522 /* VideoRelationCollectionViewController.swift in Sources */,
 				CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */,
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
 				CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */,
 				CA8A12A822DB89AC00D344C9 /* VLCAli.m in Sources */,
 				CA8A12B222DC00FF00D344C9 /* MenuTableViewController.swift in Sources */,
+				CA4C670D250A4E550049B522 /* VideoRelationCollectionViewController.swift in Sources */,
 				CA4C67032509ADCC0049B522 /* HistoryCollectionViewController.swift in Sources */,
 				CA05132422D933BA008B4B48 /* CellDateComposer.swift in Sources */,
 				CA73155D22D33E100046A75B /* CollectionViewCell.swift in Sources */,
