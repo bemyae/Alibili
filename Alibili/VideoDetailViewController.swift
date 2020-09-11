@@ -14,8 +14,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:CellDataItem!
-    private var aId: String = ""
-    private var cId: String = ""
+    var videoInfo:JSON = JSON({})
     var parts:[Int] = []
 
     @IBOutlet weak var VideoTitle: UITextView!
@@ -31,8 +30,12 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         VideoTitle.text = videoJson.title
         
-//        parts = Array(1...videoJson.videos)
-//        VideoDescription.text = videoJson.desc
+        if videoJson.videoDetail.videos == -1 {
+            loadData(aid: videoJson.aid)
+        } else {
+            parts = Array(1...videoJson.videoDetail.videos)
+            VideoDescription.text = videoJson.videoDetail.desc
+        }
         
         guard let image = self.processImage(named: videoJson.pic) else { return }
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -94,19 +97,18 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let destination = segue.destination as?
             VideoPlayerViewController, let index =
             PartTableView.indexPathsForSelectedRows?.first {
+            destination.videoInfo = self.videoInfo
             destination.pageNum = index.row
-            destination.aid = self.aId
-            destination.cid = self.cId
+            destination.videoJson = self.videoJson
         }
         
         if let destination = segue.destination as?
             VideoRelationCollectionViewController {
             destination.aid = videoJson.aid
-            
         }
     }
     
-    func loadData(aid:String,pageNum:Int) -> Void {
+    func loadData(aid:String) -> Void {
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             let headers: HTTPHeaders = [
                 "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
@@ -115,12 +117,11 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
             AF.request(Urls.getVideoInfo(avId: aid),headers:headers).responseJSON { response in
                 switch(response.result) {
                     case .success(let data):
-                        let json = JSON(data)
-                        self.cId = json["data"]["cid"].stringValue
-                        if pageNum != 0 {
-//                            cId = json["data"]["pages"][pageNum]["cid"].stringValue
-                        }
-                        
+                        self.videoInfo = JSON(data)["data"]
+                        self.videoJson.videoDetail = VideoDetail(jsonData: self.videoInfo)
+                        self.parts = Array(1...self.videoJson.videoDetail.videos)
+                        self.VideoDescription.text = self.videoJson.videoDetail.desc
+                        self.PartTableView.reloadData()
                     case .failure(let error):
                         print(error)
                         break

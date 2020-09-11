@@ -46,21 +46,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-//        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-//            let headers: HTTPHeaders = [
-//                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
-//                "Accept": "application/json"
-//            ]
-//            AF.request(Urls.getUserInfo, headers: headers).responseJSON { response in
-////                    print("Result: \(response.result)")   
-//                }
-//
-//        }
-//        else{
-//            let destinationController = storyboard!.instantiateViewController(withIdentifier: "login")
-//            present(destinationController, animated: true, completion: nil)
-//        }
         
     }
     

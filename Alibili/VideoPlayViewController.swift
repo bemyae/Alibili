@@ -27,7 +27,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var observation: NSKeyValueObservation?
     
     private let cookieManager:CookieManager = CookieManager()
-    var videoJson:CellDataItem!
+    
     var pageNum:Int = 0
     let player:VLCMediaPlayer = VLCMediaPlayer()
     var videoLength:CUnsignedLongLong = 0
@@ -37,15 +37,15 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var barrageRenderer:BarrageRenderer!
     var danmuList:[CUnsignedLongLong : [DanmuData]] = [:]
     
-    var aid: String = ""
-    var cid: String = ""
+    var videoJson:CellDataItem!
+    var videoInfo: JSON = JSON({})
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playerView.addSubview(activityIndicatiorView)
         activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        loadMediaData(avId: aid, cid: cid)
+        loadData(avId: videoJson.aid, pageNum: pageNum)
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -93,7 +93,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     }
     
     func loadDanmuData(cid:String) -> Void {
-        print(Urls.getDanmu(cid: cid))
         AF.request(Urls.getDanmu(cid: cid)).responseString(encoding: String.Encoding.utf8) { response in
             var statusCode = response.response?.statusCode
             switch response.result {
@@ -186,5 +185,31 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         default:
             print("default")
         }
+    }
+    
+    func loadData(avId:String, pageNum:Int) -> Void {
+        if self.videoInfo.isEmpty {
+          AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
+              switch(response.result) {
+                  case .success(let data):
+                      self.videoInfo = JSON(data)["data"]
+                      var cid = self.videoInfo["cid"].stringValue
+                      if pageNum != 0 {
+                          cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
+                      }
+                      self.loadMediaData(avId: avId, cid: cid)
+                  case .failure(let error):
+                      print(error)
+                      break
+                  }
+          }
+        } else {
+            var cid = self.videoInfo["cid"].stringValue
+            if pageNum != 0 {
+                cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
+            }
+            self.loadMediaData(avId: avId, cid: cid)
+        }
+        
     }
 }

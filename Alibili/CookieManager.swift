@@ -68,7 +68,6 @@ class CookieManager {
         if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
             for cookie in cookies {
                 if (cookie.name == name) {
-                    print(cookie)
                     return cookie.value
                 }
             }

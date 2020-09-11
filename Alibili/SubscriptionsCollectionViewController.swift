@@ -102,9 +102,6 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
 //        cell.backgroundColor = randomColor()
         let item = dataItemGourp[indexPath.item]["archive"]
         //         Configure the cell.
-        if (indexPath.item == 0) {
-            print(CellDataItem(jsonData: item))
-        }
         cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
         
         if dataItemGourp.count - 1 == indexPath.item {
@@ -160,67 +157,3 @@ class SubscriptionsCollectionViewController: UICollectionViewController {
     */
 
 }
-
-//        print(Urls.getVideo(avId: String, pageNum: String))
-//        AF.request(Urls.getVideo(avId: String, pageNum: String), headers: headers).responseString { response in
-//
-//            if let playInfoRange = response.description.range(of: #"__playinfo__=(.*?)<\/script>"#,
-//                                            options: .regularExpression) {
-//               let playInfoString = response.description[playInfoRange].replacingOccurrences(
-//                    of: "__playinfo__=(.*?)</script>$",
-//                    with: "$1",
-//                    options: .regularExpression,
-//                    range: playInfoRange
-//                ).replacingOccurrences(of: "\\\"", with: "\"")
-//                if let dataFromString = playInfoString.data(using: .utf8, allowLossyConversion: false) {
-//                    do {
-//                        let json = try JSON(data: dataFromString)
-//                        print(json)
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-//
-//
-//            } else {
-//                print("1 -----")
-//            }
-//            print("----------------------------")
-//            if let initialStateRange = response.description.range(of: #"__INITIAL_STATE__=(.*?)\};"#,
-//                                                      options: .regularExpression) {
-//                var initialStateString = response.description[initialStateRange].replacingOccurrences(
-//                    of: #"__INITIAL_STATE__=(.*?)\};$"#,
-//                    with: #"$1"#,
-//                    options: .regularExpression,
-//                    range: initialStateRange
-//                    ).replacingOccurrences(of: "\\u002F", with: "/")
-//                    .replacingOccurrences(of: #"\/"#, with: "/")
-//                    .replacingOccurrences(of: "\\\"", with: "\"")
-//                    .replacingOccurrences(of: #",\"embedPlayer\":\"EmbedPlayer(.*?)\)\""#, with: "", options: [.regularExpression])
-//
-//                initialStateString.append("}")
-//
-//
-//                if let dataFromString = initialStateString.data(using: .utf8, allowLossyConversion: false) {
-//                    do {
-//                        let json = try JSON(data: dataFromString)
-//                        print(json)
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-//
-//            } else {
-//                print("2 -----")
-//            }
-//            print(response)
-//            switch(response.result) {
-//            case .success(let data):
-////                let json = JSON(data)
-//                print(data)
-//            case .failure(let error):
-//                print(error)
-//                break
-//            }
-//
-//        }

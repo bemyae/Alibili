@@ -98,10 +98,6 @@ class RankingCollectionViewController: UICollectionViewController {
 //        cell.backgroundColor = randomColor()
         let item = dataItemGourp[indexPath.item]
         //         Configure the cell.
-        if (indexPath.item == 0) {
-            print(CellDataItem(jsonData: item))
-        }
-        
         cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
     }
     
