@@ -10,12 +10,8 @@ import Foundation
 import SwiftyJSON
 
 struct CellDataItem: Codable, Equatable {
-    //    "dimension" : {
-    //            "height" : 818,
-    //            "width" : 1920,
-    //            "rotate" : 0
-    //        },
     var cid:String
+    var bvid:String
     var pic: String
     var owner:Owner
     var videos:Int
@@ -34,6 +30,7 @@ struct CellDataItem: Codable, Equatable {
     
     init(jsonData:JSON) {
         self.cid = jsonData["cid"].stringValue
+        self.bvid = jsonData["bvid"].stringValue
         self.pic = jsonData["pic"].stringValue
         self.owner = Owner(jsonData: jsonData["role"])
         self.videos = jsonData["videos"].int!
@@ -76,30 +73,9 @@ struct Owner : Codable{
     }
 }
 
-//struct CellDataItem: Codable, Equatable {
-//
-//    let id: String
-//    let fold: String
-//    let bangumi: String
-//    var archive: Archive
-//    var official_verify : OfficialVerify
-//    let type:Int
-//    let pubdate :String
-//
-//    init(jsonData:JSON) {
-//        self.id = jsonData["id"].stringValue
-//        self.fold = jsonData["fold"].stringValue
-//        self.bangumi = jsonData["bangumi"].stringValue
-//        self.archive = Archive(jsonData: jsonData["archive"])
-//        self.official_verify = OfficialVerify(jsonData: jsonData["official_verify"])
-//        self.type = jsonData["type"].int!
-//        self.pubdate = jsonData["pubdate"].stringValue
-//    }
-//}
-
 // MARK: Equatable
 
 func ==(lhs: CellDataItem, rhs: CellDataItem)-> Bool {
     // Two `DataItem`s are considered equal if their identifiers and titles match.
-    return lhs.aid == rhs.aid
+    return lhs.aid == rhs.aid && lhs.bvid == rhs.bvid
 }
