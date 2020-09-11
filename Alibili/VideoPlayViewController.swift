@@ -178,6 +178,11 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         switch state {
         case VLCMediaPlayerState.stopped:
             print("Player has stopped")
+            if let nav = self.navigationController {
+                nav.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         case VLCMediaPlayerState.opening:
             print("Stream is opening")
         case VLCMediaPlayerState.buffering:
