@@ -15,7 +15,6 @@ struct CellDataItem: Codable, Equatable {
     var pic: String
     var title :String
     var aid :String
-    var bvid :String
     var videoDetail: VideoDetail
     
     init(jsonData:JSON) {
