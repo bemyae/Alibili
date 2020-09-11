@@ -93,71 +93,83 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     }
     
     func loadDanmuData(cid:String) -> Void {
-        AF.request(Urls.getDanmu(cid: cid)).responseString(encoding: String.Encoding.utf8) { response in
-            var statusCode = response.response?.statusCode
-            switch response.result {
-                case .success:
-                    print("status code is: \(String(describing: statusCode))")
-                    if let string = response.value {
-                        let xml = SWXMLHash.parse(string)
-                        for elem in xml["i"]["d"].all {
-                            let danmu = DanmuData(elem: elem)
-                            if var dictValue = self.danmuList[danmu.timing] {
-                                dictValue.append(danmu)
-                                self.danmuList[danmu.timing] = dictValue
-                            } else {
-                                self.danmuList[danmu.timing] = [danmu]
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request(Urls.getDanmu(cid: cid), headers: headers).responseString(encoding: String.Encoding.utf8) { response in
+                var statusCode = response.response?.statusCode
+                switch response.result {
+                    case .success:
+                        print("status code is: \(String(describing: statusCode))")
+                        if let string = response.value {
+                            let xml = SWXMLHash.parse(string)
+                            for elem in xml["i"]["d"].all {
+                                let danmu = DanmuData(elem: elem)
+                                if var dictValue = self.danmuList[danmu.timing] {
+                                    dictValue.append(danmu)
+                                    self.danmuList[danmu.timing] = dictValue
+                                } else {
+                                    self.danmuList[danmu.timing] = [danmu]
+                                }
+                                
                             }
-                            
+                            self.configDanMu()
                         }
-                        self.configDanMu()
-                    }
-                case .failure(let error):
-                    statusCode = error._code // statusCode private
-                    print("status code is: \(String(describing: statusCode))")
-                    print(error)
+                    case .failure(let error):
+                        statusCode = error._code // statusCode private
+                        print("status code is: \(String(describing: statusCode))")
+                        print(error)
+                }
             }
         }
     }
     
     func loadMediaData(avId:String,cid:String) -> Void {
-        AF.request(Urls.getVideoData(avId: avId, cid: cid))
-            .responseJSON  { response in
-                switch(response.result) {
-                case .success(let data):
-                    let json = JSON(data)
-                    var max = 0
-                    for data in json["data"]["dash"]["video"].arrayValue {
-                        if data["id"].intValue > max && data["id"].intValue <= 80 {
-                            max = data["id"].intValue
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request(Urls.getVideoData(avId: avId, cid: cid), headers: headers)
+                .responseJSON  { response in
+                    switch(response.result) {
+                    case .success(let data):
+                        let json = JSON(data)
+                        var max = 0
+                        for data in json["data"]["dash"]["video"].arrayValue {
+                            if data["id"].intValue > max && data["id"].intValue <= 80 {
+                                max = data["id"].intValue
+                            }
                         }
+                        let videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
+                        let video = videoArray[0]["base_url"].stringValue
+                        let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
+                        self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
+                        let videoMedia = VLCMedia(url: URL(string: video)!)
+                        videoMedia.addOptions([
+                            "http-user-agent": "Bilibili Freedoooooom/MarkII",
+                            "http-referrer": Urls.getHttpReferrer(avId: avId)
+                        ])
+                        self.player.media = videoMedia
+                        self.player.delegate = self
+                        self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
+                        self.player.drawable = self.mediaView
+                        
+                        self.loadDanmuData(cid:cid)
+    //                    self.observation = self.player.observe(\.self.isPlaying, options: [.old, .new]){ object, change in
+    //                        print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
+    //                    }
+                        self.player.play()
+                        
+                        return
+                    case .failure(let error):
+                        print(error)
+                        break
                     }
-                    let videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
-                    let video = videoArray[0]["base_url"].stringValue
-                    let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
-                    self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
-                    let videoMedia = VLCMedia(url: URL(string: video)!)
-                    videoMedia.addOptions([
-                        "http-user-agent": "Bilibili Freedoooooom/MarkII",
-                        "http-referrer": Urls.getHttpReferrer(avId: avId)
-                    ])
-                    self.player.media = videoMedia
-                    self.player.delegate = self
-                    self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
-                    self.player.drawable = self.mediaView
-                    
-                    self.loadDanmuData(cid:cid)
-//                    self.observation = self.player.observe(\.self.isPlaying, options: [.old, .new]){ object, change in
-//                        print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
-//                    }
-                    self.player.play()
-                    
-                    return
-                case .failure(let error):
-                    print(error)
-                    break
                 }
-            }
+        }
     }
         
     func mediaPlayerStateChanged(_ aNotification: Notification) {

@@ -32,7 +32,6 @@ class ProfileViewController: UIViewController {
                     let json = JSON(data)
                     DispatchQueue.main.async{
                        self.profileJson = json
-
                     }
                 case .failure(let error):
                     print(error)
@@ -51,12 +50,7 @@ class ProfileViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-//        if (segue.identifier == segueIdentifier) {
-//            let menuViewController = segue.destination as! MenuTableViewController
-//            
-//            // Now you have a pointer to the child view controller.
-//            // You can save the reference to it, or pass data to it.
-//        }
+        
     }
     
 }

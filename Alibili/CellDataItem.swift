@@ -11,6 +11,7 @@ import SwiftyJSON
 
 struct CellDataItem: Codable, Equatable {
     var cid:String
+    var bvid:String
     var pic: String
     var title :String
     var aid :String
@@ -85,5 +86,5 @@ struct Owner : Codable{
 
 func ==(lhs: CellDataItem, rhs: CellDataItem)-> Bool {
     // Two `DataItem`s are considered equal if their identifiers and titles match.
-    return lhs.aid == rhs.aid
+    return lhs.aid == rhs.aid && lhs.bvid == rhs.bvid
 }
