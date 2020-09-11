@@ -488,7 +488,7 @@
                             <outlet property="delegate" destination="90c-e1-eCC" id="udT-vE-BQb"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="History" id="MKB-yE-i6J" userLabel="Ranking"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" id="MKB-yE-i6J" userLabel="Ranking"/>
                     <navigationItem key="navigationItem" id="vs3-sQ-rEX"/>
                     <connections>
                         <outlet property="tabBarObservedScrollView" destination="SVv-RH-bry" id="YAs-rR-O5Z"/>

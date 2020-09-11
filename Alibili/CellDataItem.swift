@@ -10,11 +10,6 @@ import Foundation
 import SwiftyJSON
 
 struct CellDataItem: Codable, Equatable {
-    //    "dimension" : {
-    //            "height" : 818,
-    //            "width" : 1920,
-    //            "rotate" : 0
-    //        },
     var cid:String
     var pic: String
     var owner:Owner
@@ -75,27 +70,6 @@ struct Owner : Codable{
         self.face = jsonData["face"].stringValue
     }
 }
-
-//struct CellDataItem: Codable, Equatable {
-//
-//    let id: String
-//    let fold: String
-//    let bangumi: String
-//    var archive: Archive
-//    var official_verify : OfficialVerify
-//    let type:Int
-//    let pubdate :String
-//
-//    init(jsonData:JSON) {
-//        self.id = jsonData["id"].stringValue
-//        self.fold = jsonData["fold"].stringValue
-//        self.bangumi = jsonData["bangumi"].stringValue
-//        self.archive = Archive(jsonData: jsonData["archive"])
-//        self.official_verify = OfficialVerify(jsonData: jsonData["official_verify"])
-//        self.type = jsonData["type"].int!
-//        self.pubdate = jsonData["pubdate"].stringValue
-//    }
-//}
 
 // MARK: Equatable
 
