@@ -37,12 +37,15 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var barrageRenderer:BarrageRenderer!
     var danmuList:[CUnsignedLongLong : [DanmuData]] = [:]
     
+    var aid: String = ""
+    var cid: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playerView.addSubview(activityIndicatiorView)
         activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        loadData(avId: videoJson.aid, pageNum: pageNum)
+        loadMediaData(avId: aid, cid: cid)
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -182,28 +185,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
             print("Elementary Stream added")
         default:
             print("default")
-        }
-    }
-    
-    
-    func loadData(avId:String,pageNum:Int) -> Void {
-        AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
-            switch(response.result) {
-                case .success(let data):
-                    let json = JSON(data)
-                    var cid = json["data"]["cid"].stringValue
-                    print(avId)
-                    print(pageNum)
-                    print(cid)
-                    if pageNum != 0 {
-                        cid = json["data"]["pages"][pageNum]["cid"].stringValue
-                    }
-                    self.loadMediaData(avId: avId, cid: cid)
-                
-                case .failure(let error):
-                    print(error)
-                    break
-                }
         }
     }
 }
