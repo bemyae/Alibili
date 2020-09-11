@@ -112,14 +112,9 @@ class VideoRelationCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
             guard let cell = cell as? CollectionViewCell else { fatalError("Expected to display a `CollectionViewCell`.") }
-    //        cell.backgroundColor = randomColor()
             let item = dataItemGourp[indexPath.item]
-            //         Configure the cell.
+            // Configure the cell.
             cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
-            
-//            if dataItemGourp.count - 1 == indexPath.item {
-//                loadMoreData(currentPage: recentCurrentPage)
-//            }
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
