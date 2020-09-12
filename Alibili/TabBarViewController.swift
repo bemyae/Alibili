@@ -34,16 +34,20 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let destination = viewController as?
             SubscriptionsCollectionViewController {
-            destination.dataItemGourp=[]
-            destination.recentCurrentPage = 1
-            destination.loadMoreData(currentPage: 1)
+            if destination.recentCurrentPage != 1{
+                destination.dataItemGourp=[]
+                destination.recentCurrentPage = 1
+                destination.loadMoreData(currentPage: 1)
+            }
         }
         
         if let destination = viewController as?
             HistoryCollectionViewController {
-            destination.dataItemGourp=[]
-            destination.recentCurrentPage = 1
-            destination.loadMoreData(currentPage: 1)
+            if destination.recentCurrentPage != 1{
+                destination.dataItemGourp=[]
+                destination.recentCurrentPage = 1
+                destination.loadMoreData(currentPage: 1)
+            }
         }
     }
     
