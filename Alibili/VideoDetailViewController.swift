@@ -38,8 +38,12 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
             VideoDescription.text = videoJson.videoDetail.desc
             Owner.setTitle(videoJson.videoDetail.owner.name, for: .normal)
         }
+        var pic = videoJson.pic
+        if !pic.contains("http:") {
+            pic = "http:" + pic
+        }
         
-        guard let image = self.processImage(named: videoJson.pic) else { return }
+        guard let image = self.processImage(named: pic) else { return }
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = image
         backgroundImage.alpha = 0.5

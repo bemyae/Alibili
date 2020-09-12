@@ -10,6 +10,8 @@ import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
+    var oldselectedIndex: Int = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -32,27 +34,27 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let destination = viewController as?
-            SubscriptionsCollectionViewController {
-            if destination.recentCurrentPage != 1{
-                destination.dataItemGourp=[]
-                destination.recentCurrentPage = 1
-                destination.loadMoreData(currentPage: 1)
+    
+    if(oldselectedIndex != tabBarController.selectedIndex) {
+            if let destination = viewController as?
+                SubscriptionsCollectionViewController {
+                if destination.recentCurrentPage != 1{
+                    destination.dataItemGourp=[]
+                    destination.recentCurrentPage = 1
+                    destination.loadMoreData(currentPage: 1)
+                }
             }
-        }
-        
-        if let destination = viewController as?
-            HistoryCollectionViewController {
-            if destination.recentCurrentPage != 1{
-                destination.dataItemGourp=[]
-                destination.recentCurrentPage = 1
-                destination.loadMoreData(currentPage: 1)
+
+            if let destination = viewController as?
+                HistoryCollectionViewController {
+                if destination.recentCurrentPage != 1 {
+                    destination.dataItemGourp=[]
+                    destination.recentCurrentPage = 1
+                    destination.loadMoreData(currentPage: 1)
+                }
             }
+            oldselectedIndex = tabBarController.selectedIndex
         }
     }
-    
-    
-    
-    
 
 }
