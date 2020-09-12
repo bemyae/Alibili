@@ -18,7 +18,7 @@ struct Urls {
         return "https://api.bilibili.com/x/web-feed/feed?ps=\(recentPerPage)&pn=\(currentPage)"
     }
     static func getHistory(recentPerPage: Int, currentPage: Int) -> String{
-        return "https://api.bilibili.com/x/v2/history?pn=\(currentPage)&\(recentPerPage)&jsonp=jsonp"
+        return "https://api.bilibili.com/x/v2/history?pn=\(currentPage)&ps=\(recentPerPage)&jsonp=jsonp"
     }
     static func getVideo(avId: String, pageNum: String) -> String{
         return "https://www.bilibili.com/video/av\(avId)/?p=\(pageNum)"
@@ -50,5 +50,9 @@ struct Urls {
     
     static func postClickH5() -> String{
         return "https://api.bilibili.com/x/click-interface/click/web/h5"
+    }
+    
+    static func getOwnerVideos(mid: String, recentPerPage: Int, currentPage: Int) -> String{
+        return "https://api.bilibili.com/x/space/arc/search?mid=\(mid)&ps=\(recentPerPage)&tid=0&pn=\(currentPage)&keyword=&order=pubdate&jsonp=jsonp"
     }
 }

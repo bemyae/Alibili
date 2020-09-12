@@ -110,19 +110,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="7" sectionFooterHeight="7" translatesAutoresizingMaskIntoConstraints="NO" id="M7a-nx-2pg">
-                                <rect key="frame" x="1209" y="68" width="638" height="465"/>
+                                <rect key="frame" x="1209" y="68" width="605" height="465"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PartTableCell" textLabel="BhY-Ls-BsR" rowHeight="83" style="IBUITableViewCellStyleDefault" id="iX7-ed-IMi">
-                                        <rect key="frame" x="0.0" y="80" width="621" height="83"/>
+                                        <rect key="frame" x="0.0" y="80" width="605" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iX7-ed-IMi" id="hOZ-w5-Ne9">
-                                            <rect key="frame" x="0.0" y="0.0" width="621" height="83"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="605" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BhY-Ls-BsR">
-                                                    <rect key="frame" x="20" y="0.0" width="581" height="83"/>
+                                                    <rect key="frame" x="20" y="0.0" width="565" height="83"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                     <nil key="textColor"/>
@@ -156,6 +156,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Y5S-bi-8Q7" kind="presentation" modalPresentationStyle="blurOverFullScreen" id="JNO-CA-QB7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -448,7 +451,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puD-ej-yTc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5926" y="-6103"/>
+            <point key="canvasLocation" x="6525" y="-7770"/>
         </scene>
         <!--Ranking-->
         <scene sceneID="ijE-yS-w2Z">
@@ -506,10 +509,10 @@
             </objects>
             <point key="canvasLocation" x="-532" y="-6804"/>
         </scene>
-        <!--Uploader-->
+        <!--Owner-->
         <scene sceneID="I5F-ek-PCS">
             <objects>
-                <collectionViewController id="Y5S-bi-8Q7" userLabel="Uploader" customClass="RankingCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Y5S-bi-8Q7" userLabel="Owner" customClass="OwnerCollectionViewController" customModule="Alibili" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9vQ-Bu-QZa">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,6 +546,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="WOl-O6-mnP" id="XhR-EW-Lau"/>
                                     <outlet property="label" destination="Haa-th-hTg" id="bw1-So-lKp"/>
+                                    <segue destination="ohW-Jd-QgR" kind="presentation" id="Fzq-JT-ydk"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -551,7 +555,7 @@
                             <outlet property="delegate" destination="Y5S-bi-8Q7" id="lSw-V7-wt6"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Ranking" id="1V5-Kj-FFP" userLabel="Uploader"/>
+                    <tabBarItem key="tabBarItem" title="Ranking" id="1V5-Kj-FFP" userLabel="Owner"/>
                     <navigationItem key="navigationItem" id="4KU-s3-2dw"/>
                     <connections>
                         <outlet property="tabBarObservedScrollView" destination="9vQ-Bu-QZa" id="YRg-Mp-C6S"/>
@@ -559,10 +563,10 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFg-bV-je8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6259" y="-3115"/>
+            <point key="canvasLocation" x="8206" y="-6433"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tex-if-T1S"/>
+        <segue reference="Fzq-JT-ydk"/>
     </inferredMetricsTieBreakers>
 </document>

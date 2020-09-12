@@ -22,7 +22,7 @@ class HistoryCollectionViewController: UICollectionViewController {
     
     private var targetSize = CGSize.zero
     
-    private let recentTotal = 100
+    private let recentTotal = 150
     private let recentPerPage = 10
     var recentCurrentPage = 1
     var dataItemGourp:[JSON] = []

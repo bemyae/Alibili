@@ -106,7 +106,12 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         if let destination = segue.destination as?
             VideoRelationCollectionViewController {
-            destination.aid = videoJson.aid
+            destination.aid = self.videoJson.aid
+        }
+        
+        if let destination = segue.destination as?
+            OwnerCollectionViewController {
+            destination.owner = self.videoJson.videoDetail.owner
         }
     }
     
