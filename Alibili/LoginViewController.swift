@@ -91,7 +91,6 @@ class LoginViewController: UIViewController {
                                         }
                                     }else{
                                         if let data = dictionary["data"] as? Int {
-                                            print(data)
                                             if data == -2{
                                                  self.startValidation()
                                             }

@@ -27,7 +27,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var observation: NSKeyValueObservation?
     
     private let cookieManager:CookieManager = CookieManager()
-    var videoJson:CellDataItem!
+    
     var pageNum:Int = 0
     let player:VLCMediaPlayer = VLCMediaPlayer()
     var videoLength:CUnsignedLongLong = 0
@@ -36,6 +36,9 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var timer:Timer!
     var barrageRenderer:BarrageRenderer!
     var danmuList:[CUnsignedLongLong : [DanmuData]] = [:]
+    
+    var videoJson:CellDataItem!
+    var videoInfo: JSON = JSON({})
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +93,6 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     }
     
     func loadDanmuData(cid:String) -> Void {
-        print(Urls.getDanmu(cid: cid))
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             let headers: HTTPHeaders = [
                 "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
@@ -202,86 +204,29 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         }
     }
     
-    
-    func loadData(avId:String,pageNum:Int) -> Void {
-        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            let headers: HTTPHeaders = [
-                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
-                "Accept": "application/json"
-            ]
-            AF.request(Urls.getVideoInfo(avId: avId),headers:headers).responseJSON { response in
-                switch(response.result) {
-                    case .success(let data):
-                        let json = JSON(data)
-                        var cid = json["data"]["cid"].stringValue
-                        if pageNum != 0 {
-                            cid = json["data"]["pages"][pageNum]["cid"].stringValue
-                        }
-                        print(avId)
-                        print(pageNum)
-                        print(cid)
-                        self.loadMediaData(avId: avId, cid: cid)
-                    case .failure(let error):
-                        print(error)
-                        break
-                    }
+    func loadData(avId:String, pageNum:Int) -> Void {
+        if self.videoInfo.isEmpty {
+          AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
+              switch(response.result) {
+                  case .success(let data):
+                      self.videoInfo = JSON(data)["data"]
+                      var cid = self.videoInfo["cid"].stringValue
+                      if pageNum != 0 {
+                          cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
+                      }
+                      self.loadMediaData(avId: avId, cid: cid)
+                  case .failure(let error):
+                      print(error)
+                      break
+                  }
+          }
+        } else {
+            var cid = self.videoInfo["cid"].stringValue
+            if pageNum != 0 {
+                cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
             }
+            self.loadMediaData(avId: avId, cid: cid)
         }
-    }
-    
-    func startWarching(json: JSON) -> Void {
-        let date = Date()
-        let parameters = [
-            "aid":json["data"]["aid"],
-            "cid": json["data"]["cid"],
-            "bvid": json["data"]["bvid"],
-            "part": "1",
-            "mid": json["data"]["owner"]["mid"],
-            "lv": "5",
-            "ftime": "1586299767",
-            "stime": String((date.timeIntervalSince1970).rounded()),
-            "jsonp": "jsonp",
-            "type": "3",
-            "sub_type": "0"
-            ] as [String : Any]
         
-        AF.request(Urls.postClickH5(), method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
-            switch response.result {
-            case .success:
-                if let string = response.value {
-                    print(string)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func heartbeat(json: JSON) -> Void {
-        let date = Date()
-        let parameters = [
-            "aid":json["data"]["aid"],
-            "cid": json["data"]["cid"],
-            "bvid": json["data"]["bvid"],
-            "part": "1",
-            "mid": json["data"]["owner"]["mid"],
-            "lv": "5",
-            "ftime": "1586299767",
-            "stime": String((date.timeIntervalSince1970).rounded()),
-            "jsonp": "jsonp",
-            "type": "3",
-            "sub_type": "0"
-            ] as [String : Any]
-        
-        AF.request(Urls.postClickH5(), method: .post, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
-            switch response.result {
-            case .success:
-                if let string = response.value {
-                    print(string)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }

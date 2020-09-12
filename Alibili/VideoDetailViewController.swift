@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:CellDataItem!
+    var videoInfo:JSON = JSON({})
+    var parts:[Int] = []
 
     @IBOutlet weak var VideoTitle: UITextView!
     @IBOutlet weak var VideoDescription: UITextView!
     @IBOutlet weak var PartTableView: UITableView!
-    
-    var parts:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,18 +29,13 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Do any additional setup after loading the view.
         VideoTitle.text = videoJson.title
-        parts = Array(1...videoJson.videos)
         
-        VideoDescription.text = videoJson.desc
-//        print(VideoDescription.text.count)
-//        let range = NSMakeRange(VideoDescription.text.count - 1, 1)
-//        VideoDescription.scrollRangeToVisible(range)
-        
-//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = view.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(blurEffectView)
+        if videoJson.videoDetail.videos == -1 {
+            loadData(aid: videoJson.aid)
+        } else {
+            parts = Array(1...videoJson.videoDetail.videos)
+            VideoDescription.text = videoJson.videoDetail.desc
+        }
         
         guard let image = self.processImage(named: videoJson.pic) else { return }
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -100,6 +97,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let destination = segue.destination as?
             VideoPlayerViewController, let index =
             PartTableView.indexPathsForSelectedRows?.first {
+            destination.videoInfo = self.videoInfo
             destination.pageNum = index.row
             destination.videoJson = self.videoJson
         }
@@ -107,7 +105,28 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let destination = segue.destination as?
             VideoRelationCollectionViewController {
             destination.aid = videoJson.aid
-            
+        }
+    }
+    
+    func loadData(aid:String) -> Void {
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request(Urls.getVideoInfo(avId: aid),headers:headers).responseJSON { response in
+                switch(response.result) {
+                    case .success(let data):
+                        self.videoInfo = JSON(data)["data"]
+                        self.videoJson.videoDetail = VideoDetail(jsonData: self.videoInfo)
+                        self.parts = Array(1...self.videoJson.videoDetail.videos)
+                        self.VideoDescription.text = self.videoJson.videoDetail.desc
+                        self.PartTableView.reloadData()
+                    case .failure(let error):
+                        print(error)
+                        break
+                    }
+            }
         }
     }
     
