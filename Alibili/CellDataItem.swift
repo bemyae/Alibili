@@ -43,7 +43,7 @@ struct VideoDetail: Codable {
     
     init(jsonData:JSON) {
         self.videos = jsonData["videos"].int ?? -1
-        self.owner = Owner(jsonData: jsonData["role"])
+        self.owner = Owner(jsonData: jsonData["owner"])
         self.tid = jsonData["tid"].stringValue
         self.ctime = jsonData["ctime"].stringValue
         self.duration = jsonData["duration"].stringValue

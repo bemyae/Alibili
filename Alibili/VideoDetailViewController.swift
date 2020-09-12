@@ -17,6 +17,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var videoInfo:JSON = JSON({})
     var parts:[Int] = []
 
+    @IBOutlet weak var Owner: UIButton!
     @IBOutlet weak var VideoTitle: UITextView!
     @IBOutlet weak var VideoDescription: UITextView!
     @IBOutlet weak var PartTableView: UITableView!
@@ -35,6 +36,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             parts = Array(1...videoJson.videoDetail.videos)
             VideoDescription.text = videoJson.videoDetail.desc
+            Owner.setTitle(videoJson.videoDetail.owner.name, for: .normal)
         }
         
         guard let image = self.processImage(named: videoJson.pic) else { return }
@@ -121,6 +123,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
                         self.videoJson.videoDetail = VideoDetail(jsonData: self.videoInfo)
                         self.parts = Array(1...self.videoJson.videoDetail.videos)
                         self.VideoDescription.text = self.videoJson.videoDetail.desc
+                        self.Owner.setTitle(self.videoJson.videoDetail.owner.name, for: .normal)
                         self.PartTableView.reloadData()
                     case .failure(let error):
                         print(error)
