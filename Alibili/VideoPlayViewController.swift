@@ -45,7 +45,12 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         playerView.addSubview(activityIndicatiorView)
         activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        loadData(avId: videoJson.aid, pageNum: pageNum)
+        if videoJson.bangumi.ep_id != -1 && videoJson.videoDetail.videos != 1{
+            loadData(avId: videoJson.aid, seasonId: String(videoJson.bangumi.season.season_id), pageNum: pageNum)
+        } else {
+            loadData(avId: videoJson.aid, pageNum: pageNum)
+        }
+        
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -89,7 +94,9 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        barrageRenderer.stop()
+        if barrageRenderer != nil {
+            barrageRenderer.stop()
+        }
     }
     
     func loadDanmuData(cid:String) -> Void {
@@ -101,32 +108,32 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
             AF.request(Urls.getDanmu(cid: cid), headers: headers).responseString(encoding: String.Encoding.utf8) { response in
                 var statusCode = response.response?.statusCode
                 switch response.result {
-                    case .success:
-                        print("status code is: \(String(describing: statusCode))")
-                        if let string = response.value {
-                            let xml = SWXMLHash.parse(string)
-                            for elem in xml["i"]["d"].all {
-                                let danmu = DanmuData(elem: elem)
-                                if var dictValue = self.danmuList[danmu.timing] {
-                                    dictValue.append(danmu)
-                                    self.danmuList[danmu.timing] = dictValue
-                                } else {
-                                    self.danmuList[danmu.timing] = [danmu]
-                                }
-                                
+                case .success:
+                    print("status code is: \(String(describing: statusCode))")
+                    if let string = response.value {
+                        let xml = SWXMLHash.parse(string)
+                        for elem in xml["i"]["d"].all {
+                            let danmu = DanmuData(elem: elem)
+                            if var dictValue = self.danmuList[danmu.timing] {
+                                dictValue.append(danmu)
+                                self.danmuList[danmu.timing] = dictValue
+                            } else {
+                                self.danmuList[danmu.timing] = [danmu]
                             }
-                            self.configDanMu()
+                            
                         }
-                    case .failure(let error):
-                        statusCode = error._code // statusCode private
-                        print("status code is: \(String(describing: statusCode))")
-                        print(error)
+                        self.configDanMu()
+                    }
+                case .failure(let error):
+                    statusCode = error._code // statusCode private
+                    print("status code is: \(String(describing: statusCode))")
+                    print(error)
                 }
             }
         }
     }
     
-    func loadMediaData(avId:String,cid:String) -> Void {
+    func loadMediaData(avId:String,cid:String) throws -> Void {
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
             let headers: HTTPHeaders = [
                 "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
@@ -136,45 +143,60 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
                 .responseJSON  { response in
                     switch(response.result) {
                     case .success(let data):
-                        let json = JSON(data)
-                        var max = 0
-                        for data in json["data"]["dash"]["video"].arrayValue {
-                            if data["id"].intValue > max && data["id"].intValue <= 80 {
-                                max = data["id"].intValue
+                        do {
+                            try self.playmedia(json: JSON(data), avId: avId, cid: cid)
+                        } catch let error {
+                            print("Can not play. Error: \(error)")
+                            if let nav = self.navigationController {
+                                nav.popViewController(animated: true)
+                            } else {
+                                self.dismiss(animated: true, completion: nil)
                             }
                         }
-                        let videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
-                        let video = videoArray[0]["base_url"].stringValue
-                        let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
-                        self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
-                        let videoMedia = VLCMedia(url: URL(string: video)!)
-                        videoMedia.addOptions([
-                            "http-user-agent": "Bilibili Freedoooooom/MarkII",
-                            "http-referrer": Urls.getHttpReferrer(avId: avId)
-                        ])
-                        self.player.media = videoMedia
-                        self.player.delegate = self
-                        self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
-                        self.player.drawable = self.mediaView
-                        
-                        self.loadDanmuData(cid:cid)
-    //                    self.observation = self.player.observe(\.self.isPlaying, options: [.old, .new]){ object, change in
-    //                        print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
-    //                    }
-                        self.player.play()
                         
                         return
                     case .failure(let error):
                         print(error)
                         break
                     }
-                }
+            }
         }
     }
+    
+    func playmedia(json: JSON, avId:String, cid:String) throws -> Void {
+        var max = 0
+        for data in json["data"]["dash"]["video"].arrayValue {
+            if data["id"].intValue > max && data["id"].intValue <= 80 {
+                max = data["id"].intValue
+            }
+        }
+        let videoArray = json["data"]["dash"]["video"].arrayValue.filter {$0["id"].intValue == max }
+        if videoArray.isEmpty {
+            throw NSError(domain: "no data", code: -1, userInfo: nil)
+        }
+        let video = videoArray[0]["base_url"].stringValue
+        let audio = json["data"]["dash"]["audio"][0]["baseUrl"].stringValue
+        self.videoLength = CUnsignedLongLong(json["data"]["timelength"].rawString()!)!/1000
+        let videoMedia = VLCMedia(url: URL(string: video)!)
+        videoMedia.addOptions([
+            "http-user-agent": "Bilibili Freedoooooom/MarkII",
+            "http-referrer": Urls.getHttpReferrer(avId: avId)
+        ])
+        self.player.media = videoMedia
+        self.player.delegate = self
+        self.player.addPlaybackSlave(URL(string: audio)!, type: VLCMediaPlaybackSlaveType.audio, enforce: true)
+        self.player.drawable = self.mediaView
         
+        self.loadDanmuData(cid:cid)
+        //                    self.observation = self.player.observe(\.self.isPlaying, options: [.old, .new]){ object, change in
+        //                        print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
+        //                    }
+        self.player.play()
+    }
+    
     func mediaPlayerStateChanged(_ aNotification: Notification) {
         let state : VLCMediaPlayerState = player.state
-//        print("mediaPlayerStateChanged \(aNotification) \(state.rawValue)")
+        //        print("mediaPlayerStateChanged \(aNotification) \(state.rawValue)")
         switch state {
         case VLCMediaPlayerState.stopped:
             print("Player has stopped")
@@ -204,28 +226,56 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         }
     }
     
+    func prepareVideoInfo (avId: String, cid: String) -> Void {
+        do {
+            try self.loadMediaData(avId: avId, cid: cid)
+        } catch let error {
+            print("Can not play. Error: \(error)")
+            if let nav = self.navigationController {
+                nav.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func loadData(avId: String, seasonId:String, pageNum:Int) -> Void {
+        AF.request(Urls.getBangumiInfo(seasonId: seasonId)).responseJSON { response in
+            switch(response.result) {
+            case .success(let data):
+                self.videoInfo = JSON(data)["result"]["main_section"]
+                let cid = self.videoInfo["episodes"][pageNum]["cid"].stringValue
+                self.prepareVideoInfo(avId: avId, cid: cid)
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+    
     func loadData(avId:String, pageNum:Int) -> Void {
         if self.videoInfo.isEmpty {
-          AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
-              switch(response.result) {
-                  case .success(let data):
-                      self.videoInfo = JSON(data)["data"]
-                      var cid = self.videoInfo["cid"].stringValue
-                      if pageNum != 0 {
-                          cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
-                      }
-                      self.loadMediaData(avId: avId, cid: cid)
-                  case .failure(let error):
-                      print(error)
-                      break
-                  }
-          }
+            AF.request(Urls.getVideoInfo(avId: avId)).responseJSON { response in
+                switch(response.result) {
+                case .success(let data):
+                    self.videoInfo = JSON(data)["data"]
+                    var cid = self.videoInfo["cid"].stringValue
+                    if pageNum != 0 {
+                        cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
+                    }
+                    self.prepareVideoInfo(avId: avId, cid: cid)
+                    
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }
         } else {
             var cid = self.videoInfo["cid"].stringValue
             if pageNum != 0 {
                 cid = self.videoInfo["pages"][pageNum]["cid"].stringValue
             }
-            self.loadMediaData(avId: avId, cid: cid)
+            self.prepareVideoInfo(avId: avId, cid: cid)
         }
         
     }

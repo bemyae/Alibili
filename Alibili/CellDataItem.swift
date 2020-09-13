@@ -16,6 +16,7 @@ struct CellDataItem: Codable, Equatable {
     var title :String
     var aid :String
     var videoDetail: VideoDetail
+    var bangumi: Bangumi
     
     init(jsonData:JSON) {
         self.cid = jsonData["cid"].stringValue
@@ -24,6 +25,7 @@ struct CellDataItem: Codable, Equatable {
         self.aid = jsonData["aid"].stringValue
         self.title = jsonData["title"].stringValue
         self.videoDetail = VideoDetail(jsonData: jsonData)
+        self.bangumi = Bangumi(jsonData: jsonData["bangumi"])
     }
 }
 
@@ -80,6 +82,47 @@ struct Owner : Codable{
         self.face = jsonData["face"].stringValue
     }
 }
+struct Season : Codable{
+    var season_id:Int
+    var title:String
+    var season_status:String
+    var is_finish:String
+    var total_count:String
+    var newest_ep_id:String
+    var newest_ep_index:String
+    var season_type:String
+    
+    init(jsonData:JSON) {
+        self.season_id = jsonData["season_id"].int ?? -1
+        self.title = jsonData["title"].stringValue
+        self.season_status = jsonData["season_status"].stringValue
+        self.is_finish = jsonData["is_finish"].stringValue
+        self.total_count = jsonData["total_count"].stringValue
+        self.newest_ep_id = jsonData["newest_ep_id"].stringValue
+        self.newest_ep_index = jsonData["newest_ep_index"].stringValue
+        self.season_type = jsonData["season_type"].stringValue
+    }
+}
+
+struct Bangumi: Codable{
+    var ep_id:Int
+    var title:String
+    var long_title:String
+    var episode_status:String
+    var season:Season
+    var cover:String
+    
+    init(jsonData:JSON) {
+        self.ep_id = jsonData["ep_id"].int ?? -1
+        self.title = jsonData["title"].stringValue
+        self.long_title = jsonData["long_title"].stringValue
+        self.episode_status = jsonData["episode_status"].stringValue
+        self.season = Season(jsonData: jsonData["season"])
+        self.cover = jsonData["cover"].stringValue
+    }
+}
+
+
 
 // MARK: Equatable
 
