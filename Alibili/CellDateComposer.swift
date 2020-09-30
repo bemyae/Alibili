@@ -24,10 +24,13 @@ class CellDataComposer {
     // MARK: Implementation
     
     func compose(_ cell: CollectionViewCell, cellStyle:CGSize ,withDataItem dataItem: CellDataItem) {
+        var pic = dataItem.pic
         // Cancel any queued operations to process images for the cell.
         let queue = operationQueue(forCell: cell)
         queue.cancelAllOperations()
-        
+        if !pic.contains("http:") {
+            pic = "http:" + dataItem.pic
+        }
         // Set the cell's properties.
         cell.representedDataItem = dataItem
         
@@ -64,7 +67,7 @@ class CellDataComposer {
             guard !processImageOperation.isCancelled else { return }
             
             // Load and process the image.
-            guard let image = self.processImage(named: dataItem.pic) else { return }
+            guard let image = self.processImage(named: pic) else { return }
             
             // Store the processed image in the cache.
             CellDataComposer.processedImageCache.setObject(image, forKey: dataItem.aid as NSString)

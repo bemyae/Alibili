@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private let cookieManager:CookieManager = CookieManager()
     var videoJson:CellDataItem!
+    var videoInfo:JSON = JSON({})
+    var parts:[Int] = []
 
+    @IBOutlet weak var Owner: UIButton!
     @IBOutlet weak var VideoTitle: UITextView!
     @IBOutlet weak var VideoDescription: UITextView!
     @IBOutlet weak var PartTableView: UITableView!
-    
-    var parts:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +30,20 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Do any additional setup after loading the view.
         VideoTitle.text = videoJson.title
-        parts = Array(1...videoJson.videos)
+
+        if videoJson.videoDetail.videos == -1 {
+            loadData(aid: videoJson.aid)
+        } else {
+            parts = Array(1...videoJson.videoDetail.videos)
+            VideoDescription.text = videoJson.videoDetail.desc
+            Owner.setTitle(videoJson.videoDetail.owner.name, for: .normal)
+        }
+        var pic = videoJson.pic
+        if !pic.contains("http:") {
+            pic = "http:" + pic
+        }
         
-        VideoDescription.text = videoJson.desc
-//        print(VideoDescription.text.count)
-//        let range = NSMakeRange(VideoDescription.text.count - 1, 1)
-//        VideoDescription.scrollRangeToVisible(range)
-        
-//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = view.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(blurEffectView)
-        
-        guard let image = self.processImage(named: videoJson.pic) else { return }
+        guard let image = self.processImage(named: pic) else { return }
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = image
         backgroundImage.alpha = 0.5
@@ -100,14 +103,42 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         if let destination = segue.destination as?
             VideoPlayerViewController, let index =
             PartTableView.indexPathsForSelectedRows?.first {
+            destination.videoInfo = self.videoInfo
             destination.pageNum = index.row
             destination.videoJson = self.videoJson
         }
         
-        if let destination = segue.destination as?
+        else if let destination = segue.destination as?
             VideoRelationCollectionViewController {
-            destination.aid = videoJson.aid
-            
+            destination.aid = self.videoJson.aid
+        }
+        
+        else if let destination = segue.destination as?
+            OwnerCollectionViewController {
+            destination.owner = self.videoJson.videoDetail.owner
+        }
+    }
+    
+    func loadData(aid:String) -> Void {
+        if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
+            let headers: HTTPHeaders = [
+                "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
+                "Accept": "application/json"
+            ]
+            AF.request(Urls.getVideoInfo(avId: aid),headers:headers).responseJSON { response in
+                switch(response.result) {
+                    case .success(let data):
+                        self.videoInfo = JSON(data)["data"]
+                        self.videoJson.videoDetail = VideoDetail(jsonData: self.videoInfo)
+                        self.parts = Array(1...self.videoJson.videoDetail.videos)
+                        self.VideoDescription.text = self.videoJson.videoDetail.desc
+                        self.Owner.setTitle(self.videoJson.videoDetail.owner.name, for: .normal)
+                        self.PartTableView.reloadData()
+                    case .failure(let error):
+                        print(error)
+                        break
+                    }
+            }
         }
     }
     

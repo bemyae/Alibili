@@ -18,6 +18,8 @@
 		CA00ACD322D2F0B7005ECFFE /* RootViewNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */; };
 		CA05132422D933BA008B4B48 /* CellDateComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132222D933BA008B4B48 /* CellDateComposer.swift */; };
 		CA05132622D933E8008B4B48 /* CellDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05132522D933E8008B4B48 /* CellDataItem.swift */; };
+		CA46D4DD250ADF6300DD38CA /* RankingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46D4C7250ADF6300DD38CA /* RankingCollectionViewController.swift */; };
+		CA46D57F250C5B4E00DD38CA /* OwnerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46D57E250C5B4E00DD38CA /* OwnerCollectionViewController.swift */; };
 		CA4C66E02507A62C0049B522 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C66CA2507A62C0049B522 /* Metal.framework */; };
 		CA4C66E22507A64D0049B522 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA4C66E12507A64D0049B522 /* CoreServices.framework */; };
 		CA4C66EC250859290049B522 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4C66EB250859290049B522 /* Utilities.swift */; };
@@ -261,6 +263,8 @@
 		CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewNavigator.swift; sourceTree = "<group>"; };
 		CA05132222D933BA008B4B48 /* CellDateComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDateComposer.swift; sourceTree = "<group>"; };
 		CA05132522D933E8008B4B48 /* CellDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDataItem.swift; sourceTree = "<group>"; };
+		CA46D4C7250ADF6300DD38CA /* RankingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCollectionViewController.swift; sourceTree = "<group>"; };
+		CA46D57E250C5B4E00DD38CA /* OwnerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerCollectionViewController.swift; sourceTree = "<group>"; };
 		CA4C66CA2507A62C0049B522 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		CA4C66E12507A64D0049B522 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		CA4C66EB250859290049B522 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 				CA00ACD222D2F0B7005ECFFE /* RootViewNavigator.swift */,
 				CA73155C22D33E100046A75B /* CollectionViewCell.swift */,
 				CA73156022D3420D0046A75B /* SubscriptionsCollectionViewController.swift */,
+				CA46D57E250C5B4E00DD38CA /* OwnerCollectionViewController.swift */,
+				CA46D4C7250ADF6300DD38CA /* RankingCollectionViewController.swift */,
 				CA4C67022509ADCC0049B522 /* HistoryCollectionViewController.swift */,
 				CA4C670C250A4E550049B522 /* VideoRelationCollectionViewController.swift */,
 				CA705E5622DADA1200615664 /* VideoPlayViewController.swift */,
@@ -377,8 +383,8 @@
 				CA8A12A622DB89AB00D344C9 /* Alibili-Bridging-Header.h */,
 				CA8A12B122DC00FF00D344C9 /* MenuTableViewController.swift */,
 				CAF4F2ED22E349D000CCE549 /* DanmuData.swift */,
-				CA4C66EB250859290049B522 /* Utilities.swift */,
 				CABF08D9250A7BBF00F6F153 /* TabBarViewController.swift */,
+				CA4C66EB250859290049B522 /* Utilities.swift */,
 			);
 			path = Alibili;
 			sourceTree = "<group>";
@@ -485,7 +491,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Xiaonan Zhang";
 				TargetAttributes = {
 					CA00AC5422D1DE82005ECFFE = {
@@ -732,6 +738,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA46D57F250C5B4E00DD38CA /* OwnerCollectionViewController.swift in Sources */,
 				CA05132622D933E8008B4B48 /* CellDataItem.swift in Sources */,
 				CA00ACC622D25D0B005ECFFE /* CookieManager.swift in Sources */,
 				CA00AC6B22D1DEAF005ECFFE /* LoginViewController.swift in Sources */,
@@ -740,6 +747,7 @@
 				CA4C6707250A14040049B522 /* VideoDetailViewController.swift in Sources */,
 				CAF4F2EE22E349D000CCE549 /* DanmuData.swift in Sources */,
 				CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */,
+				CA46D4DD250ADF6300DD38CA /* RankingCollectionViewController.swift in Sources */,
 				CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */,
 				CA73156122D3420D0046A75B /* SubscriptionsCollectionViewController.swift in Sources */,
 				CA705E5722DADA1200615664 /* VideoPlayViewController.swift in Sources */,
@@ -814,6 +822,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -876,6 +885,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -924,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zephyr1989.Alibili;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyr.Alibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Alibili/Alibili-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -953,7 +963,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zephyr1989.Alibili;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zephyr.Alibili;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Alibili/Alibili-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

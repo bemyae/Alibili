@@ -14,7 +14,7 @@ import AVKit
 
 private let reuseIdentifier = CollectionViewCell.reuseIdentifier
 
-class HistoryCollectionViewController: UICollectionViewController {
+class RankingCollectionViewController: UICollectionViewController {
 
     private let cookieManager:CookieManager = CookieManager()
     
@@ -22,9 +22,6 @@ class HistoryCollectionViewController: UICollectionViewController {
     
     private var targetSize = CGSize.zero
     
-    private let recentTotal = 150
-    private let recentPerPage = 10
-    var recentCurrentPage = 1
     var dataItemGourp:[JSON] = []
     
     override func viewDidLoad() {
@@ -44,22 +41,20 @@ class HistoryCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = layout
 
         if(cookieManager.isUserCookieSet(forKey: "User-Cookie")){
-            loadMoreData(currentPage:1)
+            loadRankingData()
         }
     }
 
-    func loadMoreData(currentPage:Int) -> Void {
-        if (currentPage < recentCurrentPage || recentCurrentPage * recentPerPage > recentTotal) {return}
+    func loadRankingData() -> Void {
         let headers: HTTPHeaders = [
             "Set-Cookie":cookieManager.getUserCookie(forKey: "User-Cookie")!,
             "Accept": "application/json"
         ]
-        AF.request(Urls.getHistory(recentPerPage: recentPerPage, currentPage: currentPage), headers: headers).responseJSON { response in
+        AF.request(Urls.getRanking(day: "3"), headers: headers).responseJSON { response in
             switch(response.result) {
             case .success(let data):
                 let json = JSON(data)
-                self.dataItemGourp.append(contentsOf: json["data"].array ?? [])
-                self.recentCurrentPage+=1
+                self.dataItemGourp.append(contentsOf: json["data"]["list"].array ?? [])
                 DispatchQueue.main.async{
                     self.collectionView.reloadData()
                 }
@@ -104,10 +99,6 @@ class HistoryCollectionViewController: UICollectionViewController {
         let item = dataItemGourp[indexPath.item]
         //         Configure the cell.
         cellComposer.compose(cell, cellStyle: targetSize ,withDataItem: CellDataItem(jsonData: item))
-        
-        if dataItemGourp.count - 1 == indexPath.item {
-            loadMoreData(currentPage: recentCurrentPage)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
