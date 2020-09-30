@@ -30,7 +30,7 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         // Do any additional setup after loading the view.
         VideoTitle.text = videoJson.title
-        
+
         if videoJson.videoDetail.videos == -1 {
             loadData(aid: videoJson.aid)
         } else {
@@ -108,12 +108,12 @@ class VideoDetailViewController: UIViewController, UITableViewDelegate, UITableV
             destination.videoJson = self.videoJson
         }
         
-        if let destination = segue.destination as?
+        else if let destination = segue.destination as?
             VideoRelationCollectionViewController {
             destination.aid = self.videoJson.aid
         }
         
-        if let destination = segue.destination as?
+        else if let destination = segue.destination as?
             OwnerCollectionViewController {
             destination.owner = self.videoJson.videoDetail.owner
         }

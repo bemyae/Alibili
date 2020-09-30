@@ -55,4 +55,8 @@ struct Urls {
     static func getOwnerVideos(mid: String, recentPerPage: Int, currentPage: Int) -> String{
         return "https://api.bilibili.com/x/space/arc/search?mid=\(mid)&ps=\(recentPerPage)&tid=0&pn=\(currentPage)&keyword=&order=pubdate&jsonp=jsonp"
     }
+    
+    static func getBangumiInfo(seasonId: String) -> String{
+        return "https://api.bilibili.com/pgc/web/season/section?season_id=\(seasonId)"
+    }
 }

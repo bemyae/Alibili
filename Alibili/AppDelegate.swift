@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         RootViewNavigator().updateRootViewController()
+        
+//        let audioSession = AVAudioSession.sharedInstance()
+//
+//        do {
+//            try audioSession.setCategory(.playback, mode: .default, policy: .default)
+////            try audioSession.overrideOutputAudioPort(AVAudioSession.Port.airPlay)
+//            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+//
+//            for outputPort in audioSession.currentRoute.outputs {
+////                if outputPort.portType == AVAudioSession.Port.airPlay {
+////                        return true
+////                    }
+//                print(outputPort.portName)
+//                print(outputPort.portType)
+//            }
+//
+//        } catch {
+//            print("fail to set audio session route sharing policy: \(error)")
+//        }
+        
         return true
     }
 
@@ -35,6 +56,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+//        let session = AVAudioSession.sharedInstance()
+//        do {
+//            try session.setCategory(.playback, mode: .moviePlayback, policy: .longFormAudio)
+//            try session.overrideOutputAudioPort(.none)
+//            try session.setActive(true)
+//            print("outputs: \(session.currentRoute.outputs)")
+////                session.setOutputDataSource(AVAudioSessionDataSourceDescription?)
+//        } catch {
+//              print("error: \(error)")
+//        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
