@@ -568,7 +568,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JNO-CA-QB7"/>
         <segue reference="Fzq-JT-ydk"/>
     </inferredMetricsTieBreakers>
 </document>

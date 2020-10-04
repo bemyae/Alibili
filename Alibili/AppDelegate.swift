@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(.playback, mode: .default, policy: .longFormAudio)
+            try session.setCategory(.playback, mode: .default, policy: .longFormAudio, options: [])
 //            try session.overrideOutputAudioPort(.none)
             try session.setActive(true)
             print("outputs: \(session.currentRoute.outputs)")

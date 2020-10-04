@@ -17,13 +17,13 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     @IBOutlet var playerView: UIView!
     @IBOutlet weak var mediaView: UIView!
     
-    let activityIndicatiorView: UIActivityIndicatorView = {
-        let aiv = UIActivityIndicatorView()
-        aiv.color = .white
-        aiv.translatesAutoresizingMaskIntoConstraints = false
-        aiv.startAnimating()
-        return aiv
-    }()
+//    let activityIndicatiorView: UIActivityIndicatorView = {
+//        let aiv = UIActivityIndicatorView()
+//        aiv.color = .white
+//        aiv.translatesAutoresizingMaskIntoConstraints = false
+//        aiv.startAnimating()
+//        return aiv
+//    }()
     var observation: NSKeyValueObservation?
     
     private let cookieManager:CookieManager = CookieManager()
@@ -40,17 +40,35 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
     var videoJson:CellDataItem!
     var videoInfo: JSON = JSON({})
     
+    let routePickerView = AVRoutePickerView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerView.addSubview(activityIndicatiorView)
-        activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+//        playerView.addSubview(activityIndicatiorView)
+//        activityIndicatiorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        activityIndicatiorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         if videoJson.bangumi.ep_id != -1 && videoJson.videoDetail.videos != 1{
             loadData(avId: videoJson.aid, seasonId: String(videoJson.bangumi.season.season_id), pageNum: pageNum)
         } else {
             loadData(avId: videoJson.aid, pageNum: pageNum)
         }
+        routePickerView.isHidden = true
+        self.view.addSubview(routePickerView)
         
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeRecognizer.direction = .up
+        self.view.addGestureRecognizer(swipeRecognizer)
+
+    }
+    
+    @objc func swiped(sender: UISwipeGestureRecognizer) {
+
+        if sender.direction == .up {
+            if let routePickerButton = routePickerView.subviews.first(where: { $0 is UIButton }) as? UIButton {
+                routePickerButton.sendActions(for: .touchUpInside)
+            }
+        }
+            
     }
     
     func walkTextSpriteDescriptorWithDirection(direction:UInt, text:String) -> BarrageDescriptor{
@@ -62,6 +80,23 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         descriptor.params["speed"] = Int(arc4random()%50) + 150
         descriptor.params["direction"] = direction
         return descriptor
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+
+        for press in presses {
+            switch press.type {
+            case .playPause:
+                if player.isPlaying {
+                    player.pause()
+                }
+                else {
+                    player.play()
+                }
+                
+            default: ()
+            }
+        }
     }
     
     @objc func autoSenderBarrage() {
@@ -208,7 +243,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
         case VLCMediaPlayerState.opening:
             print("Stream is opening")
         case VLCMediaPlayerState.buffering:
-            activityIndicatiorView.stopAnimating()
+//            activityIndicatiorView.stopAnimating()
             playerView.backgroundColor = .clear
             print("Stream is buffering")
         case VLCMediaPlayerState.ended:
