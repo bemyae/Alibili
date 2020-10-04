@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A953CCA3ABE02063B5C90EBA /* Pods_Alibili.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22F48880364F273B954F857 /* Pods_Alibili.framework */; };
 		CA00AC5922D1DE82005ECFFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AC5822D1DE82005ECFFE /* AppDelegate.swift */; };
 		CA00AC5B22D1DE82005ECFFE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AC5A22D1DE82005ECFFE /* ProfileViewController.swift */; };
 		CA00AC5E22D1DE82005ECFFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA00AC5C22D1DE82005ECFFE /* Main.storyboard */; };
@@ -296,6 +297,7 @@
 		CAF4F2D022E330BC00CCE549 /* BarrageRenderer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BarrageRenderer.xcodeproj; path = BarrageRenderer/BarrageRenderer.xcodeproj; sourceTree = "<group>"; };
 		CAF4F2ED22E349D000CCE549 /* DanmuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmuData.swift; sourceTree = "<group>"; };
 		CAF4F31C22E356FB00CCE549 /* SWXMLHash.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SWXMLHash.xcodeproj; path = SWXMLHash/SWXMLHash.xcodeproj; sourceTree = "<group>"; };
+		D22F48880364F273B954F857 /* Pods_Alibili.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alibili.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +321,7 @@
 				CA705E3F22DAD84F00615664 /* AVFoundation.framework in Frameworks */,
 				CA705E3D22DAD84500615664 /* AudioToolbox.framework in Frameworks */,
 				CA00ACC022D2455E005ECFFE /* Alamofire.framework in Frameworks */,
+				A953CCA3ABE02063B5C90EBA /* Pods_Alibili.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +422,7 @@
 				CA705E4022DAD85E00615664 /* CoreGraphics.framework */,
 				CA705E3E22DAD84F00615664 /* AVFoundation.framework */,
 				CA705E3C22DAD84500615664 /* AudioToolbox.framework */,
+				D22F48880364F273B954F857 /* Pods_Alibili.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

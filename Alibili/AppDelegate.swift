@@ -57,16 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-//        let session = AVAudioSession.sharedInstance()
-//        do {
-//            try session.setCategory(.playback, mode: .moviePlayback, policy: .longFormAudio)
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playback, mode: .default, policy: .longFormAudio)
 //            try session.overrideOutputAudioPort(.none)
-//            try session.setActive(true)
-//            print("outputs: \(session.currentRoute.outputs)")
-////                session.setOutputDataSource(AVAudioSessionDataSourceDescription?)
-//        } catch {
-//              print("error: \(error)")
-//        }
+            try session.setActive(true)
+            print("outputs: \(session.currentRoute.outputs)")
+//                session.setOutputDataSource(AVAudioSessionDataSourceDescription?)
+        } catch {
+              print("error: \(error)")
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
