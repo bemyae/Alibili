@@ -244,7 +244,7 @@ class VideoPlayerViewController: UIViewController, BarrageRendererDelegate, VLCM
             print("Stream is opening")
         case VLCMediaPlayerState.buffering:
 //            activityIndicatiorView.stopAnimating()
-            playerView.backgroundColor = .clear
+//            playerView.backgroundColor = .clear
             print("Stream is buffering")
         case VLCMediaPlayerState.ended:
             print("Stream has ended")
